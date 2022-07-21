@@ -4,6 +4,8 @@
              xmlns:local="clr-namespace:Grombcross"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <BitmapImage x:Key="TestG" UriSource="PuzzleImages/TestG.bmp" />
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
