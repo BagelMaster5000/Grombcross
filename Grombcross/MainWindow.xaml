@@ -3,10 +3,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Grombcross"
+        xmlns:local="clr-namespace:Grombcross" xmlns:views="clr-namespace:Grombcross.Views" xmlns:vms="clr-namespace:Grombcross.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="800">
-    <Grid>
+        Title="Grombcross" Height="800" Width="800">
+    <Grid Background="DarkGreen">
+        <Grid.Resources>
+            <DataTemplate DataType="{x:Type vms:CreditsViewModel}">
+                <views:CreditsView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:PuzzleGameViewModel}">
+                <views:PuzzleGameView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:PuzzleSelectViewModel}">
+                <views:PuzzleSelectView />
+            </DataTemplate>
+        </Grid.Resources>
 
+        <ContentControl Content="{Binding CurrentViewModel}"/>
     </Grid>
 </Window>

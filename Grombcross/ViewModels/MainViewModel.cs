@@ -5,34 +5,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Grombcross.ViewModels
-{
-    public class MainViewModel : ViewModelBase
-    {
-        public ViewModelBase CurrentViewModel;
+namespace Grombcross.ViewModels {
+    public class MainViewModel : ViewModelBase {
+        public ViewModelBase CurrentViewModel { get; set; }
 
-        public MainViewModel()
-        {
+        public MainViewModel() {
             ShowPuzzleGameView(0);
         }
 
-        public bool ShowPuzzleSelectView()
-        {
+        public bool ShowPuzzleSelectView() {
             CurrentViewModel = new PuzzleSelectViewModel(ShowCreditsView, ShowPuzzleGameView);
             OnPropertyChanged(nameof(CurrentViewModel));
             return true;
         }
 
-        public bool ShowPuzzleGameView(int puzzleIndex)
-        {
+        public bool ShowPuzzleGameView(int puzzleIndex) {
             PuzzleGameModel gameModel = new PuzzleGameModel(puzzleIndex);
             CurrentViewModel = new PuzzleGameViewModel(gameModel, ShowPuzzleSelectView);
             OnPropertyChanged(nameof(CurrentViewModel));
             return true;
         }
 
-        public bool ShowCreditsView()
-        {
+        public bool ShowCreditsView() {
             CurrentViewModel = new CreditsViewModel(ShowPuzzleSelectView);
             OnPropertyChanged(nameof(CurrentViewModel));
             return true;
