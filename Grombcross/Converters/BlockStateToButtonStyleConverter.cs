@@ -15,6 +15,7 @@ namespace Grombcross.Converters {
     public class BlockStateToButtonStyleConverter : IValueConverter {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
             Style style = new Style(typeof(Button));
+            style.BasedOn = (Style)App.Current.Resources["BouncyButtonBehavior"];
             Block.BlockState state = (Block.BlockState)value;
             switch (state) {
                 case Block.BlockState.FILLED:

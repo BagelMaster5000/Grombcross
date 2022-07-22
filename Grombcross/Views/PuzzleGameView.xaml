@@ -33,8 +33,11 @@
     <Grid>
         <ItemsControl x:Name="PicrossGrid" ItemsSource="{Binding Blocks}" ItemTemplate="{DynamicResource DataTemplate_Level1}" HorizontalAlignment="Center" VerticalAlignment="Center">
             <ItemsControl.RenderTransform>
-                <ScaleTransform ScaleX="0.5" ScaleY="0.5"/>
+                <ScaleTransform ScaleX="1" ScaleY="1"/>
             </ItemsControl.RenderTransform>
+            <ItemsControl.RenderTransformOrigin>
+                <Point X="0.5" Y="0.5"/>
+            </ItemsControl.RenderTransformOrigin>
         </ItemsControl>
     </Grid>
 </UserControl>
