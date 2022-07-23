@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <None Remove="PuzzleImages\TestG.bmp" />
+    <None Remove="PuzzleImages\TestSmall.bmp" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,6 +18,9 @@
 
   <ItemGroup>
     <Content Include="PuzzleImages\TestG.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PuzzleImages\TestSmall.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

@@ -10,21 +10,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Grombcross
-{
+namespace Grombcross {
 
-    public partial class App : Application
-    {
-        public App()
-        {
+    public partial class App : Application {
+        public App() {
         }
 
-        protected override void OnStartup(StartupEventArgs e)
-        {
+        protected override void OnStartup(StartupEventArgs e) {
             GeneratePuzzles();
 
-            MainWindow = new MainWindow()
-            {
+            MainWindow = new MainWindow() {
                 DataContext = new MainViewModel()
             };
             MainWindow.Show();
@@ -32,12 +27,11 @@ namespace Grombcross
             base.OnStartup(e);
         }
 
-        public void GeneratePuzzles()
-        {
+        public void GeneratePuzzles() {
             GlobalVariables.Puzzles = new List<Puzzle>();
 
             string fullPath = Path.GetFullPath(@"PuzzleImages\TestG.bmp");
-            Bitmap test = new Bitmap(@"PuzzleImages\TestG.bmp");
+            Bitmap test = new Bitmap(fullPath);
             Puzzle puzzle = new Puzzle(test, test);
             GlobalVariables.Puzzles.Add(puzzle);
         }

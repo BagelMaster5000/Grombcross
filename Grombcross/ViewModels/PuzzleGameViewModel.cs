@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Grombcross.Models.PuzzleGameModel;
 
 namespace Grombcross.ViewModels {
     public class PuzzleGameViewModel : ViewModelBase {
@@ -13,12 +14,10 @@ namespace Grombcross.ViewModels {
         public Func<bool> ShowSelectView;
 
         public List<List<Block>> Blocks => _puzzleGameModel.Blocks;
-        public List<string> TopNumberStrings => _puzzleGameModel.TopNumberStrings;
-        public List<string> LeftNumberStrings => _puzzleGameModel.LeftNumberStrings;
+        public List<HintLine> LeftHintLines => _puzzleGameModel.LeftHintLines;
+        public List<HintLine> TopHintLines => _puzzleGameModel.TopHintLines;
 
         public bool PuzzleSolved => _puzzleGameModel.PuzzleSolved;
-        public List<bool> RowsSolved => _puzzleGameModel.RowsSolved;
-        public List<bool> ColumnsSolved => _puzzleGameModel.ColumnsSolved;
 
         public PuzzleGameViewModel(PuzzleGameModel puzzleGameModel, Func<bool> showSelectView) {
             _puzzleGameModel = puzzleGameModel;

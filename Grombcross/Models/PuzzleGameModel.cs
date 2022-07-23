@@ -12,13 +12,15 @@ namespace Grombcross.Models {
 
         public List<List<Block>> Blocks;
         public int BlockGridSize;
-        public List<string> TopNumberStrings;
-        public List<string> LeftNumberStrings;
+        public struct HintLine {
+            public string LineString { get; set; }
+            public bool LineSolved { get; set; }
+        }
+        public List<HintLine> LeftHintLines;
+        public List<HintLine> TopHintLines;
 
         public bool PuzzleSolved = false;
         public List<List<bool>> PuzzleSolution;
-        public List<bool> RowsSolved;
-        public List<bool> ColumnsSolved;
 
         public DateTime ElapsedTime;
 
@@ -38,9 +40,10 @@ namespace Grombcross.Models {
             Bitmap gImage = GlobalVariables.Puzzles[CurrentPuzzleIndex].GeneratorImage;
             GenerateBlankBlockGrid(gImage);
             GenerateSolutionGrid(gImage);
+            GenerateLeftNumberLines();
+            GenerateTopNumberLines();
 
-            GenerateLeftNumberStrings();
-            GenerateTopNumberStrings();
+            CheckForPuzzleSolved();
         }
 
         private void GenerateBlankBlockGrid(Bitmap gImage) {
@@ -65,15 +68,13 @@ namespace Grombcross.Models {
                     PuzzleSolution[x].Add(curBlockFilled);
                 }
             }
-
-            CheckForPuzzleSolved();
         }
 
-        private void GenerateLeftNumberStrings() {
+        private void GenerateLeftNumberLines() {
             Trace.WriteLine("");
             Trace.WriteLine("Rows:");
 
-            LeftNumberStrings = new List<string>();
+            LeftHintLines = new List<HintLine>();
             for (int r = 0; r < BlockGridSize; r++) {
 
                 List<bool> curRowSolution = PuzzleSolution[r];
@@ -97,15 +98,15 @@ namespace Grombcross.Models {
                 curRowString = curRowString.TrimEnd(' ');
 
                 Trace.WriteLine(curRowString);
-                LeftNumberStrings.Add(curRowString);
+                LeftHintLines.Add(new HintLine { LineString = curRowString, LineSolved = false });
             }
         }
 
-        private void GenerateTopNumberStrings() {
+        private void GenerateTopNumberLines() {
             Trace.WriteLine("");
             Trace.WriteLine("Columns:");
 
-            TopNumberStrings = new List<string>();
+            TopHintLines = new List<HintLine>();
             for (int c = 0; c < BlockGridSize; c++) {
 
                 string curColString = "";
@@ -115,7 +116,7 @@ namespace Grombcross.Models {
                         counter++;
                     }
                     else if (counter > 0) {
-                        curColString += counter.ToString() + ' ';
+                        curColString += counter.ToString() + '\n';
                         counter = 0;
                     }
                 }
@@ -125,24 +126,24 @@ namespace Grombcross.Models {
                 else if (string.IsNullOrEmpty(curColString)) {
                     curColString = "0";
                 }
-                curColString = curColString.TrimEnd();
+                curColString = curColString.TrimEnd('\n');
 
                 Trace.WriteLine(curColString);
-                TopNumberStrings.Add(curColString);
+                TopHintLines.Add(new HintLine { LineString = curColString, LineSolved = false });
             }
         }
 
         private void CheckForPuzzleSolved() {
             bool puzzleSolved = true;
 
-            RowsSolved = new List<bool>();
-            ColumnsSolved = new List<bool>();
             for (int i = 0; i < BlockGridSize; i++) {
                 bool curRowSolved = GetIsRowSolved(i);
-                RowsSolved.Add(curRowSolved);
+                HintLine leftHintLine = LeftHintLines[i];
+                leftHintLine.LineSolved = curRowSolved;
 
                 bool curColumnSolved = GetIsColumnSolved(i);
-                ColumnsSolved.Add(curColumnSolved);
+                HintLine topHintLine = TopHintLines[i];
+                topHintLine.LineSolved = curColumnSolved;
 
                 if (!curRowSolved || !curColumnSolved)
                     puzzleSolved = false;
