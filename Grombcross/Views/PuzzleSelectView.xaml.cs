@@ -1,4 +1,5 @@
-﻿using Grombcross.ViewModels;
+﻿using Grombcross.Models;
+using Grombcross.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,12 @@ namespace Grombcross.Views {
             _dataContext = (PuzzleSelectViewModel)DataContext;
             PuzzleSelectView puzzleSelectView = this;
             var grid = FindName("PuzzleGrid");
+        }
+
+        private void PuzzleSelected(object sender, RoutedEventArgs e) {
+            Button button = (Button)e.Source;
+            Puzzle puzzle = (Puzzle)button.DataContext;
+            _dataContext.ShowGameView(puzzle.Index);
         }
     }
 }

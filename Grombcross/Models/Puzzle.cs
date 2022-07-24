@@ -11,14 +11,16 @@ namespace Grombcross.Models {
 
         public int Row { get; }
         public int Column { get; }
+        public int Index { get; }
 
-        public Puzzle(string setName, Bitmap generatorImage, Bitmap finalImage, int setRow, int setColumn) {
+        public Puzzle(string setName, Bitmap generatorImage, Bitmap finalImage, int setRow, int setColumn, int setIndex) {
             Name = setName;
             GeneratorImage = generatorImage;
             FinalImage = finalImage;
 
             Row = setRow;
             Column = setColumn;
+            Index = setIndex;
         }
     }
 }

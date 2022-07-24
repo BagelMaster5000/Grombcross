@@ -32,27 +32,27 @@ namespace Grombcross {
 
             string fullPath = Path.GetFullPath(@"PuzzleImages\TestSmall.bmp");
             Bitmap test = new Bitmap(fullPath);
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 0, 0));
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 0, 1));
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 0, 2));
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 0, 3));
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 1, 0));
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 1, 1));
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 1, 2));
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 1, 3));
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 2, 0));
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 2, 1));
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 2, 2));
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 2, 3));
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 3, 0));
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 3, 1));
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 3, 2));
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 3, 3));
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 4, 0));
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 4, 1));
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 4, 2));
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 4, 3));
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 5, 0));
+            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 0, 0, 0));
+            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 0, 1, 1));
+            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 0, 2, 2));
+            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 0, 3, 3));
+            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 1, 0, 4));
+            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 1, 1, 5));
+            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 1, 2, 6));
+            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 1, 3, 7));
+            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 2, 0, 8));
+            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 2, 1, 9));
+            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 2, 2, 10));
+            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 2, 3, 11));
+            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 3, 0, 11));
+            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 3, 1, 11));
+            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 3, 2, 11));
+            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 3, 3, 11));
+            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 4, 0, 11));
+            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 4, 1, 11));
+            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 4, 2, 11));
+            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 4, 3, 11));
+            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 5, 0, 11));
         }
     }
 }

@@ -49,7 +49,10 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <DockPanel Width="175" Height="175">
-                            <Button Background="White" Style="{StaticResource BouncyButtonBehavior}">
+                            <Button
+                                Background="White"
+                                Click="PuzzleSelected"
+                                Style="{StaticResource BouncyButtonBehavior}">
                                 <Image
                                     Margin="10"
                                     RenderOptions.BitmapScalingMode="NearestNeighbor"
