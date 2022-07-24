@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,9 @@ namespace Grombcross.ViewModels {
         public List<List<Block>> Blocks => _puzzleGameModel.Blocks;
         public List<HintLine> LeftHintLines => _puzzleGameModel.LeftHintLines;
         public List<HintLine> TopHintLines => _puzzleGameModel.TopHintLines;
+
+        public string PuzzleName => _puzzleGameModel.CurrentPuzzle.Name;
+        public Bitmap CompletedImage => _puzzleGameModel.CurrentPuzzle.FinalImage;
 
         public bool PuzzleSolved => _puzzleGameModel.PuzzleSolved;
 
@@ -33,6 +37,9 @@ namespace Grombcross.ViewModels {
             }
 
             block.OnPropertyChanged(nameof(block.State));
+
+            RefreshLineFulfilledProperties(block);
+            RefreshPuzzleSolved();
         }
 
         public void RightClickBlock(Block block) {
@@ -41,6 +48,30 @@ namespace Grombcross.ViewModels {
                 case Block.BlockState.MARKED: _puzzleGameModel.ClearBlock(block); break;
                 case Block.BlockState.FILLED: _puzzleGameModel.ClearBlock(block); break;
             }
+
+            block.OnPropertyChanged(nameof(block.State));
+
+            RefreshLineFulfilledProperties(block);
+            RefreshPuzzleSolved();
+        }
+
+        private void RefreshLineFulfilledProperties(Block block) {
+            _puzzleGameModel.CheckRowFulfilled(block.Row);
+            HintLine rowHintLine = LeftHintLines[block.Row];
+            rowHintLine.OnPropertyChanged(nameof(rowHintLine.LineFulfilled));
+
+            _puzzleGameModel.CheckColumnFulfilled(block.Column);
+            HintLine columnHintLine = TopHintLines[block.Column];
+            columnHintLine.OnPropertyChanged(nameof(columnHintLine.LineFulfilled));
+        }
+
+        private void RefreshPuzzleSolved() {
+            bool puzzleSolvedBefore = _puzzleGameModel.PuzzleSolved;
+            bool puzzleSolvedNow = _puzzleGameModel.CheckForPuzzleSolved();
+            if (!puzzleSolvedBefore && puzzleSolvedNow) {
+                OnPropertyChanged(nameof(PuzzleSolved));
+            }
+
         }
 
         // Debugging

@@ -44,7 +44,7 @@
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"
                     FontSize="35"
-                    Foreground="White"
+                    Foreground="{Binding LineFulfilled, Converter={StaticResource LineSolvedToBrushColorConverter}}"
                     Text="{Binding LineString}" />
             </Border>
         </DataTemplate>
@@ -55,7 +55,7 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Bottom"
                     FontSize="32"
-                    Foreground="White"
+                    Foreground="{Binding LineFulfilled, Converter={StaticResource LineSolvedToBrushColorConverter}}"
                     LineHeight="40"
                     LineStackingStrategy="BlockLineHeight"
                     Text="{Binding LineString}" />
@@ -133,5 +133,63 @@
             VerticalAlignment="Top"
             ItemTemplate="{DynamicResource GridRowsTemplate}"
             ItemsSource="{Binding Blocks}" />
+
+
+        <Border
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Background="White"
+            Opacity="0.9"
+            Visibility="{Binding PuzzleSolved, Converter={StaticResource BoolToVisibilityConverter}}">
+            <Border.RenderTransformOrigin>
+                <Point X="0.5" Y="0.5" />
+            </Border.RenderTransformOrigin>
+            <Border.RenderTransform>
+                <ScaleTransform ScaleX="10" ScaleY="10" />
+            </Border.RenderTransform>
+
+            <Border>
+                <Border.RenderTransformOrigin>
+                    <Point X="0.5" Y="0.5" />
+                </Border.RenderTransformOrigin>
+                <Border.RenderTransform>
+                    <ScaleTransform ScaleX="0.1" ScaleY="0.1" />
+                </Border.RenderTransform>
+
+                <StackPanel Orientation="Vertical">
+                    <TextBlock
+                        Margin="0,0,0,30"
+                        HorizontalAlignment="Center"
+                        FontSize="50"
+                        Text="Puzzle Complete!" />
+                    <Image
+                        Height="300"
+                        Margin="0,0,0,30"
+                        RenderOptions.BitmapScalingMode="NearestNeighbor"
+                        Source="{Binding CompletedImage, Converter={StaticResource BitmapToImageSourceConverter}}" />
+                    <TextBlock
+                        Margin="0,0,0,30"
+                        HorizontalAlignment="Center"
+                        FontSize="50"
+                        Text="{Binding PuzzleName}" />
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                        <Button Margin="10">
+                            <TextBlock
+                                Margin="5"
+                                FontSize="24"
+                                Text="Restart Puzzle" />
+                        </Button>
+                        <Button Margin="10">
+                            <TextBlock
+                                Margin="5"
+                                FontSize="24"
+                                Text="Back to Puzzle Select" />
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Border>
     </Grid>
 </UserControl>

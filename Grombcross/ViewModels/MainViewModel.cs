@@ -10,7 +10,7 @@ namespace Grombcross.ViewModels {
         public ViewModelBase CurrentViewModel { get; set; }
 
         public MainViewModel() {
-            ShowPuzzleGameView(0);
+            ShowPuzzleSelectView();
         }
 
         public bool ShowPuzzleSelectView() {

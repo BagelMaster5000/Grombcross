@@ -12,10 +12,6 @@ namespace Grombcross.Models {
 
         public List<List<Block>> Blocks;
         public int BlockGridSize;
-        public struct HintLine {
-            public string LineString { get; set; }
-            public bool LineSolved { get; set; }
-        }
         public List<HintLine> LeftHintLines;
         public List<HintLine> TopHintLines;
 
@@ -52,7 +48,7 @@ namespace Grombcross.Models {
             for (int x = 0; x < BlockGridSize; x++) {
                 Blocks.Add(new List<Block>());
                 for (int y = 0; y < BlockGridSize; y++) {
-                    Blocks[x].Add(new Block());
+                    Blocks[x].Add(new Block(x, y));
                 }
             }
         }
@@ -77,6 +73,8 @@ namespace Grombcross.Models {
             LeftHintLines = new List<HintLine>();
             for (int r = 0; r < BlockGridSize; r++) {
 
+                List<int> hintNumbers = new List<int>();
+
                 List<bool> curRowSolution = PuzzleSolution[r];
                 string curRowString = "";
                 int counter = 0;
@@ -86,11 +84,13 @@ namespace Grombcross.Models {
                     }
                     else if (counter > 0) {
                         curRowString += counter.ToString() + " ";
+                        hintNumbers.Add(counter);
                         counter = 0;
                     }
                 }
                 if (counter > 0) {
                     curRowString += counter.ToString();
+                    hintNumbers.Add(counter);
                 }
                 else if (string.IsNullOrEmpty(curRowString)) {
                     curRowString = "0";
@@ -98,7 +98,7 @@ namespace Grombcross.Models {
                 curRowString = curRowString.TrimEnd(' ');
 
                 Trace.WriteLine(curRowString);
-                LeftHintLines.Add(new HintLine { LineString = curRowString, LineSolved = false });
+                LeftHintLines.Add(new HintLine { LineString = curRowString, LineFulfilled = false, HintNumbers = hintNumbers });
             }
         }
 
@@ -109,6 +109,8 @@ namespace Grombcross.Models {
             TopHintLines = new List<HintLine>();
             for (int c = 0; c < BlockGridSize; c++) {
 
+                List<int> hintNumbers = new List<int>();
+
                 string curColString = "";
                 int counter = 0;
                 for (int r = 0; r < BlockGridSize; r++) {
@@ -117,11 +119,13 @@ namespace Grombcross.Models {
                     }
                     else if (counter > 0) {
                         curColString += counter.ToString() + '\n';
+                        hintNumbers.Add(counter);
                         counter = 0;
                     }
                 }
                 if (counter > 0) {
                     curColString += counter.ToString();
+                    hintNumbers.Add(counter);
                 }
                 else if (string.IsNullOrEmpty(curColString)) {
                     curColString = "0";
@@ -129,49 +133,94 @@ namespace Grombcross.Models {
                 curColString = curColString.TrimEnd('\n');
 
                 Trace.WriteLine(curColString);
-                TopHintLines.Add(new HintLine { LineString = curColString, LineSolved = false });
+                TopHintLines.Add(new HintLine { LineString = curColString, LineFulfilled = false, HintNumbers = hintNumbers });
             }
         }
 
-        private void CheckForPuzzleSolved() {
+        public bool CheckForPuzzleSolved() {
             bool puzzleSolved = true;
 
-            for (int i = 0; i < BlockGridSize; i++) {
-                bool curRowSolved = GetIsRowSolved(i);
-                HintLine leftHintLine = LeftHintLines[i];
-                leftHintLine.LineSolved = curRowSolved;
-
-                bool curColumnSolved = GetIsColumnSolved(i);
-                HintLine topHintLine = TopHintLines[i];
-                topHintLine.LineSolved = curColumnSolved;
-
-                if (!curRowSolved || !curColumnSolved)
+            for (int r = 0; r < BlockGridSize; r++) {
+                bool curRowFulfilled = CheckRowFulfilled(r);
+                if (!curRowFulfilled) {
                     puzzleSolved = false;
+                }
+            }
+
+            for (int c = 0; c < BlockGridSize; c++) {
+                bool curColumnFulfilled = CheckColumnFulfilled(c);
+                if (!curColumnFulfilled) {
+                    puzzleSolved = false;
+                }
             }
 
             PuzzleSolved = puzzleSolved;
+            return PuzzleSolved;
         }
 
-        private bool GetIsRowSolved(int r) {
+        public bool CheckRowFulfilled(int r) {
+            bool rowFulfilled = true;
+
+            int counter = 0;
+            int curHintNumber = 0;
             for (int c = 0; c < BlockGridSize; c++) {
-                bool blockCorrect = (Blocks[r][c].State == Block.BlockState.FILLED && PuzzleSolution[r][c]) ||
-                    (Blocks[r][c].State != Block.BlockState.FILLED && !PuzzleSolution[r][c]);
 
-                if (!blockCorrect) { return false; }
+                if (Blocks[r][c].State == Block.BlockState.FILLED) {
+                    counter++;
+                }
+                else if (counter > 0) {
+                    if (curHintNumber >= LeftHintLines[r].HintNumbers.Count || LeftHintLines[r].HintNumbers[curHintNumber] != counter) {
+                        rowFulfilled = false;
+                    }
+                    counter = 0;
+                    curHintNumber++;
+                }
             }
+            if (counter > 0) {
+                if (curHintNumber >= LeftHintLines[r].HintNumbers.Count || LeftHintLines[r].HintNumbers[curHintNumber] != counter) {
+                    rowFulfilled = false;
+                }
+                counter = 0;
+                curHintNumber++;
+            }
+            if (curHintNumber != LeftHintLines[r].HintNumbers.Count)
+                rowFulfilled = false;
 
-            return true;
+            LeftHintLines[r].LineFulfilled = rowFulfilled;
+            return rowFulfilled;
         }
 
-        private bool GetIsColumnSolved(int c) {
+        public bool CheckColumnFulfilled(int c) {
+
+            bool columnFulfilled = true;
+
+            int counter = 0;
+            int curHintNumber = 0;
             for (int r = 0; r < BlockGridSize; r++) {
-                bool blockCorrect = (Blocks[r][c].State == Block.BlockState.FILLED && PuzzleSolution[r][c]) ||
-                    (Blocks[r][c].State != Block.BlockState.FILLED && !PuzzleSolution[r][c]);
 
-                if (!blockCorrect) { return false; }
+                if (Blocks[r][c].State == Block.BlockState.FILLED) {
+                    counter++;
+                }
+                else if (counter > 0) {
+                    if (curHintNumber >= TopHintLines[c].HintNumbers.Count || TopHintLines[c].HintNumbers[curHintNumber] != counter) {
+                        columnFulfilled = false;
+                    }
+                    counter = 0;
+                    curHintNumber++;
+                }
             }
+            if (counter > 0) {
+                if (curHintNumber >= TopHintLines[c].HintNumbers.Count || TopHintLines[c].HintNumbers[curHintNumber] != counter) {
+                    columnFulfilled = false;
+                }
+                counter = 0;
+                curHintNumber++;
+            }
+            if (curHintNumber != TopHintLines[c].HintNumbers.Count)
+                columnFulfilled = false;
 
-            return true;
+            TopHintLines[c].LineFulfilled = columnFulfilled;
+            return columnFulfilled;
         }
 
         public void FillBlock(Block block) {
