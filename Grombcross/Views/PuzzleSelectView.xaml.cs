@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Grombcross.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,8 +19,18 @@ namespace Grombcross.Views {
     /// Interaction logic for PuzzleSelectView.xaml
     /// </summary>
     public partial class PuzzleSelectView : UserControl {
+        PuzzleSelectViewModel _dataContext;
+
         public PuzzleSelectView() {
+            Loaded += OnLoaded;
+
             InitializeComponent();
+        }
+
+        private void OnLoaded(object sender, RoutedEventArgs e) {
+            _dataContext = (PuzzleSelectViewModel)DataContext;
+            PuzzleSelectView puzzleSelectView = this;
+            var grid = FindName("PuzzleGrid");
         }
     }
 }
