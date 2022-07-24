@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
 
 
-        <!--  Title  -->
+        <!--  Header Title  -->
         <Border Grid.Row="0" Background="White" />
         <TextBlock
             Grid.Row="0"
@@ -74,10 +74,37 @@
                                     Background="White"
                                     Click="PuzzleSelected"
                                     Style="{StaticResource BouncyButtonBehavior}">
-                                    <Image
-                                        Margin="10"
-                                        RenderOptions.BitmapScalingMode="NearestNeighbor"
-                                        Source="{Binding FinalImage, Converter={StaticResource BitmapToImageSourceConverter}}" />
+                                    <Grid>
+                                        <StackPanel
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Orientation="Vertical"
+                                            Visibility="{Binding Completed, Converter={StaticResource BoolToVisibilityConverter}}">
+                                            <Image
+                                                Width="120"
+                                                Margin="0,5"
+                                                RenderOptions.BitmapScalingMode="NearestNeighbor"
+                                                Source="{Binding FinalImage, Converter={StaticResource BitmapToImageSourceConverter}}" />
+                                            <TextBlock
+                                                HorizontalAlignment="Center"
+                                                FontSize="24"
+                                                Foreground="Black"
+                                                Text="{Binding Name}" />
+                                        </StackPanel>
+                                        <StackPanel
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Visibility="{Binding Completed, Converter={StaticResource InverseBoolToVisibilityConverter}}">
+                                            <TextBlock
+                                                HorizontalAlignment="Center"
+                                                FontSize="24"
+                                                Text="???" />
+                                            <TextBlock
+                                                HorizontalAlignment="Center"
+                                                FontSize="48"
+                                                Text="{Binding Size, Converter={StaticResource SizeIntToDimensionsStringConverter}}" />
+                                        </StackPanel>
+                                    </Grid>
                                 </Button>
                             </DockPanel>
                         </DataTemplate>
@@ -87,7 +114,7 @@
         </ScrollViewer>
 
 
-        <!--  Buttons  -->
+        <!--  Footer Buttons  -->
         <StackPanel
             Grid.Row="2"
             Height="65"

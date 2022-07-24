@@ -9,8 +9,10 @@
         <converters:BlockStateToButtonStyleConverter x:Key="BlockToButtonStyleConverter" />
         <converters:LineSolvedToBrushColorConverter x:Key="LineSolvedToBrushColorConverter" />
         <converters:BitmapToImageSourceConverter x:Key="BitmapToImageSourceConverter" />
+        <converters:SizeIntToDimensionsStringConverter x:Key="SizeIntToDimensionsStringConverter" />
         <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
         <converters:InverseBoolToVisibilityConverter x:Key="InverseBoolToVisibilityConverter" />
+
         <Style x:Key="BouncyButtonBehavior" TargetType="Button">
             <Setter Property="Background" Value="LightBlue" />
             <Setter Property="RenderTransformOrigin" Value="0.5, 0.5" />

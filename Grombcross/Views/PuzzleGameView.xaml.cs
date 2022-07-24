@@ -59,9 +59,5 @@ namespace Grombcross.Views {
         private void ShowPuzzleSelect(object sender, RoutedEventArgs e) {
             _dataContext.ShowSelectView();
         }
-
-        private void Button_IsMouseDirectlyOverChanged(object sender, DependencyPropertyChangedEventArgs e) {
-
-        }
     }
 }

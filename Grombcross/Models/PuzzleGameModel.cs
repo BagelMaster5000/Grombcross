@@ -155,7 +155,13 @@ namespace Grombcross.Models {
             }
 
             PuzzleSolved = puzzleSolved;
+            if (PuzzleSolved) {
+                PuzzleComplete();
+            }
             return PuzzleSolved;
+        }
+        private void PuzzleComplete() {
+            CurrentPuzzle.Completed = true;
         }
 
         public bool CheckRowFulfilled(int r) {
