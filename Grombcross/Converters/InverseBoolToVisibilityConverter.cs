@@ -10,9 +10,9 @@ using System.Windows.Data;
 
 namespace Grombcross.Converters {
     [ValueConversion(typeof(bool), typeof(Visibility))]
-    public class BoolToVisibilityConverter : IValueConverter {
+    public class InverseBoolToVisibilityConverter : IValueConverter {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
-            bool visible = (bool)value;
+            bool visible = !(bool)value;
             return visible ? Visibility.Visible : Visibility.Hidden;
         }
 

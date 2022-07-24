@@ -22,23 +22,37 @@ namespace Grombcross.Views {
         private PuzzleGameViewModel _dataContext;
 
         public PuzzleGameView() {
-            Loaded += SetInstanceVariables;
+            Loaded += OnLoaded;
 
             InitializeComponent();
         }
 
+        private void OnLoaded(object sender, RoutedEventArgs routedEventArgs) {
+            _dataContext = DataContext as PuzzleGameViewModel;
+        }
+
         private void LeftClickBlock(object sender, EventArgs e) {
             Button button = sender as Button;
-            Block block = (Block)button.DataContext;
+            if (button == null) return;
+
+            Block block = button.DataContext as Block;
+            if (block == null) return;
+
             _dataContext.LeftClickBlock(block);
         }
 
-        private void RightClickBlock(object sender, EventArgs e) {
+        private void RightClickBlock(object sender, MouseButtonEventArgs e) {
+            Button button = sender as Button;
+            if (button == null) return;
 
+            Block block = button.DataContext as Block;
+            if (block == null) return;
+
+            _dataContext.RightClickBlock(block);
         }
 
-        private void SetInstanceVariables(object sender, RoutedEventArgs routedEventArgs) {
-            _dataContext = DataContext as PuzzleGameViewModel;
+        private void ShowPuzzleSelect(object sender, RoutedEventArgs e) {
+            _dataContext.ShowSelectView();
         }
     }
 }

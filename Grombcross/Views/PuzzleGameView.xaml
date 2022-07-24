@@ -20,12 +20,8 @@
                 Height="50"
                 Margin="5"
                 Click="LeftClickBlock"
-                Style="{Binding State, Converter={StaticResource BlockToButtonStyleConverter}}">
-                <!--<Button.InputBindings>
-                    <MouseBinding Gesture="LeftClick" Command="LeftClickBlock" />
-                    <MouseBinding Gesture="RightClick" Command="RightClickBlock" />
-                </Button.InputBindings>-->
-            </Button>
+                MouseDown="RightClickBlock"
+                Style="{Binding State, Converter={StaticResource BlockToButtonStyleConverter}}" />
         </DataTemplate>
 
         <DataTemplate x:Key="GridRowsTemplate">
@@ -63,83 +59,135 @@
         </DataTemplate>
     </UserControl.Resources>
 
-    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Grid.RenderTransformOrigin>
-            <Point X="0.5" Y="0.5" />
-        </Grid.RenderTransformOrigin>
-        <Grid.RenderTransform>
-            <ScaleTransform ScaleX="1" ScaleY="1" />
-        </Grid.RenderTransform>
-
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition MaxHeight="200" />
+            <RowDefinition Height="60" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="60" />
         </Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition MaxWidth="200" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
 
-        <!--<Border
+        <!--  Puzzle Title  -->
+        <Border Grid.Row="0" Background="White" />
+        <TextBlock
             Grid.Row="0"
-            Grid.Column="0"
-            Background="Blue" />
-        <Border
+            Margin="0,5,0,10"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="40"
+            Text="{Binding PuzzleName}" />
+
+
+        <!--  Puzzle Grid  -->
+        <Grid
             Grid.Row="1"
-            Grid.Column="0"
-            Background="Red" />
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+            <Grid.RenderTransformOrigin>
+                <Point X="0.5" Y="0.5" />
+            </Grid.RenderTransformOrigin>
+            <Grid.RenderTransform>
+                <ScaleTransform ScaleX="1" ScaleY="1" />
+            </Grid.RenderTransform>
+
+            <Grid.RowDefinitions>
+                <RowDefinition MaxHeight="200" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MaxWidth="200" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!--<Border
+                Grid.Row="0"
+                Grid.Column="0"
+                Background="Blue" />
+            <Border
+                Grid.Row="1"
+                Grid.Column="0"
+                Background="Red" />
+            <Border
+                Grid.Row="0"
+                Grid.Column="1"
+                Background="Green" />
+            <Border
+                Grid.Row="1"
+                Grid.Column="1"
+                Background="Yellow" />-->
+
+            <ItemsControl
+                x:Name="LeftHintLines"
+                Grid.Row="1"
+                Grid.Column="0"
+                Margin="0,0,5,0"
+                ItemTemplate="{DynamicResource LeftHintLinesTemplate}"
+                ItemsSource="{Binding LeftHintLines}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Vertical" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+
+            <ItemsControl
+                x:Name="TopHintLines"
+                Grid.Row="0"
+                Grid.Column="4"
+                ItemTemplate="{DynamicResource TopHintLinesTemplate}"
+                ItemsSource="{Binding TopHintLines}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+
+            <ItemsControl
+                x:Name="PicrossGrid"
+                Grid.Row="1"
+                Grid.Column="1"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                ItemTemplate="{DynamicResource GridRowsTemplate}"
+                ItemsSource="{Binding Blocks}" />
+        </Grid>
+
+
+        <!--  Back Button  -->
+        <StackPanel
+            Grid.Row="2"
+            Height="65"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Orientation="Horizontal"
+            Visibility="{Binding PuzzleSolved, Converter={StaticResource InverseBoolToVisibilityConverter}}">
+            <!--<Button
+                Margin="10"
+                Click="RestartPuzzle"
+                Style="{StaticResource BouncyButtonBehavior}">
+                <TextBlock
+                    Margin="10,5"
+                    FontSize="24"
+                    Text="Restart Puzzle" />
+            </Button>-->
+            <Button
+                Margin="10"
+                Click="ShowPuzzleSelect"
+                Style="{StaticResource BouncyButtonBehavior}">
+                <TextBlock
+                    Margin="10,5"
+                    FontSize="24"
+                    Text="Puzzle Select" />
+            </Button>
+        </StackPanel>
+
+
+        <!--  Completion Screen  -->
         <Border
             Grid.Row="0"
-            Grid.Column="1"
-            Background="Green" />
-        <Border
-            Grid.Row="1"
-            Grid.Column="1"
-            Background="Yellow" />-->
-
-        <ItemsControl
-            x:Name="LeftHintLines"
-            Grid.Row="1"
-            Grid.Column="0"
-            Margin="0,0,5,0"
-            ItemTemplate="{DynamicResource LeftHintLinesTemplate}"
-            ItemsSource="{Binding LeftHintLines}">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <StackPanel Orientation="Vertical" />
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-        </ItemsControl>
-
-        <ItemsControl
-            x:Name="TopHintLines"
-            Grid.Row="0"
-            Grid.Column="4"
-            ItemTemplate="{DynamicResource TopHintLinesTemplate}"
-            ItemsSource="{Binding TopHintLines}">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <StackPanel Orientation="Horizontal" />
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-        </ItemsControl>
-
-        <ItemsControl
-            x:Name="PicrossGrid"
-            Grid.Row="1"
-            Grid.Column="1"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            ItemTemplate="{DynamicResource GridRowsTemplate}"
-            ItemsSource="{Binding Blocks}" />
-
-
-        <Border
-            Grid.Row="0"
-            Grid.RowSpan="2"
-            Grid.Column="0"
-            Grid.ColumnSpan="2"
+            Grid.RowSpan="3"
             Background="White"
             Opacity="0.9"
             Visibility="{Binding PuzzleSolved, Converter={StaticResource BoolToVisibilityConverter}}">
@@ -158,7 +206,10 @@
                     <ScaleTransform ScaleX="0.1" ScaleY="0.1" />
                 </Border.RenderTransform>
 
-                <StackPanel Orientation="Vertical">
+                <StackPanel
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Orientation="Vertical">
                     <TextBlock
                         Margin="0,0,0,30"
                         HorizontalAlignment="Center"
@@ -175,17 +226,23 @@
                         FontSize="50"
                         Text="{Binding PuzzleName}" />
                     <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                        <Button Margin="10">
+                        <!--<Button
+                            Margin="10"
+                            Click="RestartPuzzle"
+                            Style="{StaticResource BouncyButtonBehavior}">
                             <TextBlock
-                                Margin="5"
+                                Margin="10,5"
                                 FontSize="24"
                                 Text="Restart Puzzle" />
-                        </Button>
-                        <Button Margin="10">
+                        </Button>-->
+                        <Button
+                            Margin="10"
+                            Click="ShowPuzzleSelect"
+                            Style="{StaticResource BouncyButtonBehavior}">
                             <TextBlock
-                                Margin="5"
+                                Margin="10,5"
                                 FontSize="24"
-                                Text="Back to Puzzle Select" />
+                                Text="Puzzle Select" />
                         </Button>
                     </StackPanel>
                 </StackPanel>

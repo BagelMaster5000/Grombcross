@@ -24,10 +24,10 @@ namespace Grombcross.Models {
             CurrentPuzzleIndex = setPuzzleIndex;
             CurrentPuzzle = GlobalVariables.Puzzles[CurrentPuzzleIndex];
 
-            PuzzleGeneration();
+            GeneratePuzzle();
         }
 
-        private void PuzzleGeneration() {
+        public void GeneratePuzzle() {
             if (GlobalVariables.Puzzles[CurrentPuzzleIndex].GeneratorImage.Width !=
                 GlobalVariables.Puzzles[CurrentPuzzleIndex].GeneratorImage.Height) {
                 throw new WidthHeightUnequalException();

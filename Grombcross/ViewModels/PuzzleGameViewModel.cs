@@ -66,12 +66,16 @@ namespace Grombcross.ViewModels {
         }
 
         private void RefreshPuzzleSolved() {
-            bool puzzleSolvedBefore = _puzzleGameModel.PuzzleSolved;
+            //bool puzzleSolvedBefore = _puzzleGameModel.PuzzleSolved;
+            //bool puzzleSolvedNow = _puzzleGameModel.CheckForPuzzleSolved();
+            //if (!puzzleSolvedBefore && puzzleSolvedNow) {
+            //    OnPropertyChanged(nameof(PuzzleSolved));
+            //}
+
             bool puzzleSolvedNow = _puzzleGameModel.CheckForPuzzleSolved();
-            if (!puzzleSolvedBefore && puzzleSolvedNow) {
+            if (puzzleSolvedNow) {
                 OnPropertyChanged(nameof(PuzzleSolved));
             }
-
         }
 
         // Debugging

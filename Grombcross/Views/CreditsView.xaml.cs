@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Grombcross.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,8 +19,20 @@ namespace Grombcross.Views {
     /// Interaction logic for CreditsView.xaml
     /// </summary>
     public partial class CreditsView : UserControl {
+        CreditsViewModel _dataContext;
+
         public CreditsView() {
+            Loaded += OnLoaded;
+
             InitializeComponent();
+        }
+
+        private void OnLoaded(object sender, RoutedEventArgs e) {
+            _dataContext = (CreditsViewModel)DataContext;
+        }
+
+        private void ShowPuzzleSelect(object sender, RoutedEventArgs e) {
+            _dataContext.ShowSelectView();
         }
     }
 }

@@ -8,60 +8,110 @@
     d:DesignHeight="800"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <ScrollViewer
-        Margin="5"
-        HorizontalScrollBarVisibility="Disabled"
-        VerticalScrollBarVisibility="Auto">
-        <ScrollViewer.Content>
-            <ItemsControl
-                x:Name="PuzzleView"
-                HorizontalAlignment="Center"
-                ItemsSource="{Binding AllPuzzles}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <Grid x:Name="PuzzleGrid">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="190" />
-                                <RowDefinition Height="190" />
-                                <RowDefinition Height="190" />
-                                <RowDefinition Height="190" />
-                                <RowDefinition Height="190" />
-                                <RowDefinition Height="190" />
-                            </Grid.RowDefinitions>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="60" />
+        </Grid.RowDefinitions>
 
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="190" />
-                                <ColumnDefinition Width="190" />
-                                <ColumnDefinition Width="190" />
-                                <ColumnDefinition Width="190" />
-                            </Grid.ColumnDefinitions>
-                        </Grid>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
 
-                <ItemsControl.ItemContainerStyle>
-                    <Style>
-                        <Setter Property="Grid.Row" Value="{Binding Row}" />
-                        <Setter Property="Grid.Column" Value="{Binding Column}" />
-                    </Style>
-                </ItemsControl.ItemContainerStyle>
+        <!--  Title  -->
+        <Border Grid.Row="0" Background="White" />
+        <TextBlock
+            Grid.Row="0"
+            Margin="0,5,0,10"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="40"
+            Text="Puzzle Select" />
 
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <DockPanel Width="175" Height="175">
-                            <Button
-                                Background="White"
-                                Click="PuzzleSelected"
-                                Style="{StaticResource BouncyButtonBehavior}">
-                                <Image
-                                    Margin="10"
-                                    RenderOptions.BitmapScalingMode="NearestNeighbor"
-                                    Source="{Binding FinalImage, Converter={StaticResource BitmapToImageSourceConverter}}" />
-                            </Button>
-                        </DockPanel>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </ScrollViewer.Content>
-    </ScrollViewer>
+
+        <!--  Puzzle Select  -->
+        <ScrollViewer
+            Grid.Row="1"
+            Margin="5"
+            HorizontalScrollBarVisibility="Disabled"
+            VerticalScrollBarVisibility="Auto">
+            <ScrollViewer.Content>
+                <ItemsControl
+                    x:Name="PuzzleView"
+                    HorizontalAlignment="Center"
+                    ItemsSource="{Binding AllPuzzles}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <Grid x:Name="PuzzleGrid">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="190" />
+                                    <RowDefinition Height="190" />
+                                    <RowDefinition Height="190" />
+                                    <RowDefinition Height="190" />
+                                    <RowDefinition Height="190" />
+                                    <RowDefinition Height="190" />
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="190" />
+                                    <ColumnDefinition Width="190" />
+                                    <ColumnDefinition Width="190" />
+                                    <ColumnDefinition Width="190" />
+                                </Grid.ColumnDefinitions>
+                            </Grid>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+
+                    <ItemsControl.ItemContainerStyle>
+                        <Style>
+                            <Setter Property="Grid.Row" Value="{Binding Row}" />
+                            <Setter Property="Grid.Column" Value="{Binding Column}" />
+                        </Style>
+                    </ItemsControl.ItemContainerStyle>
+
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <DockPanel Width="175" Height="175">
+                                <Button
+                                    Background="White"
+                                    Click="PuzzleSelected"
+                                    Style="{StaticResource BouncyButtonBehavior}">
+                                    <Image
+                                        Margin="10"
+                                        RenderOptions.BitmapScalingMode="NearestNeighbor"
+                                        Source="{Binding FinalImage, Converter={StaticResource BitmapToImageSourceConverter}}" />
+                                </Button>
+                            </DockPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer.Content>
+        </ScrollViewer>
+
+
+        <!--  Buttons  -->
+        <StackPanel
+            Grid.Row="2"
+            Height="65"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Orientation="Horizontal">
+            <Button
+                Margin="10"
+                Click="ShowTitle"
+                Style="{StaticResource BouncyButtonBehavior}">
+                <TextBlock
+                    Margin="10,5"
+                    FontSize="24"
+                    Text="Title Screen" />
+            </Button>
+            <Button
+                Margin="10"
+                Click="ShowCredits"
+                Style="{StaticResource BouncyButtonBehavior}">
+                <TextBlock
+                    Margin="10,5"
+                    FontSize="24"
+                    Text="Credits" />
+            </Button>
+        </StackPanel>
+    </Grid>
 </UserControl>

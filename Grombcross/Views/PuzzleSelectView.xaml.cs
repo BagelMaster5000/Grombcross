@@ -30,14 +30,20 @@ namespace Grombcross.Views {
 
         private void OnLoaded(object sender, RoutedEventArgs e) {
             _dataContext = (PuzzleSelectViewModel)DataContext;
-            PuzzleSelectView puzzleSelectView = this;
-            var grid = FindName("PuzzleGrid");
         }
 
         private void PuzzleSelected(object sender, RoutedEventArgs e) {
             Button button = (Button)e.Source;
             Puzzle puzzle = (Puzzle)button.DataContext;
             _dataContext.ShowGameView(puzzle.Index);
+        }
+
+        private void ShowTitle(object sender, RoutedEventArgs e) {
+            //_dataContext.ShowTitleView();
+        }
+
+        private void ShowCredits(object sender, RoutedEventArgs e) {
+            _dataContext.ShowCreditsView();
         }
     }
 }
