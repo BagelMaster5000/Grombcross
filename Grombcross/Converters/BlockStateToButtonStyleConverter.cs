@@ -21,8 +21,11 @@ namespace Grombcross.Converters {
                 case Block.BlockState.FILLED:
                     style.Setters.Add(new Setter(Button.BackgroundProperty, new SolidColorBrush(Color.FromRgb(0, 0, 0))));
                     break;
-                case Block.BlockState.MARKED:
+                case Block.BlockState.X:
                     style.Setters.Add(new Setter(Button.BackgroundProperty, new SolidColorBrush(Color.FromRgb(235, 52, 52))));
+                    break;
+                case Block.BlockState.QUESTION:
+                    style.Setters.Add(new Setter(Button.BackgroundProperty, new SolidColorBrush(Color.FromRgb(66, 135, 245))));
                     break;
                 case Block.BlockState.EMPTY:
                     style.Setters.Add(new Setter(Button.BackgroundProperty, new SolidColorBrush(Color.FromRgb(255, 255, 255))));

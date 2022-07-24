@@ -32,7 +32,8 @@ namespace Grombcross.ViewModels {
         public void LeftClickBlock(Block block) {
             switch (block.State) {
                 case Block.BlockState.EMPTY: _puzzleGameModel.FillBlock(block); break;
-                case Block.BlockState.MARKED: _puzzleGameModel.FillBlock(block); break;
+                case Block.BlockState.X: _puzzleGameModel.ClearBlock(block); break;
+                case Block.BlockState.QUESTION: _puzzleGameModel.FillBlock(block); break;
                 case Block.BlockState.FILLED: _puzzleGameModel.ClearBlock(block); break;
             }
 
@@ -44,9 +45,24 @@ namespace Grombcross.ViewModels {
 
         public void RightClickBlock(Block block) {
             switch (block.State) {
-                case Block.BlockState.EMPTY: _puzzleGameModel.MarkBlock(block); break;
-                case Block.BlockState.MARKED: _puzzleGameModel.ClearBlock(block); break;
+                case Block.BlockState.EMPTY: _puzzleGameModel.XBlock(block); break;
+                case Block.BlockState.X: _puzzleGameModel.ClearBlock(block); break;
+                case Block.BlockState.QUESTION: _puzzleGameModel.XBlock(block); break;
                 case Block.BlockState.FILLED: _puzzleGameModel.ClearBlock(block); break;
+            }
+
+            block.OnPropertyChanged(nameof(block.State));
+
+            RefreshLineFulfilledProperties(block);
+            RefreshPuzzleSolved();
+        }
+
+        public void MiddleClickBlock(Block block) {
+            switch (block.State) {
+                case Block.BlockState.EMPTY: _puzzleGameModel.QuestionBlock(block); break;
+                case Block.BlockState.X: break;
+                case Block.BlockState.QUESTION: _puzzleGameModel.ClearBlock(block); break;
+                case Block.BlockState.FILLED: break;
             }
 
             block.OnPropertyChanged(nameof(block.State));

@@ -41,18 +41,27 @@ namespace Grombcross.Views {
             _dataContext.LeftClickBlock(block);
         }
 
-        private void RightClickBlock(object sender, MouseButtonEventArgs e) {
+        private void RightOrMiddleClickBlock(object sender, MouseButtonEventArgs e) {
             Button button = sender as Button;
             if (button == null) return;
 
             Block block = button.DataContext as Block;
             if (block == null) return;
 
-            _dataContext.RightClickBlock(block);
+            if (e.ChangedButton == MouseButton.Right) {
+                _dataContext.RightClickBlock(block);
+            }
+            else {
+                _dataContext.MiddleClickBlock(block);
+            }
         }
 
         private void ShowPuzzleSelect(object sender, RoutedEventArgs e) {
             _dataContext.ShowSelectView();
+        }
+
+        private void Button_IsMouseDirectlyOverChanged(object sender, DependencyPropertyChangedEventArgs e) {
+
         }
     }
 }

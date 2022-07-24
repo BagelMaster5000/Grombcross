@@ -2,7 +2,7 @@
 
 namespace Grombcross.Models {
     public class Block : INotifyPropertyChanged {
-        public enum BlockState { EMPTY, FILLED, MARKED }
+        public enum BlockState { EMPTY, FILLED, X, QUESTION }
         public BlockState State { get; set; }
         public int Row;
         public int Column;
@@ -13,7 +13,8 @@ namespace Grombcross.Models {
         }
 
         public void FillBlock() => State = BlockState.FILLED;
-        public void MarkBlock() => State = BlockState.MARKED;
+        public void XBlock() => State = BlockState.X;
+        public void QuestionBlock() => State = BlockState.QUESTION;
         public void ClearBlock() => State = BlockState.EMPTY;
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -20,7 +20,7 @@
                 Height="50"
                 Margin="5"
                 Click="LeftClickBlock"
-                MouseDown="RightClickBlock"
+                MouseDown="RightOrMiddleClickBlock"
                 Style="{Binding State, Converter={StaticResource BlockToButtonStyleConverter}}" />
         </DataTemplate>
 

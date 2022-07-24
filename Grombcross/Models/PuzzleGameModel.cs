@@ -226,8 +226,11 @@ namespace Grombcross.Models {
         public void FillBlock(Block block) {
             block.State = Block.BlockState.FILLED;
         }
-        public void MarkBlock(Block block) {
-            block.State = Block.BlockState.MARKED;
+        public void XBlock(Block block) {
+            block.State = Block.BlockState.X;
+        }
+        public void QuestionBlock(Block block) {
+            block.State = Block.BlockState.QUESTION;
         }
         public void ClearBlock(Block block) {
             block.State = Block.BlockState.EMPTY;
