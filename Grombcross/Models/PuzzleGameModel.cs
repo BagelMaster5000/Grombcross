@@ -22,18 +22,18 @@ namespace Grombcross.Models {
 
         public PuzzleGameModel(int setPuzzleIndex) {
             CurrentPuzzleIndex = setPuzzleIndex;
-            CurrentPuzzle = GlobalVariables.Puzzles[CurrentPuzzleIndex];
+            CurrentPuzzle = GlobalVariables.StandardPuzzles[CurrentPuzzleIndex];
 
             GeneratePuzzle();
         }
 
         public void GeneratePuzzle() {
-            if (GlobalVariables.Puzzles[CurrentPuzzleIndex].GeneratorImage.Width !=
-                GlobalVariables.Puzzles[CurrentPuzzleIndex].GeneratorImage.Height) {
+            if (GlobalVariables.StandardPuzzles[CurrentPuzzleIndex].GeneratorImage.Width !=
+                GlobalVariables.StandardPuzzles[CurrentPuzzleIndex].GeneratorImage.Height) {
                 throw new WidthHeightUnequalException();
             }
 
-            Bitmap gImage = GlobalVariables.Puzzles[CurrentPuzzleIndex].GeneratorImage;
+            Bitmap gImage = GlobalVariables.StandardPuzzles[CurrentPuzzleIndex].GeneratorImage;
             GenerateBlankBlockGrid(gImage);
             GenerateSolutionGrid(gImage);
             GenerateLeftNumberLines();

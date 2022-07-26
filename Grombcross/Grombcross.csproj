@@ -8,21 +8,47 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="PuzzleImages\TestG.bmp" />
-    <None Remove="PuzzleImages\TestSmall.bmp" />
+    <None Remove="Puzzles\BonusPuzzles\0-Bold-F.bmp" />
+    <None Remove="Puzzles\BonusPuzzles\0-Bold-G.bmp" />
+    <None Remove="Puzzles\DebugPuzzles\1-Test Grombit-G.bmp" />
+    <None Remove="Puzzles\DebugPuzzles\2-Creature-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\0-Lemon-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\0-Lemon-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\1-Grass-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\1-Grass-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\TestG.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\TestSmall.bmp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Puzzles\BonusPuzzles\0-Bold-F.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\BonusPuzzles\0-Bold-G.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\DebugPuzzles\1-Test Grombit-G.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\DebugPuzzles\2-Creature-G.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\0-Lemon-F.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\0-Lemon-G.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\1-Grass-F.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\1-Grass-G.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="PuzzleImages\TestG.bmp">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="PuzzleImages\TestSmall.bmp">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 
 </Project>

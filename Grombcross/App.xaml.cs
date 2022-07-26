@@ -1,4 +1,5 @@
-﻿using Grombcross.Models;
+﻿using Grombcross.Exceptions;
+using Grombcross.Models;
 using Grombcross.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -13,8 +14,7 @@ using System.Windows;
 namespace Grombcross {
 
     public partial class App : Application {
-        public App() {
-        }
+        public App() { }
 
         protected override void OnStartup(StartupEventArgs e) {
             GeneratePuzzles();
@@ -27,32 +27,88 @@ namespace Grombcross {
             base.OnStartup(e);
         }
 
-        public void GeneratePuzzles() {
-            GlobalVariables.Puzzles = new List<Puzzle>();
+        // Puzzles located in ../Puzzles/StandardPuzzles/ and ../Puzzles/BonusPuzzles/ folders
+        // Format is <#>-<Puzzle Name>-G for generation image
+        // Format is <#>-<Puzzle Name>-F for final image
+        private void GeneratePuzzles() {
+            GlobalVariables.StandardPuzzles = new List<Puzzle>();
 
-            string fullPath = Path.GetFullPath(@"PuzzleImages\TestSmall.bmp");
-            Bitmap test = new Bitmap(fullPath);
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 5, 0, 0, 0));
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 5, 0, 1, 1));
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 5, 0, 2, 2));
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 5, 0, 3, 3));
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 5, 1, 0, 4));
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 5, 1, 1, 5));
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 5, 1, 2, 6));
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 5, 1, 3, 7));
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 5, 2, 0, 8));
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 5, 2, 1, 9));
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 5, 2, 2, 10));
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 5, 2, 3, 11));
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 5, 3, 0, 11));
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 5, 3, 1, 11));
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 5, 3, 2, 11));
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 5, 3, 3, 11));
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 5, 4, 0, 11));
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 5, 4, 1, 11));
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 5, 4, 2, 11));
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 5, 4, 3, 11));
-            GlobalVariables.Puzzles.Add(new Puzzle("Creature", test, test, 5, 5, 0, 11));
+            string puzzlePaths;
+            string[] paths;
+
+            puzzlePaths = Path.GetFullPath(@"Puzzles\StandardPuzzles\");
+            paths = Directory.GetFiles(puzzlePaths);
+            Array.Sort(paths); // Groups puzzles with same index together
+            for (int p = 0; p < paths.Count(); p += 2) {
+                Puzzle puzzle = GetPuzzleFromPaths(paths[p + 1], paths[p]);
+                GlobalVariables.StandardPuzzles.Add(puzzle);
+            }
+
+            puzzlePaths = Path.GetFullPath(@"Puzzles\BonusPuzzles\");
+            paths = Directory.GetFiles(puzzlePaths);
+            Array.Sort(paths); // Groups puzzles with same index together
+            for (int p = 0; p < paths.Count(); p += 2) {
+                Puzzle puzzle = GetPuzzleFromPaths(paths[p + 1], paths[p]);
+                GlobalVariables.BonusPuzzles.Add(puzzle);
+            }
+        }
+
+        private Puzzle GetPuzzleFromPaths(string generatorImagePath, string finalImagePath) {
+            Bitmap generatorImage = new Bitmap(generatorImagePath);
+            Bitmap finalImage = new Bitmap(finalImagePath);
+
+            string gFileName = Path.GetFileNameWithoutExtension(generatorImagePath);
+            string fFileName = Path.GetFileNameWithoutExtension(finalImagePath);
+
+            string[] gWords = gFileName.Split('-');
+            string[] fWords = fFileName.Split('-');
+
+            int index;
+            try {
+                int gIndex = int.Parse(gWords[0]);
+                int fIndex = int.Parse(fWords[0]);
+                if (gIndex != fIndex) {
+                    throw new InvalidPuzzlePathException("Indexes in first words do not match");
+                }
+                index = gIndex;
+            }
+            catch {
+                throw new InvalidPuzzlePathException("First word error");
+            }
+
+            string name;
+            try {
+                string gName = gWords[1];
+                string fName = fWords[1];
+                if (!gName.Equals(fName)) {
+                    throw new InvalidPuzzlePathException("Second words do not match");
+                }
+                name = gName;
+            }
+            catch {
+                throw new InvalidPuzzlePathException("Second word error");
+            }
+
+            try {
+                char gImageType = char.Parse(gWords[2]);
+                char fImageType = char.Parse(fWords[2]);
+                if (gImageType != 'G') {
+                    throw new InvalidPuzzlePathException("Generator image doesn't have g indicator in third word. Has " + gImageType);
+                }
+                if (fImageType != 'F') {
+                    throw new InvalidPuzzlePathException("Final image doesn't have f indicator in third word. Has " + gImageType);
+                }
+            }
+            catch {
+                throw new InvalidPuzzlePathException("Third word error");
+            }
+
+            int numColumns = 4;
+            int column = index % numColumns;
+            int row = index / numColumns;
+
+            Puzzle puzzle = new Puzzle(name, generatorImage, finalImage, generatorImage.Size.Width, row, column, index);
+            return puzzle;
         }
     }
 }

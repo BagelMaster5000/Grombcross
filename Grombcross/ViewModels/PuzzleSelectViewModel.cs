@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Grombcross.ViewModels {
     public class PuzzleSelectViewModel : ViewModelBase {
-        public List<Puzzle> AllPuzzles => GlobalVariables.Puzzles;
+        public List<Puzzle> AllPuzzles => GlobalVariables.StandardPuzzles;
 
         public Func<bool> ShowCreditsView;
         public Func<int, bool> ShowGameView;
