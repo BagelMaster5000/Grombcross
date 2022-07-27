@@ -21,8 +21,17 @@ namespace Grombcross.Models {
         public DateTime ElapsedTime;
 
         public PuzzleGameModel(int setPuzzleIndex) {
+            try {
+                CurrentPuzzle = GlobalVariables.StandardPuzzles[setPuzzleIndex];
+                if (CurrentPuzzle.Index != setPuzzleIndex) {
+                    throw new PuzzleNotFoundException("Index mismatch of " + setPuzzleIndex + " and " + CurrentPuzzle.Index);
+                }
+            }
+            catch {
+                throw new PuzzleNotFoundException("Could not find puzzle at index " + CurrentPuzzleIndex);
+            }
+
             CurrentPuzzleIndex = setPuzzleIndex;
-            CurrentPuzzle = GlobalVariables.StandardPuzzles[CurrentPuzzleIndex];
 
             GeneratePuzzle();
         }

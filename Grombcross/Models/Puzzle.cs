@@ -10,9 +10,9 @@ namespace Grombcross.Models {
         public bool Completed { get; set; }
         public DateTime TimeCompleted = DateTime.MinValue;
 
-        public int Row { get; }
-        public int Column { get; }
-        public int Index { get; }
+        public int Row { get; set; }
+        public int Column { get; set; }
+        public int Index { get; set; }
 
         public Puzzle(string setName, Bitmap generatorImage, Bitmap finalImage, int setSize, int setRow, int setColumn, int setIndex) {
             Name = setName;

@@ -36,12 +36,28 @@ namespace Grombcross {
             string puzzlePaths;
             string[] paths;
 
+            paths = Directory.GetFiles(Path.GetFullPath(@"Puzzles\DebugPuzzles\"));
+            Puzzle placeholderPuzzle = GetPuzzleFromPaths(paths[1], paths[0]);
+
             puzzlePaths = Path.GetFullPath(@"Puzzles\StandardPuzzles\");
             paths = Directory.GetFiles(puzzlePaths);
             Array.Sort(paths); // Groups puzzles with same index together
             for (int p = 0; p < paths.Count(); p += 2) {
                 Puzzle puzzle = GetPuzzleFromPaths(paths[p + 1], paths[p]);
+                puzzle.Completed = true;
                 GlobalVariables.StandardPuzzles.Add(puzzle);
+            }
+            GlobalVariables.StandardPuzzles = GlobalVariables.StandardPuzzles.OrderBy(p => p.Index).ToList(); // Sorting puzzles by index
+            for (int p = 0; p < GlobalVariables.StandardPuzzles.Count; p++) { // Filling missing puzzles with placeholder
+                Puzzle curPuzzle = GlobalVariables.StandardPuzzles[p];
+                if (p != curPuzzle.Index) {
+                    placeholderPuzzle.Index = p;
+                    int numColumns = 4;
+                    placeholderPuzzle.Column = p % numColumns;
+                    placeholderPuzzle.Row = p / numColumns;
+                    GlobalVariables.StandardPuzzles.Insert(p, placeholderPuzzle);
+                    p++;
+                }
             }
 
             puzzlePaths = Path.GetFullPath(@"Puzzles\BonusPuzzles\");
@@ -50,6 +66,14 @@ namespace Grombcross {
             for (int p = 0; p < paths.Count(); p += 2) {
                 Puzzle puzzle = GetPuzzleFromPaths(paths[p + 1], paths[p]);
                 GlobalVariables.BonusPuzzles.Add(puzzle);
+            }
+            GlobalVariables.BonusPuzzles = GlobalVariables.BonusPuzzles.OrderBy(p => p.Index).ToList(); // Sorting puzzles by index
+            for (int p = 0; p < GlobalVariables.BonusPuzzles.Count; p++) { // Filling missing puzzles with placeholder
+                Puzzle curPuzzle = GlobalVariables.BonusPuzzles[p];
+                if (p != curPuzzle.Index) {
+                    GlobalVariables.BonusPuzzles.Insert(p, placeholderPuzzle);
+                    p++;
+                }
             }
         }
 

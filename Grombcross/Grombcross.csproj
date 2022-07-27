@@ -10,12 +10,40 @@
   <ItemGroup>
     <None Remove="Puzzles\BonusPuzzles\0-Bold-F.bmp" />
     <None Remove="Puzzles\BonusPuzzles\0-Bold-G.bmp" />
+    <None Remove="Puzzles\DebugPuzzles\0-Creature-F.bmp" />
+    <None Remove="Puzzles\DebugPuzzles\0-Creature-G.bmp" />
     <None Remove="Puzzles\DebugPuzzles\1-Test Grombit-G.bmp" />
     <None Remove="Puzzles\DebugPuzzles\2-Creature-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\0-Grass-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\0-Grass-G.bmp" />
     <None Remove="Puzzles\StandardPuzzles\0-Lemon-F.bmp" />
     <None Remove="Puzzles\StandardPuzzles\0-Lemon-G.bmp" />
     <None Remove="Puzzles\StandardPuzzles\1-Grass-F.bmp" />
     <None Remove="Puzzles\StandardPuzzles\1-Grass-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\1-Monkee-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\1-Monkee-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\10-Sleeb Cat-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\10-Sleeb Cat-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\11-Wario-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\11-Wario-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\12-Lemon-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\12-Lemon-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\13-Grombit-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\13-Grombit-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\2-Glube-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\2-Glube-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\3-Sneaky Grab-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\3-Sneaky Grab-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\5-Top Gun-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\5-Top Gun-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\6-Travis Hawks-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\6-Travis Hawks-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\7-Sprainbom-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\7-Sprainbom-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\8-William-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\8-William-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\9-Jellycat-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\9-Jellycat-G.bmp" />
     <None Remove="Puzzles\StandardPuzzles\TestG.bmp" />
     <None Remove="Puzzles\StandardPuzzles\TestSmall.bmp" />
   </ItemGroup>
@@ -27,22 +55,91 @@
     <Content Include="Puzzles\BonusPuzzles\0-Bold-G.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Puzzles\DebugPuzzles\0-Creature-F.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\DebugPuzzles\0-Creature-G.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Puzzles\DebugPuzzles\1-Test Grombit-G.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Puzzles\DebugPuzzles\2-Creature-G.bmp">
+    <Content Include="Puzzles\StandardPuzzles\0-Grass-F.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Puzzles\StandardPuzzles\0-Lemon-F.bmp">
+    <Content Include="Puzzles\StandardPuzzles\0-Grass-G.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Puzzles\StandardPuzzles\0-Lemon-G.bmp">
+    <Content Include="Puzzles\StandardPuzzles\1-Monkee-F.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Puzzles\StandardPuzzles\1-Grass-F.bmp">
+    <Content Include="Puzzles\StandardPuzzles\1-Monkee-G.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Puzzles\StandardPuzzles\1-Grass-G.bmp">
+    <Content Include="Puzzles\StandardPuzzles\10-Sleeb Cat-F.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\10-Sleeb Cat-G.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\11-Wario-F.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\11-Wario-G.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\12-Lemon-F.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\12-Lemon-G.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\13-Grombit-F.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\13-Grombit-G.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\2-Glube-F.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\2-Glube-G.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\3-Sneaky Grab-F.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\3-Sneaky Grab-G.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\5-Top Gun-F.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\5-Top Gun-G.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\6-Travis Hawks-F.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\6-Travis Hawks-G.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\7-Sprainbom-F.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\7-Sprainbom-G.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\8-William-F.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\8-William-G.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\9-Jellycat-F.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\9-Jellycat-G.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
