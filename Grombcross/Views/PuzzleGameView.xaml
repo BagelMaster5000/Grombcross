@@ -18,7 +18,7 @@
             <Button
                 Width="50"
                 Height="50"
-                Margin="5"
+                Margin="3"
                 Click="LeftClickBlock"
                 MouseDown="RightOrMiddleClickBlock"
                 Style="{Binding State, Converter={StaticResource BlockToButtonStyleConverter}}" />
@@ -35,7 +35,7 @@
         </DataTemplate>
 
         <DataTemplate x:Key="LeftHintLinesTemplate">
-            <Border Height="50" Margin="5">
+            <Border Height="50" Margin="3">
                 <TextBlock
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"
@@ -46,7 +46,7 @@
         </DataTemplate>
 
         <DataTemplate x:Key="TopHintLinesTemplate">
-            <Border Width="50" Margin="5">
+            <Border Width="50" Margin="3">
                 <TextBlock
                     HorizontalAlignment="Center"
                     VerticalAlignment="Bottom"
