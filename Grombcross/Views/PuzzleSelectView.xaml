@@ -46,8 +46,6 @@
                                     <RowDefinition Height="190" />
                                     <RowDefinition Height="190" />
                                     <RowDefinition Height="190" />
-                                    <RowDefinition Height="190" />
-                                    <RowDefinition Height="190" />
                                 </Grid.RowDefinitions>
 
                                 <Grid.ColumnDefinitions>

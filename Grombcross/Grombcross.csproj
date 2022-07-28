@@ -34,6 +34,8 @@
     <None Remove="Puzzles\StandardPuzzles\2-Glube-G.bmp" />
     <None Remove="Puzzles\StandardPuzzles\3-Sneaky Grab-F.bmp" />
     <None Remove="Puzzles\StandardPuzzles\3-Sneaky Grab-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\4-Godot-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\4-Godot-G.bmp" />
     <None Remove="Puzzles\StandardPuzzles\5-Top Gun-F.bmp" />
     <None Remove="Puzzles\StandardPuzzles\5-Top Gun-G.bmp" />
     <None Remove="Puzzles\StandardPuzzles\6-Travis Hawks-F.bmp" />
@@ -110,6 +112,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Puzzles\StandardPuzzles\3-Sneaky Grab-G.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\4-Godot-F.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\4-Godot-G.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Puzzles\StandardPuzzles\5-Top Gun-F.bmp">
