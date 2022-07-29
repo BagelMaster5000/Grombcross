@@ -14,6 +14,8 @@ using System.Windows;
 namespace Grombcross {
 
     public partial class App : Application {
+        const bool DEBUG_ON = false;
+
         public App() { }
 
         protected override void OnStartup(StartupEventArgs e) {
@@ -44,7 +46,7 @@ namespace Grombcross {
             Array.Sort(paths); // Groups puzzles with same index together
             for (int p = 0; p < paths.Count(); p += 2) {
                 Puzzle puzzle = GetPuzzleFromPaths(paths[p + 1], paths[p]);
-                puzzle.Completed = true;
+                puzzle.Completed = DEBUG_ON;
                 GlobalVariables.StandardPuzzles.Add(puzzle);
             }
             GlobalVariables.StandardPuzzles = GlobalVariables.StandardPuzzles.OrderBy(p => p.Index).ToList(); // Sorting puzzles by index
@@ -65,6 +67,7 @@ namespace Grombcross {
             Array.Sort(paths); // Groups puzzles with same index together
             for (int p = 0; p < paths.Count(); p += 2) {
                 Puzzle puzzle = GetPuzzleFromPaths(paths[p + 1], paths[p]);
+                puzzle.Completed = DEBUG_ON;
                 GlobalVariables.BonusPuzzles.Add(puzzle);
             }
             GlobalVariables.BonusPuzzles = GlobalVariables.BonusPuzzles.OrderBy(p => p.Index).ToList(); // Sorting puzzles by index

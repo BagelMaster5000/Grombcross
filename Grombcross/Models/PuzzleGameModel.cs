@@ -34,6 +34,7 @@ namespace Grombcross.Models {
             CurrentPuzzleIndex = setPuzzleIndex;
 
             GeneratePuzzle();
+            AutoXBlankLines();
         }
 
         public void GeneratePuzzle() {
@@ -103,6 +104,7 @@ namespace Grombcross.Models {
                 }
                 else if (string.IsNullOrEmpty(curRowString)) {
                     curRowString = "0";
+                    hintNumbers.Add(0);
                 }
                 curRowString = curRowString.TrimEnd(' ');
 
@@ -138,11 +140,30 @@ namespace Grombcross.Models {
                 }
                 else if (string.IsNullOrEmpty(curColString)) {
                     curColString = "0";
+                    hintNumbers.Add(0);
                 }
                 curColString = curColString.TrimEnd('\n');
 
                 Trace.WriteLine(curColString);
                 TopHintLines.Add(new HintLine { LineString = curColString, LineFulfilled = false, HintNumbers = hintNumbers });
+            }
+        }
+
+        public void AutoXBlankLines() {
+            for (int r = 0; r < BlockGridSize; r++) {
+                if (LeftHintLines[r].HintNumbers.Count == 1 && LeftHintLines[r].HintNumbers[0] == 0) {
+                    for (int c = 0; c < BlockGridSize; c++) {
+                        Blocks[r][c].XBlock();
+                    }
+                }
+            }
+
+            for (int c = 0; c < BlockGridSize; c++) {
+                if (TopHintLines[c].HintNumbers.Count == 1 && TopHintLines[c].HintNumbers[0] == 0) {
+                    for (int r = 0; r < BlockGridSize; r++) {
+                        Blocks[r][c].XBlock();
+                    }
+                }
             }
         }
 
@@ -198,7 +219,7 @@ namespace Grombcross.Models {
                 counter = 0;
                 curHintNumber++;
             }
-            if (curHintNumber != LeftHintLines[r].HintNumbers.Count)
+            if (curHintNumber != LeftHintLines[r].HintNumbers.Count && LeftHintLines[r].HintNumbers[0] != 0)
                 rowFulfilled = false;
 
             LeftHintLines[r].LineFulfilled = rowFulfilled;
@@ -231,7 +252,7 @@ namespace Grombcross.Models {
                 counter = 0;
                 curHintNumber++;
             }
-            if (curHintNumber != TopHintLines[c].HintNumbers.Count)
+            if (curHintNumber != TopHintLines[c].HintNumbers.Count && TopHintLines[c].HintNumbers[0] != 0)
                 columnFulfilled = false;
 
             TopHintLines[c].LineFulfilled = columnFulfilled;
