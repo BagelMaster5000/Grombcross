@@ -1,18 +1,19 @@
-﻿using System;
+﻿using Grombcross.Audio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Grombcross.ViewModels
-{
-    public class CreditsViewModel : ViewModelBase
-    {
+namespace Grombcross.ViewModels {
+    public class CreditsViewModel : ViewModelBase {
         public Func<bool> ShowSelectView;
 
-        public CreditsViewModel(Func<bool> showSelectView)
-        {
-            ShowSelectView = showSelectView;
+        public CreditsViewModel(Func<bool> showSelectView) {
+            ShowSelectView = () => {
+                AudioManager.PlayQuickForward();
+                return showSelectView();
+            };
         }
     }
 }

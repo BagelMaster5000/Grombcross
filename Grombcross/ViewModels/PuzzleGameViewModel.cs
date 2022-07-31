@@ -29,7 +29,10 @@ namespace Grombcross.ViewModels {
 
         public PuzzleGameViewModel(PuzzleGameModel puzzleGameModel, Func<bool> showSelectView) {
             _puzzleGameModel = puzzleGameModel;
-            ShowSelectView = showSelectView;
+            ShowSelectView = () => {
+                AudioManager.PlayQuickReturn();
+                return showSelectView();
+            };
         }
 
         public void LeftClickBlock(Block block) {
@@ -76,11 +79,11 @@ namespace Grombcross.ViewModels {
 
         private void FillBlock(Block block) {
             _puzzleGameModel.FillBlock(block);
-            SoundManager.BlockPlace.Play();
+            AudioManager.PlayBlockPlace();
         }
         private void XBlock(Block block) {
             _puzzleGameModel.XBlock(block);
-            SoundManager.XPlace.Play();
+            AudioManager.PlayXPlace();
 
         }
         private void QuestionBlock(Block block) {
@@ -103,7 +106,7 @@ namespace Grombcross.ViewModels {
         private void RefreshPuzzleSolved() {
             bool puzzleSolvedNow = _puzzleGameModel.CheckForPuzzleSolved();
             if (puzzleSolvedNow) {
-                SoundManager.PuzzleComplete.Play();
+                AudioManager.PlayPuzzleComplete();
                 OnPropertyChanged(nameof(PuzzleSolved));
             }
         }

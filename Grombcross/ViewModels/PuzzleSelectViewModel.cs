@@ -14,14 +14,18 @@ namespace Grombcross.ViewModels {
         public Func<bool> ShowCreditsView;
         public Func<int, bool> ShowGameView;
 
-        private SoundPlayer _puzzleStart;
-
         public PuzzleSelectViewModel(Func<bool> showCreditsView, Func<int, bool> showGameView) {
-            _puzzleStart = new SoundPlayer(Properties.Resources.Start);
+            AudioManager.StartMusic();
 
-            ShowCreditsView = showCreditsView;
+            ShowCreditsView = () => {
+                AudioManager.PlayQuickReturn();
+                return showCreditsView();
+            };
+
             ShowGameView = (puzzleIndex) => {
-                SoundManager.PuzzleStart.Play();
+                AudioManager.PlayQuickForward();
+                AudioManager.StopMusic();
+                AudioManager.PlayPuzzleStart();
                 return showGameView(puzzleIndex);
             };
         }

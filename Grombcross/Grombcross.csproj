@@ -8,6 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Audio\Complete.wav" />
+    <None Remove="Audio\Music.wav" />
+    <None Remove="Audio\PlacedBlock.wav" />
+    <None Remove="Audio\PlacedX.wav" />
+    <None Remove="Audio\Return.wav" />
+    <None Remove="Audio\Start.wav" />
     <None Remove="Puzzles\BonusPuzzles\0-Bold-F.bmp" />
     <None Remove="Puzzles\BonusPuzzles\0-Bold-G.bmp" />
     <None Remove="Puzzles\DebugPuzzles\0-Creature-F.bmp" />
@@ -51,6 +57,24 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Audio\SFX\Complete.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Audio\Music\Music.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Audio\SFX\PlacedBlock.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Audio\SFX\PlacedX.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Audio\SFX\Return.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Audio\SFX\Start.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Puzzles\BonusPuzzles\0-Bold-F.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -177,9 +201,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Audio\PlacedBlock.wav">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
     <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -1,4 +1,5 @@
-﻿using Grombcross.Exceptions;
+﻿using Grombcross.Audio;
+using Grombcross.Exceptions;
 using Grombcross.Models;
 using Grombcross.ViewModels;
 using System;
@@ -19,6 +20,7 @@ namespace Grombcross {
         public App() { }
 
         protected override void OnStartup(StartupEventArgs e) {
+            AudioManager.InitializeMediaPlayers();
             GeneratePuzzles();
 
             MainWindow = new MainWindow() {

@@ -16,9 +16,9 @@
     <UserControl.Resources>
         <DataTemplate x:Key="GridColumnsTemplate">
             <Button
-                Width="50"
-                Height="50"
-                Margin="3"
+                Width="10"
+                Height="10"
+                Margin="1"
                 Click="LeftClickBlock"
                 MouseDown="RightOrMiddleClickBlock"
                 Style="{Binding State, Converter={StaticResource BlockToButtonStyleConverter}}" />
@@ -35,24 +35,24 @@
         </DataTemplate>
 
         <DataTemplate x:Key="LeftHintLinesTemplate">
-            <Border Height="50" Margin="3">
+            <Border Height="10" Margin="1">
                 <TextBlock
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"
-                    FontSize="35"
+                    FontSize="7"
                     Foreground="{Binding LineFulfilled, Converter={StaticResource LineSolvedToBrushColorConverter}}"
                     Text="{Binding LineString}" />
             </Border>
         </DataTemplate>
 
         <DataTemplate x:Key="TopHintLinesTemplate">
-            <Border Width="50" Margin="3">
+            <Border Width="10" Margin="1">
                 <TextBlock
                     HorizontalAlignment="Center"
                     VerticalAlignment="Bottom"
-                    FontSize="32"
+                    FontSize="6"
                     Foreground="{Binding LineFulfilled, Converter={StaticResource LineSolvedToBrushColorConverter}}"
-                    LineHeight="40"
+                    LineHeight="10"
                     LineStackingStrategy="BlockLineHeight"
                     Text="{Binding LineString}" />
             </Border>
@@ -75,7 +75,7 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             FontSize="40"
-            Text="{Binding PuzzleName}" />
+            Text="???" />
 
 
         <!--  Puzzle Grid  -->
@@ -87,16 +87,16 @@
                 <Point X="0.5" Y="0.5" />
             </Grid.RenderTransformOrigin>
             <Grid.RenderTransform>
-                <ScaleTransform ScaleX="1" ScaleY="1" />
+                <ScaleTransform ScaleX="3" ScaleY="3" />
             </Grid.RenderTransform>
 
             <Grid.RowDefinitions>
-                <RowDefinition MaxHeight="200" />
+                <RowDefinition MaxHeight="40" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition MaxWidth="200" />
+                <ColumnDefinition MaxWidth="40" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
@@ -121,7 +121,7 @@
                 x:Name="LeftHintLines"
                 Grid.Row="1"
                 Grid.Column="0"
-                Margin="0,0,5,0"
+                Margin="0,0,0,0"
                 ItemTemplate="{DynamicResource LeftHintLinesTemplate}"
                 ItemsSource="{Binding LeftHintLines}">
                 <ItemsControl.ItemsPanel>
