@@ -14,6 +14,12 @@
     <None Remove="Audio\PlacedX.wav" />
     <None Remove="Audio\Return.wav" />
     <None Remove="Audio\Start.wav" />
+    <None Remove="Graphics\GradientButton.png" />
+    <None Remove="Graphics\GradientButtonLeft.png" />
+    <None Remove="Graphics\GradientButtonMiddle.png" />
+    <None Remove="Graphics\GradientButtonRight.png" />
+    <None Remove="Graphics\PuzzleSelectBackground.png" />
+    <None Remove="Graphics\PuzzleSelectButton.png" />
     <None Remove="Puzzles\BonusPuzzles\0-Bold-F.bmp" />
     <None Remove="Puzzles\BonusPuzzles\0-Bold-G.bmp" />
     <None Remove="Puzzles\DebugPuzzles\0-Creature-F.bmp" />
@@ -178,6 +184,15 @@
 
   <ItemGroup>
     <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Graphics\GradientButton.png" />
+    <Resource Include="Graphics\GradientButtonLeft.png" />
+    <Resource Include="Graphics\GradientButtonMiddle.png" />
+    <Resource Include="Graphics\GradientButtonRight.png" />
+    <Resource Include="Graphics\PuzzleSelectBackground.png" />
+    <Resource Include="Graphics\PuzzleSelectButton.png" />
   </ItemGroup>
 
   <ItemGroup>
