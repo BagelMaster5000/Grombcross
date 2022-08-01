@@ -21,6 +21,7 @@ namespace Grombcross.ViewModels {
         public List<List<Block>> Blocks => _puzzleGameModel.Blocks;
         public List<HintLine> LeftHintLines => _puzzleGameModel.LeftHintLines;
         public List<HintLine> TopHintLines => _puzzleGameModel.TopHintLines;
+        public int PuzzleSize => _puzzleGameModel.CurrentPuzzle.Size;
 
         public string PuzzleName => _puzzleGameModel.CurrentPuzzle.Name;
         public Bitmap CompletedImage => _puzzleGameModel.CurrentPuzzle.FinalImage;

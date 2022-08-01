@@ -9,6 +9,7 @@
     <Application.Resources>
         <!--<SoundPlayerAction x:Key="PlacedBlock"/>-->
 
+        <converters:PuzzleSizeToScaleConverter x:Key="PuzzleSizeToScaleConverter" />
         <converters:BlockStateToButtonStyleConverter x:Key="BlockToButtonStyleConverter" />
         <converters:BlockStateToQuestionVisibilityConverter x:Key="BlockToQuestionVisibilityConverter" />
         <converters:BlockStateToXVisibilityConverter x:Key="BlockToXVisibilityConverter" />

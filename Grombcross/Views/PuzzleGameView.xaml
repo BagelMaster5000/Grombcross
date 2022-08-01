@@ -86,21 +86,6 @@
             Source="..\Graphics\PuzzleSelectBackground.png"
             Stretch="UniformToFill" />
 
-        <!--  Header Title  -->
-        <Border
-            Grid.Row="0"
-            Background="DarkGreen"
-            Opacity="0.6" />
-        <TextBlock
-            Grid.Row="0"
-            Margin="0,5,0,10"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            FontSize="40"
-            Foreground="White"
-            Text="???" />
-
-
         <!--  Puzzle Grid  -->
         <Grid
             Grid.Row="1"
@@ -110,7 +95,7 @@
                 <Point X="0.5" Y="0.5" />
             </Grid.RenderTransformOrigin>
             <Grid.RenderTransform>
-                <ScaleTransform ScaleX="3" ScaleY="3" />
+                <ScaleTransform ScaleX="{Binding PuzzleSize, Converter={StaticResource PuzzleSizeToScaleConverter}}" ScaleY="{Binding PuzzleSize, Converter={StaticResource PuzzleSizeToScaleConverter}}" />
             </Grid.RenderTransform>
 
             <Grid.RowDefinitions>
@@ -178,7 +163,22 @@
         </Grid>
 
 
-        <!--  Back Button  -->
+        <!--  Header Title  -->
+        <Border
+            Grid.Row="0"
+            Background="DarkGreen"
+            Opacity="0.6" />
+        <TextBlock
+            Grid.Row="0"
+            Margin="0,5,0,10"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="40"
+            Foreground="White"
+            Text="???" />
+
+
+        <!--  Footer  -->
         <StackPanel
             Grid.Row="2"
             Width="Auto"
@@ -209,8 +209,6 @@
         <Border
             Grid.Row="0"
             Grid.RowSpan="3"
-            Background="White"
-            Opacity="0.9"
             Visibility="{Binding PuzzleSolved, Converter={StaticResource BoolToVisibilityConverter}}">
             <Border.RenderTransformOrigin>
                 <Point X="0.5" Y="0.5" />
@@ -219,13 +217,15 @@
                 <ScaleTransform ScaleX="10" ScaleY="10" />
             </Border.RenderTransform>
 
-            <Border>
-                <Border.RenderTransformOrigin>
+            <Grid>
+                <Grid.RenderTransformOrigin>
                     <Point X="0.5" Y="0.5" />
-                </Border.RenderTransformOrigin>
-                <Border.RenderTransform>
+                </Grid.RenderTransformOrigin>
+                <Grid.RenderTransform>
                     <ScaleTransform ScaleX="0.1" ScaleY="0.1" />
-                </Border.RenderTransform>
+                </Grid.RenderTransform>
+
+                <Border Background="White" Opacity="0.8" />
 
                 <StackPanel
                     HorizontalAlignment="Center"
@@ -235,19 +235,22 @@
                         Margin="0,0,0,30"
                         HorizontalAlignment="Center"
                         FontSize="50"
+                        FontWeight="Bold"
                         Text="Puzzle Complete!" />
+                    <TextBlock
+                        Margin="0,0,0,5"
+                        HorizontalAlignment="Center"
+                        FontSize="50"
+                        Text="{Binding PuzzleName}" />
                     <Image
                         Height="300"
                         Margin="0,0,0,30"
                         RenderOptions.BitmapScalingMode="NearestNeighbor"
                         Source="{Binding CompletedImage, Converter={StaticResource BitmapToImageSourceConverter}}" />
-                    <TextBlock
-                        Margin="0,0,0,30"
-                        HorizontalAlignment="Center"
-                        FontSize="50"
-                        Text="{Binding PuzzleName}" />
                     <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                         <Button
+                            Width="Auto"
+                            Height="50"
                             Margin="10"
                             Click="ShowPuzzleSelect"
                             Style="{StaticResource ActionButton}">
@@ -262,7 +265,7 @@
                         </Button>
                     </StackPanel>
                 </StackPanel>
-            </Border>
+            </Grid>
         </Border>
     </Grid>
 </UserControl>
