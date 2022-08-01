@@ -5,6 +5,7 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Icons\Icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -81,6 +82,7 @@
     <Content Include="Audio\SFX\Start.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Icons\Icon.ico" />
     <Content Include="Puzzles\BonusPuzzles\0-Bold-F.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
