@@ -10,6 +10,8 @@
         <!--<SoundPlayerAction x:Key="PlacedBlock"/>-->
 
         <converters:BlockStateToButtonStyleConverter x:Key="BlockToButtonStyleConverter" />
+        <converters:BlockStateToQuestionVisibilityConverter x:Key="BlockToQuestionVisibilityConverter" />
+        <converters:BlockStateToXVisibilityConverter x:Key="BlockToXVisibilityConverter" />
         <converters:LineSolvedToBrushColorConverter x:Key="LineSolvedToBrushColorConverter" />
         <converters:BitmapToImageSourceConverter x:Key="BitmapToImageSourceConverter" />
         <converters:SizeIntToDimensionsStringConverter x:Key="SizeIntToDimensionsStringConverter" />
@@ -24,6 +26,43 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Border x:Name="Border" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <Border.RenderTransformOrigin>
+                                <Point X="0.5" Y="0.5" />
+                            </Border.RenderTransformOrigin>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="1.05" ScaleY="1.05" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="Border" Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform CenterY="0.5" ScaleX="0.85" ScaleY="0.85" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="BlockButton" TargetType="Button">
+            <Setter Property="Background" Value="LightBlue" />
+            <Setter Property="RenderTransformOrigin" Value="0.5, 0.5" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border
+                            x:Name="Border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="Black"
+                            BorderThickness="0.2">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                             <Border.RenderTransformOrigin>
                                 <Point X="0.5" Y="0.5" />

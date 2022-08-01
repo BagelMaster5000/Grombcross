@@ -15,17 +15,17 @@ namespace Grombcross.Converters {
     public class BlockStateToButtonStyleConverter : IValueConverter {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
             Style style = new Style(typeof(Button));
-            style.BasedOn = (Style)App.Current.Resources["BouncyButtonBehavior"];
+            style.BasedOn = (Style)App.Current.Resources["BlockButton"];
             Block.BlockState state = (Block.BlockState)value;
             switch (state) {
                 case Block.BlockState.FILLED:
                     style.Setters.Add(new Setter(Button.BackgroundProperty, new SolidColorBrush(Color.FromRgb(0, 0, 0))));
                     break;
                 case Block.BlockState.X:
-                    style.Setters.Add(new Setter(Button.BackgroundProperty, new SolidColorBrush(Color.FromRgb(235, 52, 52))));
+                    style.Setters.Add(new Setter(Button.BackgroundProperty, new SolidColorBrush(Color.FromRgb(255, 255, 255))));
                     break;
                 case Block.BlockState.QUESTION:
-                    style.Setters.Add(new Setter(Button.BackgroundProperty, new SolidColorBrush(Color.FromRgb(66, 135, 245))));
+                    style.Setters.Add(new Setter(Button.BackgroundProperty, new SolidColorBrush(Color.FromRgb(255, 255, 255))));
                     break;
                 case Block.BlockState.EMPTY:
                     style.Setters.Add(new Setter(Button.BackgroundProperty, new SolidColorBrush(Color.FromRgb(255, 255, 255))));

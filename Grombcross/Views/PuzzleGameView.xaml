@@ -11,18 +11,35 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
     <UserControl.Resources>
-        <DataTemplate x:Key="GridColumnsTemplate">
+        <DataTemplate x:Key="ButtonTemplate">
             <Button
                 Width="10"
                 Height="10"
                 Margin="1"
                 Click="LeftClickBlock"
                 MouseDown="RightOrMiddleClickBlock"
-                Style="{Binding State, Converter={StaticResource BlockToButtonStyleConverter}}" />
+                Style="{Binding State, Converter={StaticResource BlockToButtonStyleConverter}}">
+                <Grid>
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        FontSize="6"
+                        Foreground="DarkGreen"
+                        Text="❌"
+                        Visibility="{Binding State, Converter={StaticResource BlockToXVisibilityConverter}}" />
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        FontSize="6"
+                        Foreground="CornflowerBlue"
+                        Text="❓"
+                        Visibility="{Binding State, Converter={StaticResource BlockToQuestionVisibilityConverter}}" />
+                </Grid>
+            </Button>
         </DataTemplate>
 
         <DataTemplate x:Key="GridRowsTemplate">
-            <ItemsControl ItemTemplate="{DynamicResource GridColumnsTemplate}" ItemsSource="{Binding}">
+            <ItemsControl ItemTemplate="{DynamicResource ButtonTemplate}" ItemsSource="{Binding}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Orientation="Horizontal" />
