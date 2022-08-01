@@ -15,7 +15,7 @@
             <Button
                 Width="10"
                 Height="10"
-                Margin="1"
+                Margin="0.5"
                 Click="LeftClickBlock"
                 MouseDown="RightOrMiddleClickBlock"
                 Style="{Binding State, Converter={StaticResource BlockToButtonStyleConverter}}">
@@ -49,7 +49,7 @@
         </DataTemplate>
 
         <DataTemplate x:Key="LeftHintLinesTemplate">
-            <Border Height="10" Margin="1">
+            <Border Height="10" Margin="1,0.5">
                 <TextBlock
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"
@@ -60,7 +60,7 @@
         </DataTemplate>
 
         <DataTemplate x:Key="TopHintLinesTemplate">
-            <Border Width="10" Margin="1">
+            <Border Width="10" Margin="0.5">
                 <TextBlock
                     HorizontalAlignment="Center"
                     VerticalAlignment="Bottom"
@@ -99,12 +99,12 @@
             </Grid.RenderTransform>
 
             <Grid.RowDefinitions>
-                <RowDefinition MaxHeight="40" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition MaxWidth="40" />
+                <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 

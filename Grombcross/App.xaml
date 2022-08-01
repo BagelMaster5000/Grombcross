@@ -63,7 +63,8 @@
                             x:Name="Border"
                             Background="{TemplateBinding Background}"
                             BorderBrush="Black"
-                            BorderThickness="0.2">
+                            BorderThickness="0.2"
+                            CornerRadius="0.4">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                             <Border.RenderTransformOrigin>
                                 <Point X="0.5" Y="0.5" />
