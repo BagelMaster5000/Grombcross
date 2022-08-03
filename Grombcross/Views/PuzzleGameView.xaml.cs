@@ -30,6 +30,39 @@ namespace Grombcross.Views {
 
         private void OnLoaded(object sender, RoutedEventArgs routedEventArgs) {
             _dataContext = DataContext as PuzzleGameViewModel;
+
+            GenerateDividingLines();
+        }
+
+        private void GenerateDividingLines() {
+            int numLines = _dataContext.PuzzleSize / 5;
+            int lineLength = numLines * 55;
+            SolidColorBrush lineBrush = new SolidColorBrush(Color.FromRgb(92, 183, 196));
+            for (int l = 0; l < numLines - 1; l++) {
+                Line verticalLine = new Line() {
+                    Stroke = lineBrush,
+                    StrokeThickness = 0.5,
+                    X1 = (l + 1) * 55,
+                    X2 = (l + 1) * 55,
+                    Y1 = 0,
+                    Y2 = lineLength,
+                };
+                Grid.SetRow(verticalLine, 1);
+                Grid.SetColumn(verticalLine, 1);
+                PuzzleGrid.Children.Add(verticalLine);
+
+                Line horizontalLine = new Line() {
+                    Stroke = lineBrush,
+                    StrokeThickness = 0.5,
+                    X1 = 0,
+                    X2 = lineLength,
+                    Y1 = (l + 1) * 55,
+                    Y2 = (l + 1) * 55,
+                };
+                Grid.SetRow(horizontalLine, 1);
+                Grid.SetColumn(horizontalLine, 1);
+                PuzzleGrid.Children.Add(horizontalLine);
+            }
         }
 
         private void LeftClickBlock(object sender, EventArgs e) {
