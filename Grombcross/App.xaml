@@ -43,7 +43,7 @@
                             <Trigger Property="IsPressed" Value="True">
                                 <Setter TargetName="Border" Property="RenderTransform">
                                     <Setter.Value>
-                                        <ScaleTransform CenterY="0.5" ScaleX="0.85" ScaleY="0.85" />
+                                        <ScaleTransform CenterY="0.5" ScaleX="0.9" ScaleY="0.9" />
                                     </Setter.Value>
                                 </Setter>
                             </Trigger>
@@ -109,14 +109,14 @@
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="RenderTransform">
                                     <Setter.Value>
-                                        <ScaleTransform ScaleX="1.05" ScaleY="1.05" />
+                                        <ScaleTransform ScaleX="1.075" ScaleY="1.025" />
                                     </Setter.Value>
                                 </Setter>
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
                                 <Setter TargetName="Border" Property="RenderTransform">
                                     <Setter.Value>
-                                        <ScaleTransform CenterY="0.5" ScaleX="0.85" ScaleY="0.85" />
+                                        <ScaleTransform CenterY="0.5" ScaleX="0.75" ScaleY="0.93" />
                                     </Setter.Value>
                                 </Setter>
                             </Trigger>

@@ -201,6 +201,7 @@
                     <TextBlock
                         Margin="10,5"
                         VerticalAlignment="Center"
+                        Foreground="LightCyan"
                         Text="Puzzle Select" />
                 </Grid>
             </Button>
@@ -262,6 +263,7 @@
                                 <TextBlock
                                     Margin="10,5"
                                     VerticalAlignment="Center"
+                                    Foreground="LightCyan"
                                     Text="Puzzle Select" />
                             </Grid>
                         </Button>
