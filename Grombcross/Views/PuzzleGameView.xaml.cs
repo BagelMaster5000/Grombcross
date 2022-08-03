@@ -35,15 +35,16 @@ namespace Grombcross.Views {
         }
 
         private void GenerateDividingLines() {
-            int numLines = _dataContext.PuzzleSize / 5;
-            int lineLength = numLines * 55;
+            int blockInterval = 5;
+            int numLines = _dataContext.PuzzleSize / blockInterval;
+            int lineLength = _dataContext.PuzzleSize * 11;
             SolidColorBrush lineBrush = new SolidColorBrush(Color.FromRgb(92, 183, 196));
             for (int l = 0; l < numLines - 1; l++) {
                 Line verticalLine = new Line() {
                     Stroke = lineBrush,
                     StrokeThickness = 0.5,
-                    X1 = (l + 1) * 55,
-                    X2 = (l + 1) * 55,
+                    X1 = (l + 1) * blockInterval * 11,
+                    X2 = (l + 1) * blockInterval * 11,
                     Y1 = 0,
                     Y2 = lineLength,
                 };
@@ -56,8 +57,8 @@ namespace Grombcross.Views {
                     StrokeThickness = 0.5,
                     X1 = 0,
                     X2 = lineLength,
-                    Y1 = (l + 1) * 55,
-                    Y2 = (l + 1) * 55,
+                    Y1 = (l + 1) * blockInterval * 11,
+                    Y2 = (l + 1) * blockInterval * 11,
                 };
                 Grid.SetRow(horizontalLine, 1);
                 Grid.SetColumn(horizontalLine, 1);
