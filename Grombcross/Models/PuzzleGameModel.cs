@@ -192,6 +192,8 @@ namespace Grombcross.Models {
         }
         private void PuzzleComplete() {
             CurrentPuzzle.Completed = true;
+
+            SaveSystem.SaveGame();
         }
 
         public bool CheckRowFulfilled(int r) {
