@@ -38,7 +38,53 @@
 
 
         <!--  Puzzle Select  -->
-        <Border />
+        <Border
+            Grid.Row="1"
+            Width="650"
+            Margin="0,80"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Background="White">
+            <StackPanel
+                Margin="15,10"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Orientation="Vertical">
+                <TextBlock
+                    Margin="0,10"
+                    HorizontalAlignment="Center"
+                    FontSize="26"
+                    Text="Sammy Mahmoudi - Programming, Game Design" />
+                <TextBlock
+                    Margin="0,10"
+                    HorizontalAlignment="Center"
+                    FontSize="26"
+                    Text="Miles Gentry - Music, SFX" />
+                <TextBlock
+                    Margin="0,10"
+                    HorizontalAlignment="Center"
+                    FontSize="26"
+                    Text="Michael Bravo - UI" />
+                <TextBlock
+                    Margin="0,10"
+                    HorizontalAlignment="Center"
+                    FontSize="26"
+                    Text="Kris Olivares - Puzzle Design, Memes" />
+                <TextBlock
+                    Margin="0,10"
+                    HorizontalAlignment="Center"
+                    FontSize="26"
+                    Text="FIZZTAP - App Icon, Grombit Character" />
+                <TextBlock
+                    Margin="0,30,0,15"
+                    HorizontalAlignment="Center"
+                    FontSize="26"
+                    Foreground="HotPink"
+                    Text="Special thanks to the Dallas Society of Play for being such an amazing and supportive community!"
+                    TextAlignment="Center"
+                    TextWrapping="Wrap" />
+            </StackPanel>
+        </Border>
 
 
         <!--  Buttons  -->
@@ -59,6 +105,7 @@
                     <TextBlock
                         Margin="10,5"
                         VerticalAlignment="Center"
+                        Foreground="LightCyan"
                         Text="Puzzle Select" />
                 </Grid>
             </Button>

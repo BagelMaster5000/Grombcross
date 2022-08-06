@@ -55,6 +55,8 @@
                                     <RowDefinition Height="190" />
                                     <RowDefinition Height="190" />
                                     <RowDefinition Height="190" />
+                                    <RowDefinition Height="190" />
+                                    <RowDefinition Height="190" />
                                 </Grid.RowDefinitions>
 
                                 <Grid.ColumnDefinitions>
@@ -160,6 +162,7 @@
                     <TextBlock
                         Margin="10,5"
                         VerticalAlignment="Center"
+                        Foreground="LightCyan"
                         Text="Title Screen" />
                 </Grid>
             </Button>
@@ -174,6 +177,7 @@
                     <TextBlock
                         Margin="10,5"
                         VerticalAlignment="Center"
+                        Foreground="LightCyan"
                         Text="Credits" />
                 </Grid>
             </Button>
