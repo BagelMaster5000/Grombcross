@@ -15,7 +15,7 @@ using System.Windows;
 namespace Grombcross {
 
     public partial class App : Application {
-        const bool DEBUG_ON = false;
+        const bool DEBUG_ON = true;
 
         public App() { }
 

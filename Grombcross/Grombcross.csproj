@@ -39,6 +39,18 @@
     <None Remove="Puzzles\StandardPuzzles\12-Lemon-G.bmp" />
     <None Remove="Puzzles\StandardPuzzles\13-Grombit-F.bmp" />
     <None Remove="Puzzles\StandardPuzzles\13-Grombit-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\14-Angry Money Zone-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\14-Angry Money Zone-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\15-Auto Fantasy Dood-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\15-Auto Fantasy Dood-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\16-Circuit Dude-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\16-Circuit Dude-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\17-Game Dev Nothing to Show-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\17-Game Dev Nothing to Show-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\18-Penny-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\18-Penny-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\19-Pico-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\19-Pico-G.bmp" />
     <None Remove="Puzzles\StandardPuzzles\2-Glube-F.bmp" />
     <None Remove="Puzzles\StandardPuzzles\2-Glube-G.bmp" />
     <None Remove="Puzzles\StandardPuzzles\3-Sneaky Grab-F.bmp" />
@@ -128,6 +140,42 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Puzzles\StandardPuzzles\13-Grombit-G.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\14-Angry Money Zone-F.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\14-Angry Money Zone-G.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\15-Auto Fantasy Dood-F.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\15-Auto Fantasy Dood-G.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\16-Circuit Dude-F.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\16-Circuit Dude-G.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\17-Game Dev Nothing to Show-F.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\17-Game Dev Nothing to Show-G.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\18-Penny-F.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\18-Penny-G.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\19-Pico-F.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\19-Pico-G.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Puzzles\StandardPuzzles\2-Glube-F.bmp">
