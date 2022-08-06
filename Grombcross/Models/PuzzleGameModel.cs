@@ -109,7 +109,7 @@ namespace Grombcross.Models {
                 curRowString = curRowString.TrimEnd(' ');
 
                 Trace.WriteLine(curRowString);
-                LeftHintLines.Add(new HintLine { LineString = curRowString, LineFulfilled = false, HintNumbers = hintNumbers });
+                LeftHintLines.Add(new HintLine { HintNumbersString = curRowString, LineFulfilled = false, HintNumbers = hintNumbers });
             }
         }
 
@@ -145,7 +145,15 @@ namespace Grombcross.Models {
                 curColString = curColString.TrimEnd('\n');
 
                 Trace.WriteLine(curColString);
-                TopHintLines.Add(new HintLine { LineString = curColString, LineFulfilled = false, HintNumbers = hintNumbers });
+                TopHintLines.Add(new HintLine { HintNumbersString = curColString, LineFulfilled = false, HintNumbers = hintNumbers });
+            }
+        }
+
+        private void ClearPuzzle() {
+            for (int r = 0; r < BlockGridSize; r++) {
+                for (int c = 0; c < BlockGridSize; c++) {
+                    Blocks[r][c].ClearBlock();
+                }
             }
         }
 
@@ -167,6 +175,12 @@ namespace Grombcross.Models {
             }
         }
 
+        public void ResetPuzzle() {
+            ClearPuzzle();
+            AutoXBlankLines();
+
+            CheckForPuzzleSolved();
+        }
         public bool CheckForPuzzleSolved() {
             bool puzzleSolved = true;
 
@@ -262,16 +276,16 @@ namespace Grombcross.Models {
         }
 
         public void FillBlock(Block block) {
-            block.State = Block.BlockState.FILLED;
+            block.FillBlock();
         }
         public void XBlock(Block block) {
-            block.State = Block.BlockState.X;
+            block.XBlock();
         }
         public void QuestionBlock(Block block) {
-            block.State = Block.BlockState.QUESTION;
+            block.QuestionBlock();
         }
         public void ClearBlock(Block block) {
-            block.State = Block.BlockState.EMPTY;
+            block.ClearBlock();
         }
     }
 }

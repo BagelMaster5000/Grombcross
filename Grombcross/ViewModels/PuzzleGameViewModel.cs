@@ -112,6 +112,10 @@ namespace Grombcross.ViewModels {
             }
         }
 
+        public void ResetPuzzle() {
+            _puzzleGameModel.ResetPuzzle();
+        }
+
         // Debugging
         public int CountNumFilledBlocks() {
             int count = 0;

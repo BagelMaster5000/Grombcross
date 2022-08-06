@@ -3,7 +3,14 @@
 namespace Grombcross.Models {
     public class Block : INotifyPropertyChanged {
         public enum BlockState { EMPTY, FILLED, X, QUESTION }
-        public BlockState State { get; set; }
+        private BlockState _state;
+        public BlockState State {
+            get { return _state; }
+            private set {
+                _state = value;
+                OnPropertyChanged(nameof(State));
+            }
+        }
         public int Row;
         public int Column;
 

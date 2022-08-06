@@ -7,9 +7,17 @@ using System.Threading.Tasks;
 
 namespace Grombcross.Models {
     public class HintLine : INotifyPropertyChanged {
-        public string LineString { get; set; }
+        public string HintNumbersString { get; set; } = "";
         public List<int> HintNumbers = new List<int>();
-        public bool LineFulfilled { get; set; }
+
+        private bool _lineFulfilled;
+        public bool LineFulfilled {
+            get { return _lineFulfilled; }
+            set {
+                _lineFulfilled = value;
+                OnPropertyChanged(nameof(LineFulfilled));
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged(string propertyName) {

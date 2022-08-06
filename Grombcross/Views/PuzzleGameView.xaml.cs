@@ -94,5 +94,9 @@ namespace Grombcross.Views {
         private void ShowPuzzleSelect(object sender, RoutedEventArgs e) {
             _dataContext.ShowSelectView();
         }
+
+        private void ClickedResetPuzzle(object sender, RoutedEventArgs e) {
+            _dataContext.ResetPuzzle();
+        }
     }
 }

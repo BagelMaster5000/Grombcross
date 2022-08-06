@@ -17,6 +17,7 @@
     <None Remove="Audio\Start.wav" />
     <None Remove="Graphics\PuzzleSelectBackground.png" />
     <None Remove="Graphics\PuzzleSelectButton.png" />
+    <None Remove="Graphics\ResetButton.png" />
     <None Remove="Puzzles\BonusPuzzles\0-Bold-F.bmp" />
     <None Remove="Puzzles\BonusPuzzles\0-Bold-G.bmp" />
     <None Remove="Puzzles\BonusPuzzles\1-GOOBER BORG-F.bmp" />
@@ -251,6 +252,7 @@
   <ItemGroup>
     <Resource Include="Graphics\PuzzleSelectBackground.png" />
     <Resource Include="Graphics\PuzzleSelectButton.png" />
+    <Resource Include="Graphics\ResetButton.png" />
   </ItemGroup>
 
   <ItemGroup>

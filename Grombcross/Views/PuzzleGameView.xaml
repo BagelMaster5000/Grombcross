@@ -55,7 +55,7 @@
                     VerticalAlignment="Center"
                     FontSize="7"
                     Foreground="{Binding LineFulfilled, Converter={StaticResource LineSolvedToBrushColorConverter}}"
-                    Text="{Binding LineString}" />
+                    Text="{Binding HintNumbersString}" />
             </Border>
         </DataTemplate>
 
@@ -68,7 +68,7 @@
                     Foreground="{Binding LineFulfilled, Converter={StaticResource LineSolvedToBrushColorConverter}}"
                     LineHeight="10"
                     LineStackingStrategy="BlockLineHeight"
-                    Text="{Binding LineString}" />
+                    Text="{Binding HintNumbersString}" />
             </Border>
         </DataTemplate>
     </UserControl.Resources>
@@ -162,8 +162,22 @@
                 VerticalAlignment="Top"
                 ItemTemplate="{DynamicResource GridRowsTemplate}"
                 ItemsSource="{Binding Blocks}" />
+
         </Grid>
 
+        <Button
+            Grid.Row="1"
+            Width="60"
+            Height="60"
+            Margin="10"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            Background="Transparent"
+            BorderBrush="Transparent"
+            Click="ClickedResetPuzzle"
+            Style="{StaticResource BouncyButtonBehavior}">
+            <Image Source="/Graphics/ResetButton.png" />
+        </Button>
 
         <!--  Header Title  -->
         <Border
