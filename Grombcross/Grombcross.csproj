@@ -15,6 +15,7 @@
     <None Remove="Audio\PlacedX.wav" />
     <None Remove="Audio\Return.wav" />
     <None Remove="Audio\Start.wav" />
+    <None Remove="Graphics\Icon512.png" />
     <None Remove="Graphics\PuzzleSelectBackground.png" />
     <None Remove="Graphics\PuzzleSelectButton.png" />
     <None Remove="Graphics\ResetButton.png" />
@@ -40,24 +41,70 @@
     <None Remove="Puzzles\StandardPuzzles\10-Sleeb Cat-G.bmp" />
     <None Remove="Puzzles\StandardPuzzles\11-Wario-F.bmp" />
     <None Remove="Puzzles\StandardPuzzles\11-Wario-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\12-Game Developer Fuel-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\12-Game Developer Fuel-G.bmp" />
     <None Remove="Puzzles\StandardPuzzles\12-Lemon-F.bmp" />
     <None Remove="Puzzles\StandardPuzzles\12-Lemon-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\13-Did Game Dev Nothing to Show-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\13-Did Game Dev Nothing to Show-G.bmp" />
     <None Remove="Puzzles\StandardPuzzles\13-Grombit-F.bmp" />
     <None Remove="Puzzles\StandardPuzzles\13-Grombit-G.bmp" />
     <None Remove="Puzzles\StandardPuzzles\14-Angry Money Zone-F.bmp" />
     <None Remove="Puzzles\StandardPuzzles\14-Angry Money Zone-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\14-DOWNLOAD BLENDER-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\14-DOWNLOAD BLENDER-G.bmp" />
     <None Remove="Puzzles\StandardPuzzles\15-Auto Fantasy Dood-F.bmp" />
     <None Remove="Puzzles\StandardPuzzles\15-Auto Fantasy Dood-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\15-Circuit Dude-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\15-Circuit Dude-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\16-Auto Fantasy Dood-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\16-Auto Fantasy Dood-G.bmp" />
     <None Remove="Puzzles\StandardPuzzles\16-Circuit Dude-F.bmp" />
     <None Remove="Puzzles\StandardPuzzles\16-Circuit Dude-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\17-DOWNLOAD BLENDER-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\17-DOWNLOAD BLENDER-G.bmp" />
     <None Remove="Puzzles\StandardPuzzles\17-Game Dev Nothing to Show-F.bmp" />
     <None Remove="Puzzles\StandardPuzzles\17-Game Dev Nothing to Show-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\17-Lemon-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\17-Lemon-G.bmp" />
     <None Remove="Puzzles\StandardPuzzles\18-Penny-F.bmp" />
     <None Remove="Puzzles\StandardPuzzles\18-Penny-G.bmp" />
     <None Remove="Puzzles\StandardPuzzles\19-Pico-F.bmp" />
     <None Remove="Puzzles\StandardPuzzles\19-Pico-G.bmp" />
     <None Remove="Puzzles\StandardPuzzles\2-Glube-F.bmp" />
     <None Remove="Puzzles\StandardPuzzles\2-Glube-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\20-Game Developer Fuel-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\20-Game Developer Fuel-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\20-The Vase-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\20-The Vase-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\21-5hr DS Discussion in Gen Chat-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\21-5hr DS Discussion in Gen Chat-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\21-Angry Money Zone-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\21-Angry Money Zone-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\21-DOWNLOAD BLENDER-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\21-DOWNLOAD BLENDER-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\22-5hr DS Discussion in Gen Chat-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\22-5hr DS Discussion in Gen Chat-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\22-Shaved Leg Furby-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\22-Shaved Leg Furby-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\23-Obscure PS1 Game OST-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\23-Obscure PS1 Game OST-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\23-The Vase-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\23-The Vase-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\24-Obscure PS1 Game OST-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\24-Obscure PS1 Game OST-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\24-Yams-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\24-Yams-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\25-5hr DS Discussion in Gen Chat-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\25-5hr DS Discussion in Gen Chat-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\25-Lemon-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\25-Lemon-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\25-Yams-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\25-Yams-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\26-Grombit-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\26-Grombit-G.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\26-Shaved Leg Furby-F.bmp" />
+    <None Remove="Puzzles\StandardPuzzles\26-Shaved Leg Furby-G.bmp" />
     <None Remove="Puzzles\StandardPuzzles\3-Sneaky Grab-F.bmp" />
     <None Remove="Puzzles\StandardPuzzles\3-Sneaky Grab-G.bmp" />
     <None Remove="Puzzles\StandardPuzzles\4-Godot-F.bmp" />
@@ -147,40 +194,40 @@
     <Content Include="Puzzles\StandardPuzzles\11-Wario-G.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Puzzles\StandardPuzzles\12-Lemon-F.bmp">
+    <Content Include="Puzzles\StandardPuzzles\12-Game Developer Fuel-F.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Puzzles\StandardPuzzles\12-Lemon-G.bmp">
+    <Content Include="Puzzles\StandardPuzzles\12-Game Developer Fuel-G.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Puzzles\StandardPuzzles\13-Grombit-F.bmp">
+    <Content Include="Puzzles\StandardPuzzles\13-Did Game Dev Nothing to Show-F.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Puzzles\StandardPuzzles\13-Grombit-G.bmp">
+    <Content Include="Puzzles\StandardPuzzles\13-Did Game Dev Nothing to Show-G.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Puzzles\StandardPuzzles\14-Angry Money Zone-F.bmp">
+    <Content Include="Puzzles\StandardPuzzles\14-DOWNLOAD BLENDER-F.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Puzzles\StandardPuzzles\14-Angry Money Zone-G.bmp">
+    <Content Include="Puzzles\StandardPuzzles\14-DOWNLOAD BLENDER-G.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Puzzles\StandardPuzzles\15-Auto Fantasy Dood-F.bmp">
+    <Content Include="Puzzles\StandardPuzzles\15-Circuit Dude-F.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Puzzles\StandardPuzzles\15-Auto Fantasy Dood-G.bmp">
+    <Content Include="Puzzles\StandardPuzzles\15-Circuit Dude-G.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Puzzles\StandardPuzzles\16-Circuit Dude-F.bmp">
+    <Content Include="Puzzles\StandardPuzzles\16-Auto Fantasy Dood-F.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Puzzles\StandardPuzzles\16-Circuit Dude-G.bmp">
+    <Content Include="Puzzles\StandardPuzzles\16-Auto Fantasy Dood-G.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Puzzles\StandardPuzzles\17-Game Dev Nothing to Show-F.bmp">
+    <Content Include="Puzzles\StandardPuzzles\17-Lemon-F.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Puzzles\StandardPuzzles\17-Game Dev Nothing to Show-G.bmp">
+    <Content Include="Puzzles\StandardPuzzles\17-Lemon-G.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Puzzles\StandardPuzzles\18-Penny-F.bmp">
@@ -199,6 +246,48 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Puzzles\StandardPuzzles\2-Glube-G.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\20-The Vase-F.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\20-The Vase-G.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\21-Angry Money Zone-F.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\21-Angry Money Zone-G.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\22-Shaved Leg Furby-F.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\22-Shaved Leg Furby-G.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\23-Obscure PS1 Game OST-F.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\23-Obscure PS1 Game OST-G.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\24-Yams-F.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\24-Yams-G.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\25-5hr DS Discussion in Gen Chat-F.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\25-5hr DS Discussion in Gen Chat-G.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\26-Grombit-F.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\StandardPuzzles\26-Grombit-G.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Puzzles\StandardPuzzles\3-Sneaky Grab-F.bmp">
@@ -250,6 +339,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Graphics\Icon512.png" />
     <Resource Include="Graphics\PuzzleSelectBackground.png" />
     <Resource Include="Graphics\PuzzleSelectButton.png" />
     <Resource Include="Graphics\ResetButton.png" />
