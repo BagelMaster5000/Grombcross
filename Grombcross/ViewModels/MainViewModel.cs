@@ -14,11 +14,11 @@ namespace Grombcross.ViewModels {
         // Transitioning variables
         private Timer _transitionInTimer;
         public Action OnTransitionIn;
-        public float TransitionInDuration = 0.35f;
+        public float TransitionInDuration = 0.45f;
 
         private Timer _transitionOutTimer;
         public Action OnTransitionOut;
-        public float TransitionOutDuration = 0.6f;
+        public float TransitionOutDuration = 0.5f;
 
         public Action OnTransitionFinished;
         private ViewModelBase queuedViewModel = null;
@@ -93,11 +93,33 @@ namespace Grombcross.ViewModels {
         #endregion
 
         #region Showing ViewModels
-        public bool ShowPuzzleSelectView() {
-            PuzzleSelectViewModel selectViewModel = new PuzzleSelectViewModel(ShowCreditsView, ShowPuzzleGameView);
-            bool queuedViewModel = ShowOrQueueViewModel(selectViewModel);
+        public bool ShowTitleView() {
+            TitleViewModel titleViewModel = new TitleViewModel(ShowPuzzleSelectView);
+            bool viewModelWasQueued = ShowOrQueueViewModel(titleViewModel);
 
-            if (queuedViewModel) {
+            if (viewModelWasQueued) {
+                StartTransitioningIn();
+            }
+
+            return true;
+        }
+
+        public bool ShowCreditsView() {
+            CreditsViewModel creditsViewModel = new CreditsViewModel(ShowPuzzleSelectView);
+            bool viewModelWasQueued = ShowOrQueueViewModel(creditsViewModel);
+
+            if (viewModelWasQueued) {
+                StartTransitioningIn();
+            }
+
+            return true;
+        }
+
+        public bool ShowPuzzleSelectView() {
+            PuzzleSelectViewModel selectViewModel = new PuzzleSelectViewModel(ShowTitleView, ShowCreditsView, ShowPuzzleGameView);
+            bool viewModelWasQueued = ShowOrQueueViewModel(selectViewModel);
+
+            if (viewModelWasQueued) {
                 StartTransitioningIn();
             }
 
@@ -107,20 +129,9 @@ namespace Grombcross.ViewModels {
         public bool ShowPuzzleGameView(int puzzleIndex) {
             PuzzleGameModel gameModel = new PuzzleGameModel(puzzleIndex);
             PuzzleGameViewModel gameViewModel = new PuzzleGameViewModel(gameModel, ShowPuzzleSelectView);
-            bool queuedViewModel = ShowOrQueueViewModel(gameViewModel);
+            bool viewModelWasQueued = ShowOrQueueViewModel(gameViewModel);
 
-            if (queuedViewModel) {
-                StartTransitioningIn();
-            }
-
-            return true;
-        }
-
-        public bool ShowCreditsView() {
-            CreditsViewModel creditsViewModel = new CreditsViewModel(ShowPuzzleSelectView);
-            bool queuedViewModel = ShowOrQueueViewModel(creditsViewModel);
-
-            if (queuedViewModel) {
+            if (viewModelWasQueued) {
                 StartTransitioningIn();
             }
 

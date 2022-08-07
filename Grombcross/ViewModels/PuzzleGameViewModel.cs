@@ -1,5 +1,4 @@
-﻿using Grombcross.Audio;
-using Grombcross.Models;
+﻿using Grombcross.Models;
 using Grombcross.Views;
 using System;
 using System.Collections.Generic;
@@ -80,11 +79,11 @@ namespace Grombcross.ViewModels {
 
         private void FillBlock(Block block) {
             _puzzleGameModel.FillBlock(block);
-            AudioManager.PlayBlockPlace();
+            AudioSystem.PlayBlockPlace();
         }
         private void XBlock(Block block) {
             _puzzleGameModel.XBlock(block);
-            AudioManager.PlayXPlace();
+            AudioSystem.PlayXPlace();
 
         }
         private void QuestionBlock(Block block) {
@@ -107,7 +106,7 @@ namespace Grombcross.ViewModels {
         private void RefreshPuzzleSolved() {
             bool puzzleSolvedNow = _puzzleGameModel.CheckForPuzzleSolved();
             if (puzzleSolvedNow) {
-                AudioManager.PlayPuzzleComplete();
+                AudioSystem.PlayPuzzleComplete();
                 OnPropertyChanged(nameof(PuzzleSolved));
             }
         }

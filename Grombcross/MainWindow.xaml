@@ -12,7 +12,11 @@
     Height="800"
     mc:Ignorable="d">
     <Grid Background="DarkGreen">
+
         <Grid.Resources>
+            <DataTemplate DataType="{x:Type vms:TitleViewModel}">
+                <views:TitleView />
+            </DataTemplate>
             <DataTemplate DataType="{x:Type vms:CreditsViewModel}">
                 <views:CreditsView />
             </DataTemplate>
@@ -23,6 +27,13 @@
                 <views:PuzzleSelectView />
             </DataTemplate>
         </Grid.Resources>
+
+        <Image
+            x:Name="Background"
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            Source="..\Graphics\PuzzleSelectBackground.png"
+            Stretch="UniformToFill" />
 
         <ContentControl Content="{Binding CurrentViewModel}" />
 

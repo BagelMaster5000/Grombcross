@@ -1,0 +1,25 @@
+﻿<UserControl
+    x:Class="Grombcross.Views.Components.GreenGradientActionButton"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Grombcross.Views.Components"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <Rectangle
+        Margin="-2,-3"
+        RadiusX="4"
+        RadiusY="4"
+        Stroke="#87bd89"
+        StrokeThickness="2">
+        <Rectangle.Fill>
+            <LinearGradientBrush StartPoint="0, 0" EndPoint="0, 1">
+                <GradientStop Offset="0" Color="#87bd89" />
+                <GradientStop Offset="0.1" Color="#87bd89" />
+                <GradientStop Offset="1.3" Color="#284727" />
+            </LinearGradientBrush>
+        </Rectangle.Fill>
+    </Rectangle>
+</UserControl>

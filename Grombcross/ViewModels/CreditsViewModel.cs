@@ -1,4 +1,4 @@
-﻿using Grombcross.Audio;
+﻿using Grombcross.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +11,7 @@ namespace Grombcross.ViewModels {
 
         public CreditsViewModel(Func<bool> showSelectView) {
             ShowSelectView = () => {
-                AudioManager.PlayQuickForward();
+                AudioSystem.PlayQuickForward();
                 return showSelectView();
             };
         }

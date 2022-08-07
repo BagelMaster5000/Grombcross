@@ -39,7 +39,7 @@ namespace Grombcross.Views {
         }
 
         private void ShowTitle(object sender, RoutedEventArgs e) {
-            //_dataContext.ShowTitleView();
+            _dataContext.ShowTitleView();
         }
 
         private void ShowCredits(object sender, RoutedEventArgs e) {

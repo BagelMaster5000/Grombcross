@@ -1,5 +1,4 @@
-﻿using Grombcross.Audio;
-using Grombcross.Models;
+﻿using Grombcross.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,21 +10,27 @@ namespace Grombcross.ViewModels {
     public class PuzzleSelectViewModel : ViewModelBase {
         public List<Puzzle> AllPuzzles => GlobalVariables.StandardPuzzles;
 
+        public Func<bool> ShowTitleView;
         public Func<bool> ShowCreditsView;
         public Func<int, bool> ShowGameView;
 
-        public PuzzleSelectViewModel(Func<bool> showCreditsView, Func<int, bool> showGameView) {
-            AudioManager.StartMusic();
+        public PuzzleSelectViewModel(Func<bool> showTitleView, Func<bool> showCreditsView, Func<int, bool> showGameView) {
+            AudioSystem.StartMusic();
+
+            ShowTitleView = () => {
+                AudioSystem.PlayQuickReturn();
+                return showTitleView();
+            };
 
             ShowCreditsView = () => {
-                AudioManager.PlayQuickReturn();
+                AudioSystem.PlayQuickReturn();
                 return showCreditsView();
             };
 
             ShowGameView = (puzzleIndex) => {
-                AudioManager.PlayQuickForward();
-                AudioManager.StopMusic();
-                AudioManager.PlayPuzzleStart();
+                AudioSystem.PlayQuickForward();
+                AudioSystem.StopMusic();
+                AudioSystem.PlayPuzzleStart();
                 return showGameView(puzzleIndex);
             };
         }

@@ -16,12 +16,6 @@
             <RowDefinition Height="60" />
         </Grid.RowDefinitions>
 
-        <Image
-            Grid.Row="0"
-            Grid.RowSpan="3"
-            Source="..\Graphics\PuzzleSelectBackground.png"
-            Stretch="UniformToFill" />
-
         <!--  Header Title  -->
         <Border
             Grid.Row="0"
@@ -44,7 +38,8 @@
             Margin="0,80"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Background="White">
+            Background="White"
+            CornerRadius="20">
             <StackPanel
                 Margin="15,10"
                 HorizontalAlignment="Center"
@@ -100,7 +95,7 @@
                 Click="ShowPuzzleSelect"
                 Style="{StaticResource ActionButton}">
                 <Grid>
-                    <components:SlicedGradientButton />
+                    <components:BlueGradientActionButton />
 
                     <TextBlock
                         Margin="10,5"

@@ -16,12 +16,6 @@
             <RowDefinition Height="63" />
         </Grid.RowDefinitions>
 
-        <Image
-            Grid.Row="0"
-            Grid.RowSpan="3"
-            Source="..\Graphics\PuzzleSelectBackground.png"
-            Stretch="UniformToFill" />
-
         <!--  Header Title  -->
         <Border
             Grid.Row="0"
@@ -51,6 +45,7 @@
                         <ItemsPanelTemplate>
                             <Grid x:Name="PuzzleGrid">
                                 <Grid.RowDefinitions>
+                                    <RowDefinition Height="190" />
                                     <RowDefinition Height="190" />
                                     <RowDefinition Height="190" />
                                     <RowDefinition Height="190" />
@@ -100,13 +95,13 @@
                                                 Width="120"
                                                 RenderOptions.BitmapScalingMode="NearestNeighbor"
                                                 Source="{Binding FinalImage, Converter={StaticResource BitmapToImageSourceConverter}}" />
-                                            <TextBlock
+                                            <Viewbox
                                                 Grid.Row="1"
+                                                Margin="10,4,10,2"
                                                 HorizontalAlignment="Center"
-                                                VerticalAlignment="Center"
-                                                FontSize="18"
-                                                Foreground="White"
-                                                Text="{Binding Name}" />
+                                                VerticalAlignment="Center">
+                                                <TextBlock Foreground="White" Text="{Binding Name}" />
+                                            </Viewbox>
                                         </Grid>
                                         <Grid
                                             HorizontalAlignment="Center"
@@ -157,12 +152,13 @@
                 Click="ShowTitle"
                 Style="{StaticResource ActionButton}">
                 <Grid>
-                    <components:SlicedGradientButton />
+                    <components:GreenGradientActionButton />
 
                     <TextBlock
                         Margin="10,5"
                         VerticalAlignment="Center"
-                        Foreground="LightCyan"
+                        Foreground="White"
+                        Opacity="0.8"
                         Text="Title Screen" />
                 </Grid>
             </Button>
@@ -172,7 +168,7 @@
                 Click="ShowCredits"
                 Style="{StaticResource ActionButton}">
                 <Grid>
-                    <components:SlicedGradientButton />
+                    <components:BlueGradientActionButton />
 
                     <TextBlock
                         Margin="10,5"
