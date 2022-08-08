@@ -73,7 +73,9 @@ namespace Grombcross.Views {
             Block block = button.DataContext as Block;
             if (block == null) return;
 
+            CurFillingState = block.State == Block.BlockState.EMPTY ? FillingState.FILLING : FillingState.CLEARING;
             _dataContext.LeftClickBlock(block);
+            CurSelectingBlock = block;
         }
 
         private void RightOrMiddleClickBlock(object sender, MouseButtonEventArgs e) {
@@ -84,7 +86,9 @@ namespace Grombcross.Views {
             if (block == null) return;
 
             if (e.ChangedButton == MouseButton.Right) {
+                CurFillingState = block.State == Block.BlockState.EMPTY ? FillingState.FILLING : FillingState.CLEARING;
                 _dataContext.RightClickBlock(block);
+                CurSelectingBlock = block;
             }
             else {
                 _dataContext.MiddleClickBlock(block);
@@ -97,6 +101,41 @@ namespace Grombcross.Views {
 
         private void ClickedResetPuzzle(object sender, RoutedEventArgs e) {
             _dataContext.ResetPuzzle();
+        }
+
+        Block _curSelectingBlock = null;
+        Block CurSelectingBlock {
+            get { return _curSelectingBlock; }
+            set {
+                _curSelectingBlock = value;
+            }
+        }
+        public enum FillingState { NONE, FILLING, CLEARING }
+        FillingState _curFillingState = FillingState.NONE;
+        FillingState CurFillingState {
+            get { return _curFillingState; }
+            set { _curFillingState = value; }
+        }
+        private void MouseMoveOverButton(object sender, MouseEventArgs e) {
+            Button button = sender as Button;
+            if (button == null) return;
+
+            Block block = button.DataContext as Block;
+            if (block == null || block == CurSelectingBlock) return;
+
+            if (e.LeftButton == MouseButtonState.Pressed) {
+                _dataContext.DragLeftClickBlock(block, CurFillingState);
+                CurSelectingBlock = block;
+            }
+            else if (e.RightButton == MouseButtonState.Pressed) {
+                _dataContext.DragRightClickBlock(block, CurFillingState);
+                CurSelectingBlock = block;
+            }
+        }
+
+        private void MouseReleaseFromButton(object sender, MouseButtonEventArgs e) {
+            CurFillingState = FillingState.NONE;
+            CurSelectingBlock = null;
         }
     }
 }

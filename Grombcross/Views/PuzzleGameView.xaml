@@ -16,8 +16,11 @@
                 Width="10"
                 Height="10"
                 Margin="0.5"
-                Click="LeftClickBlock"
-                MouseDown="RightOrMiddleClickBlock"
+                ClickMode="Hover"
+                PreviewMouseLeftButtonDown="LeftClickBlock"
+                PreviewMouseMove="MouseMoveOverButton"
+                PreviewMouseRightButtonDown="RightOrMiddleClickBlock"
+                PreviewMouseUp="MouseReleaseFromButton"
                 Style="{Binding State, Converter={StaticResource BlockToButtonStyleConverter}}">
                 <Grid>
                     <TextBlock

@@ -48,6 +48,25 @@ namespace Grombcross.ViewModels {
             RefreshLineFulfilledProperties(block);
             RefreshPuzzleSolved();
         }
+        public void DragLeftClickBlock(Block block, PuzzleGameView.FillingState curFillingState) {
+            switch (curFillingState) {
+                case PuzzleGameView.FillingState.FILLING:
+                    if (block.State == Block.BlockState.EMPTY) {
+                        FillBlock(block);
+                    }
+                    break;
+                case PuzzleGameView.FillingState.CLEARING:
+                    if (block.State == Block.BlockState.FILLED) {
+                        ClearBlock(block);
+                    }
+                    break;
+            }
+
+            block.OnPropertyChanged(nameof(block.State));
+
+            RefreshLineFulfilledProperties(block);
+            RefreshPuzzleSolved();
+        }
 
         public void RightClickBlock(Block block) {
             switch (block.State) {
@@ -55,6 +74,25 @@ namespace Grombcross.ViewModels {
                 case Block.BlockState.X: ClearBlock(block); break;
                 case Block.BlockState.QUESTION: XBlock(block); break;
                 case Block.BlockState.FILLED: ClearBlock(block); break;
+            }
+
+            block.OnPropertyChanged(nameof(block.State));
+
+            RefreshLineFulfilledProperties(block);
+            RefreshPuzzleSolved();
+        }
+        public void DragRightClickBlock(Block block, PuzzleGameView.FillingState curFillingState) {
+            switch (curFillingState) {
+                case PuzzleGameView.FillingState.FILLING:
+                    if (block.State == Block.BlockState.EMPTY) {
+                        XBlock(block);
+                    }
+                    break;
+                case PuzzleGameView.FillingState.CLEARING:
+                    if (block.State == Block.BlockState.X) {
+                        ClearBlock(block);
+                    }
+                    break;
             }
 
             block.OnPropertyChanged(nameof(block.State));
@@ -84,7 +122,6 @@ namespace Grombcross.ViewModels {
         private void XBlock(Block block) {
             _puzzleGameModel.XBlock(block);
             AudioSystem.PlayXPlace();
-
         }
         private void QuestionBlock(Block block) {
             _puzzleGameModel.QuestionBlock(block);
