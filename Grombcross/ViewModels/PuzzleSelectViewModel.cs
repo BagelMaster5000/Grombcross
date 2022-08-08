@@ -18,6 +18,7 @@ namespace Grombcross.ViewModels {
             AudioSystem.StartMusic();
 
             ShowTitleView = () => {
+                AudioSystem.StopMusic();
                 AudioSystem.PlayQuickReturn();
                 return showTitleView();
             };

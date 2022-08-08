@@ -13,9 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Grombcross.Views.Components {
-    public partial class GrayGradientActionButton : UserControl {
-        public GrayGradientActionButton() {
+namespace Grombcross.Components {
+    public partial class BlueGradientActionButton : UserControl {
+        public BlueGradientActionButton() {
             InitializeComponent();
         }
     }

@@ -30,7 +30,7 @@ namespace Grombcross.ViewModels {
         public PuzzleGameViewModel(PuzzleGameModel puzzleGameModel, Func<bool> showSelectView) {
             _puzzleGameModel = puzzleGameModel;
             ShowSelectView = () => {
-                //AudioManager.PlayQuickForward();
+                AudioSystem.PlayQuickForward();
                 return showSelectView();
             };
         }
