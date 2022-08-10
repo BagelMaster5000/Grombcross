@@ -13,15 +13,21 @@
     <UserControl.Resources>
         <DataTemplate x:Key="ButtonTemplate">
             <Button
-                Width="10"
-                Height="10"
-                Margin="0.5"
+                Width="11"
+                Height="11"
+                Margin="0"
                 ClickMode="Hover"
                 PreviewMouseLeftButtonDown="LeftClickBlock"
                 PreviewMouseMove="MouseMoveOverButton"
                 PreviewMouseRightButtonDown="RightOrMiddleClickBlock"
                 PreviewMouseUp="MouseReleaseFromButton"
                 Style="{Binding State, Converter={StaticResource BlockToButtonStyleConverter}}">
+                <Button.RenderTransformOrigin>
+                    <Point X="0.5" Y="0.5" />
+                </Button.RenderTransformOrigin>
+                <Button.RenderTransform>
+                    <ScaleTransform ScaleX="1" ScaleY="1" />
+                </Button.RenderTransform>
                 <Grid>
                     <TextBlock
                         HorizontalAlignment="Center"

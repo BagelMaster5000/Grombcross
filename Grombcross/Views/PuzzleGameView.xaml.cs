@@ -11,6 +11,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -22,6 +23,14 @@ namespace Grombcross.Views {
     public partial class PuzzleGameView : UserControl {
         private PuzzleGameViewModel _dataContext;
 
+        private DoubleAnimation _blockPlaceScaleXAnimation;
+        private DoubleAnimation _blockPlaceScaleYAnimation;
+        private Storyboard _blockPlaceStoryboard;
+
+        private DoubleAnimation _blockClearScaleXAnimation;
+        private DoubleAnimation _blockClearScaleYAnimation;
+        private Storyboard _blockClearStoryboard;
+
         public PuzzleGameView() {
             Loaded += OnLoaded;
 
@@ -32,6 +41,45 @@ namespace Grombcross.Views {
             _dataContext = DataContext as PuzzleGameViewModel;
 
             GenerateDividingLines();
+
+            InitializeAnimations();
+        }
+
+        private void InitializeAnimations() {
+            _blockPlaceScaleXAnimation = new DoubleAnimation {
+                From = 0.9,
+                To = 1,
+                Duration = TimeSpan.FromSeconds(0.1)
+            };
+            _blockPlaceScaleXAnimation.EasingFunction = new BackEase() { EasingMode = EasingMode.EaseOut };
+            _blockPlaceScaleYAnimation = new DoubleAnimation {
+                From = 0.9,
+                To = 1,
+                Duration = TimeSpan.FromSeconds(0.1)
+            };
+            _blockPlaceScaleYAnimation.EasingFunction = new BackEase() { EasingMode = EasingMode.EaseOut };
+
+            _blockPlaceStoryboard = new Storyboard();
+            _blockPlaceStoryboard.Children.Add(_blockPlaceScaleXAnimation);
+            _blockPlaceStoryboard.Children.Add(_blockPlaceScaleYAnimation);
+
+
+            _blockClearScaleXAnimation = new DoubleAnimation {
+                To = 1.08,
+                Duration = TimeSpan.FromSeconds(0.08)
+            };
+            _blockClearScaleXAnimation.EasingFunction = new QuarticEase() { EasingMode = EasingMode.EaseOut };
+            _blockClearScaleXAnimation.AutoReverse = true;
+            _blockClearScaleYAnimation = new DoubleAnimation {
+                To = 1.08,
+                Duration = TimeSpan.FromSeconds(0.08)
+            };
+            _blockClearScaleYAnimation.EasingFunction = new QuarticEase() { EasingMode = EasingMode.EaseOut };
+            _blockClearScaleYAnimation.AutoReverse = true;
+
+            _blockClearStoryboard = new Storyboard();
+            _blockClearStoryboard.Children.Add(_blockClearScaleXAnimation);
+            _blockClearStoryboard.Children.Add(_blockClearScaleYAnimation);
         }
 
         private void GenerateDividingLines() {
@@ -76,6 +124,20 @@ namespace Grombcross.Views {
             CurFillingState = block.State == Block.BlockState.EMPTY ? FillingState.FILLING : FillingState.CLEARING;
             _dataContext.LeftClickBlock(block);
             CurSelectingBlock = block;
+
+            if (block.State == Block.BlockState.EMPTY) {
+                PlayBlockClearAnimation(button);
+            }
+            else {
+                PlayBlockPlaceAnimation(button);
+            }
+        }
+        private void PlayBlockPlaceAnimation(Button button) {
+            Storyboard.SetTarget(_blockPlaceScaleXAnimation, button);
+            Storyboard.SetTargetProperty(_blockPlaceScaleXAnimation, new PropertyPath("(RenderTransform).(ScaleTransform.ScaleX)"));
+            Storyboard.SetTarget(_blockPlaceScaleYAnimation, button);
+            Storyboard.SetTargetProperty(_blockPlaceScaleYAnimation, new PropertyPath("(RenderTransform).(ScaleTransform.ScaleY)"));
+            _blockPlaceStoryboard.Begin();
         }
 
         private void RightOrMiddleClickBlock(object sender, MouseButtonEventArgs e) {
@@ -93,6 +155,20 @@ namespace Grombcross.Views {
             else {
                 _dataContext.MiddleClickBlock(block);
             }
+
+            if (block.State == Block.BlockState.EMPTY) {
+                PlayBlockClearAnimation(button);
+            }
+            else {
+                PlayBlockPlaceAnimation(button);
+            }
+        }
+        private void PlayBlockClearAnimation(Button button) {
+            Storyboard.SetTarget(_blockClearScaleXAnimation, button);
+            Storyboard.SetTargetProperty(_blockClearScaleXAnimation, new PropertyPath("(RenderTransform).(ScaleTransform.ScaleX)"));
+            Storyboard.SetTarget(_blockClearScaleYAnimation, button);
+            Storyboard.SetTargetProperty(_blockClearScaleYAnimation, new PropertyPath("(RenderTransform).(ScaleTransform.ScaleY)"));
+            _blockClearStoryboard.Begin();
         }
 
         private void ShowPuzzleSelect(object sender, RoutedEventArgs e) {
@@ -124,12 +200,30 @@ namespace Grombcross.Views {
             if (block == null || block == CurSelectingBlock) return;
 
             if (e.LeftButton == MouseButtonState.Pressed) {
-                _dataContext.DragLeftClickBlock(block, CurFillingState);
+                bool blockStateWasChanged = _dataContext.DragLeftClickBlock(block, CurFillingState);
                 CurSelectingBlock = block;
+
+                if (blockStateWasChanged) {
+                    if (block.State == Block.BlockState.EMPTY) {
+                        PlayBlockClearAnimation(button);
+                    }
+                    else {
+                        PlayBlockPlaceAnimation(button);
+                    }
+                }
             }
             else if (e.RightButton == MouseButtonState.Pressed) {
-                _dataContext.DragRightClickBlock(block, CurFillingState);
+                bool blockStateWasChanged = _dataContext.DragRightClickBlock(block, CurFillingState);
                 CurSelectingBlock = block;
+
+                if (blockStateWasChanged) {
+                    if (block.State == Block.BlockState.EMPTY) {
+                        PlayBlockClearAnimation(button);
+                    }
+                    else {
+                        PlayBlockPlaceAnimation(button);
+                    }
+                }
             }
         }
 

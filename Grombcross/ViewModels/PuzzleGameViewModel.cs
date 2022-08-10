@@ -48,16 +48,20 @@ namespace Grombcross.ViewModels {
             RefreshLineFulfilledProperties(block);
             RefreshPuzzleSolved();
         }
-        public void DragLeftClickBlock(Block block, PuzzleGameView.FillingState curFillingState) {
+        public bool DragLeftClickBlock(Block block, PuzzleGameView.FillingState curFillingState) {
+            bool blockStateWasChanged = false;
+
             switch (curFillingState) {
                 case PuzzleGameView.FillingState.FILLING:
                     if (block.State == Block.BlockState.EMPTY) {
                         FillBlock(block);
+                        blockStateWasChanged = true;
                     }
                     break;
                 case PuzzleGameView.FillingState.CLEARING:
                     if (block.State == Block.BlockState.FILLED) {
                         ClearBlock(block);
+                        blockStateWasChanged = true;
                     }
                     break;
             }
@@ -66,6 +70,8 @@ namespace Grombcross.ViewModels {
 
             RefreshLineFulfilledProperties(block);
             RefreshPuzzleSolved();
+
+            return blockStateWasChanged;
         }
 
         public void RightClickBlock(Block block) {
@@ -81,16 +87,20 @@ namespace Grombcross.ViewModels {
             RefreshLineFulfilledProperties(block);
             RefreshPuzzleSolved();
         }
-        public void DragRightClickBlock(Block block, PuzzleGameView.FillingState curFillingState) {
+        public bool DragRightClickBlock(Block block, PuzzleGameView.FillingState curFillingState) {
+            bool blockStateWasChanged = false;
+
             switch (curFillingState) {
                 case PuzzleGameView.FillingState.FILLING:
                     if (block.State == Block.BlockState.EMPTY) {
                         XBlock(block);
+                        blockStateWasChanged = true;
                     }
                     break;
                 case PuzzleGameView.FillingState.CLEARING:
                     if (block.State == Block.BlockState.X) {
                         ClearBlock(block);
+                        blockStateWasChanged = true;
                     }
                     break;
             }
@@ -99,6 +109,8 @@ namespace Grombcross.ViewModels {
 
             RefreshLineFulfilledProperties(block);
             RefreshPuzzleSolved();
+
+            return blockStateWasChanged;
         }
 
         public void MiddleClickBlock(Block block) {
