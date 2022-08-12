@@ -2,9 +2,10 @@
     x:Class="Grombcross.Views.PuzzleSelectView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:components="clr-namespace:Grombcross.Components"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Grombcross.Views"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:components="clr-namespace:Grombcross.Components"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DesignHeight="800"
     d:DesignWidth="800"
     mc:Ignorable="d">
@@ -16,18 +17,89 @@
         </Grid.RowDefinitions>
 
         <!--  Header Title  -->
-        <Border
-            Grid.Row="0"
-            Background="DarkGreen"
-            Opacity="0.6" />
-        <TextBlock
-            Grid.Row="0"
-            Margin="0,5,0,10"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            FontSize="40"
-            Foreground="White"
-            Text="Puzzle Select" />
+        <Grid Grid.Row="0">
+            <Border Background="DarkGreen" Opacity="0.6" />
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <Image
+                    Name="Gromb1"
+                    Height="45"
+                    Margin="30,0"
+                    VerticalAlignment="Center"
+                    Source="/Graphics/Icon128.png">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <RotateTransform x:Name="Gromb1RotateTransform" Angle="55" />
+                            <TranslateTransform X="0" Y="2" />
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                    <Image.RenderTransformOrigin>
+                        <Point X="0.5" Y="0.8" />
+                    </Image.RenderTransformOrigin>
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="Image.Loaded">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                        AutoReverse="True"
+                                        RepeatBehavior="Forever"
+                                        Storyboard.TargetName="Gromb1RotateTransform"
+                                        Storyboard.TargetProperty="Angle"
+                                        From="-10"
+                                        To="10"
+                                        Duration="0:0:2">
+                                        <DoubleAnimation.EasingFunction>
+                                            <BackEase EasingMode="EaseInOut" />
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+                <TextBlock
+                    Margin="0,5,0,10"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="40"
+                    Foreground="White"
+                    Text="Puzzle Select" />
+                <Image
+                    Name="Gromb2"
+                    Height="45"
+                    Margin="30,0"
+                    Source="/Graphics/Icon128.png">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <RotateTransform x:Name="Gromb2RotateTransform" Angle="55" />
+                            <TranslateTransform X="0" Y="2" />
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                    <Image.RenderTransformOrigin>
+                        <Point X="0.5" Y="0.8" />
+                    </Image.RenderTransformOrigin>
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="Image.Loaded">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                        AutoReverse="True"
+                                        RepeatBehavior="Forever"
+                                        Storyboard.TargetName="Gromb2RotateTransform"
+                                        Storyboard.TargetProperty="Angle"
+                                        From="-10"
+                                        To="10"
+                                        Duration="0:0:2">
+                                        <DoubleAnimation.EasingFunction>
+                                            <BackEase EasingMode="EaseInOut" />
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+            </StackPanel>
+        </Grid>
 
         <!--  Puzzle Select  -->
         <ScrollViewer

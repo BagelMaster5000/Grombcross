@@ -36,7 +36,7 @@ namespace Grombcross.Models {
 
             path = Path.GetFullPath(@"Audio\Music\Music.wav");
             _music.Open(new Uri(path));
-            _music.Volume = 0;
+            _music.Volume = 0.3;
             _music.MediaEnded += StartMusic;
         }
 
