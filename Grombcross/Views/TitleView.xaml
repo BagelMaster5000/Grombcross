@@ -20,122 +20,11 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             FontSize="18"
-            Foreground="Black"
+            Foreground="{StaticResource GrombDarkerBlueBrush}"
             Opacity="0.3"
             Text="{Binding Version}" />
 
         <Grid>
-            <!--<StackPanel
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Orientation="Horizontal">
-                <Image
-                    Name="Gromb1"
-                    Height="120"
-                    Margin="160,0"
-                    Source="/Graphics/Icon512.png">
-                    <Image.RenderTransform>
-                        <TransformGroup>
-                            <RotateTransform x:Name="Gromb1RotateTransform" Angle="55" />
-                            <TranslateTransform X="0" Y="-200" />
-                        </TransformGroup>
-                    </Image.RenderTransform>
-                    <Image.RenderTransformOrigin>
-                        <Point X="0.5" Y="0.8" />
-                    </Image.RenderTransformOrigin>
-                    <Image.Triggers>
-                        <EventTrigger RoutedEvent="Image.Loaded">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <DoubleAnimation
-                                        AutoReverse="True"
-                                        RepeatBehavior="Forever"
-                                        Storyboard.TargetName="Gromb1RotateTransform"
-                                        Storyboard.TargetProperty="Angle"
-                                        From="-10"
-                                        To="10"
-                                        Duration="0:0:2">
-                                        <DoubleAnimation.EasingFunction>
-                                            <BackEase EasingMode="EaseInOut" />
-                                        </DoubleAnimation.EasingFunction>
-                                    </DoubleAnimation>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
-                    </Image.Triggers>
-                </Image>
-                <Image
-                    Name="Gromb2"
-                    Height="120"
-                    Margin="0,0"
-                    Source="/Graphics/Icon512.png">
-                    <Image.RenderTransform>
-                        <TransformGroup>
-                            <RotateTransform x:Name="Gromb2RotateTransform" Angle="55" />
-                            <TranslateTransform X="0" Y="-230" />
-                        </TransformGroup>
-                    </Image.RenderTransform>
-                    <Image.RenderTransformOrigin>
-                        <Point X="0.5" Y="0.8" />
-                    </Image.RenderTransformOrigin>
-                    <Image.Triggers>
-                        <EventTrigger RoutedEvent="Image.Loaded">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <DoubleAnimation
-                                        AutoReverse="True"
-                                        RepeatBehavior="Forever"
-                                        Storyboard.TargetName="Gromb2RotateTransform"
-                                        Storyboard.TargetProperty="Angle"
-                                        From="-10"
-                                        To="10"
-                                        Duration="0:0:2">
-                                        <DoubleAnimation.EasingFunction>
-                                            <BackEase EasingMode="EaseInOut" />
-                                        </DoubleAnimation.EasingFunction>
-                                    </DoubleAnimation>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
-                    </Image.Triggers>
-                </Image>
-                <Image
-                    Name="Gromb3"
-                    Height="120"
-                    Margin="160,0"
-                    Source="/Graphics/Icon512.png">
-                    <Image.RenderTransform>
-                        <TransformGroup>
-                            <RotateTransform x:Name="Gromb3RotateTransform" Angle="55" />
-                            <TranslateTransform X="0" Y="-200" />
-                        </TransformGroup>
-                    </Image.RenderTransform>
-                    <Image.RenderTransformOrigin>
-                        <Point X="0.5" Y="0.8" />
-                    </Image.RenderTransformOrigin>
-                    <Image.Triggers>
-                        <EventTrigger RoutedEvent="Image.Loaded">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <DoubleAnimation
-                                        AutoReverse="True"
-                                        RepeatBehavior="Forever"
-                                        Storyboard.TargetName="Gromb3RotateTransform"
-                                        Storyboard.TargetProperty="Angle"
-                                        From="-10"
-                                        To="10"
-                                        Duration="0:0:2">
-                                        <DoubleAnimation.EasingFunction>
-                                            <BackEase EasingMode="EaseInOut" />
-                                        </DoubleAnimation.EasingFunction>
-                                    </DoubleAnimation>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
-                    </Image.Triggers>
-                </Image>
-            </StackPanel>-->
-
             <Image
                 Name="TitleGraphic"
                 Height="350"
@@ -145,7 +34,7 @@
                 <Image.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform x:Name="TitleGraphicScaleTransform" ScaleX="1" ScaleY="1" />
-                        <TranslateTransform Y="0" />
+                        <TranslateTransform Y="-120" />
                     </TransformGroup>
                 </Image.RenderTransform>
                 <Image.RenderTransformOrigin>
@@ -198,12 +87,199 @@
                 Margin="0,25,0,0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                FontSize="24"
+                FontSize="22"
+                Foreground="{StaticResource GrombDarkBlueBrush}"
                 Text="A Picross Game for the Dallas Society of Play">
                 <TextBlock.RenderTransform>
-                    <TranslateTransform Y="200" />
+                    <TranslateTransform Y="70" />
                 </TextBlock.RenderTransform>
             </TextBlock>
+
+            <StackPanel
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Orientation="Horizontal">
+                <Image
+                    Name="Gromb1"
+                    Height="120"
+                    Margin="160,0"
+                    Source="/Graphics/Icon512.png">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <RotateTransform x:Name="Gromb1RotateTransform" Angle="55" />
+                            <TranslateTransform X="30" Y="195" />
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                    <Image.RenderTransformOrigin>
+                        <Point X="0.5" Y="0.8" />
+                    </Image.RenderTransformOrigin>
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="Image.Loaded">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                        AutoReverse="True"
+                                        RepeatBehavior="Forever"
+                                        Storyboard.TargetName="Gromb1RotateTransform"
+                                        Storyboard.TargetProperty="Angle"
+                                        From="-10"
+                                        To="10"
+                                        Duration="0:0:2">
+                                        <DoubleAnimation.EasingFunction>
+                                            <BackEase EasingMode="EaseInOut" />
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+                <Image
+                    Name="Gromb2"
+                    Height="120"
+                    Margin="0,0"
+                    Source="/Graphics/Icon512.png">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <RotateTransform x:Name="Gromb2RotateTransform" Angle="55" />
+                            <TranslateTransform X="0" Y="210" />
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                    <Image.RenderTransformOrigin>
+                        <Point X="0.5" Y="0.8" />
+                    </Image.RenderTransformOrigin>
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="Image.Loaded">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                        AutoReverse="True"
+                                        RepeatBehavior="Forever"
+                                        Storyboard.TargetName="Gromb2RotateTransform"
+                                        Storyboard.TargetProperty="Angle"
+                                        From="-10"
+                                        To="10"
+                                        Duration="0:0:2">
+                                        <DoubleAnimation.EasingFunction>
+                                            <BackEase EasingMode="EaseInOut" />
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+                <Image
+                    Name="Gromb3"
+                    Height="120"
+                    Margin="160,0"
+                    Source="/Graphics/Icon512.png">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <RotateTransform x:Name="Gromb3RotateTransform" Angle="55" />
+                            <TranslateTransform X="-30" Y="195" />
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                    <Image.RenderTransformOrigin>
+                        <Point X="0.5" Y="0.8" />
+                    </Image.RenderTransformOrigin>
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="Image.Loaded">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                        AutoReverse="True"
+                                        RepeatBehavior="Forever"
+                                        Storyboard.TargetName="Gromb3RotateTransform"
+                                        Storyboard.TargetProperty="Angle"
+                                        From="-10"
+                                        To="10"
+                                        Duration="0:0:2">
+                                        <DoubleAnimation.EasingFunction>
+                                            <BackEase EasingMode="EaseInOut" />
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+            </StackPanel>
+            <StackPanel
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Orientation="Horizontal">
+                <Image
+                    Name="Gromb4"
+                    Height="80"
+                    Margin="100,0"
+                    Source="/Graphics/Icon512.png">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <RotateTransform x:Name="Gromb4RotateTransform" Angle="55" />
+                            <TranslateTransform X="0" Y="280" />
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                    <Image.RenderTransformOrigin>
+                        <Point X="0.5" Y="0.8" />
+                    </Image.RenderTransformOrigin>
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="Image.Loaded">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                        AutoReverse="True"
+                                        RepeatBehavior="Forever"
+                                        Storyboard.TargetName="Gromb4RotateTransform"
+                                        Storyboard.TargetProperty="Angle"
+                                        From="10"
+                                        To="-10"
+                                        Duration="0:0:2">
+                                        <DoubleAnimation.EasingFunction>
+                                            <BackEase EasingMode="EaseInOut" />
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+                <Image
+                    Name="Gromb5"
+                    Height="80"
+                    Margin="100,0"
+                    Source="/Graphics/Icon512.png">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <RotateTransform x:Name="Gromb5RotateTransform" Angle="55" />
+                            <TranslateTransform X="0" Y="280" />
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                    <Image.RenderTransformOrigin>
+                        <Point X="0.5" Y="0.8" />
+                    </Image.RenderTransformOrigin>
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="Image.Loaded">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                        AutoReverse="True"
+                                        RepeatBehavior="Forever"
+                                        Storyboard.TargetName="Gromb5RotateTransform"
+                                        Storyboard.TargetProperty="Angle"
+                                        From="10"
+                                        To="-10"
+                                        Duration="0:0:2">
+                                        <DoubleAnimation.EasingFunction>
+                                            <BackEase EasingMode="EaseInOut" />
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+            </StackPanel>
         </Grid>
 
         <!--  Footer  -->
@@ -247,7 +323,7 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             FontSize="22"
-            Foreground="CadetBlue"
+            Foreground="{StaticResource GrombPinkBrush}"
             Text="Click Anywhere to Start">
             <TextBlock.Triggers>
                 <EventTrigger RoutedEvent="TextBlock.Loaded">
@@ -258,7 +334,7 @@
                                 RepeatBehavior="Forever"
                                 Storyboard.TargetName="ClickToStartText"
                                 Storyboard.TargetProperty="Foreground.(SolidColorBrush.Color)"
-                                From="CadetBlue"
+                                From="{StaticResource GrombPink}"
                                 To="Transparent"
                                 Duration="0:0:1">
                                 <ColorAnimation.EasingFunction>

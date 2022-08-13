@@ -7,7 +7,21 @@
     xmlns:local="clr-namespace:Grombcross"
     x:Name="Grombcross">
     <Application.Resources>
-        <!--<SoundPlayerAction x:Key="PlacedBlock"/>-->
+        <Color x:Key="GrombDarkBlue">#065a8a</Color>
+        <Color x:Key="GrombDarkerBlue">#023552</Color>
+        <Color x:Key="GrombRed">#ff2358</Color>
+        <Color x:Key="GrombPink">#ff3394</Color>
+        <Color x:Key="GrombGreen">#26ff76</Color>
+        <Color x:Key="GrombYellow">#fffd96</Color>
+        <Color x:Key="GrombWhite">#ffffff</Color>
+
+        <SolidColorBrush x:Key="GrombDarkBlueBrush" Color="{DynamicResource GrombDarkBlue}" />
+        <SolidColorBrush x:Key="GrombDarkerBlueBrush" Color="{DynamicResource GrombDarkerBlue}" />
+        <SolidColorBrush x:Key="GrombRedBrush" Color="{DynamicResource GrombRed}" />
+        <SolidColorBrush x:Key="GrombPinkBrush" Color="{DynamicResource GrombPink}" />
+        <SolidColorBrush x:Key="GrombGreenBrush" Color="{DynamicResource GrombGreen}" />
+        <SolidColorBrush x:Key="GrombYellowBrush" Color="{DynamicResource GrombYellow}" />
+        <SolidColorBrush x:Key="GrombWhiteBrush" Color="{DynamicResource GrombWhite}" />
 
         <converters:PuzzleSizeToScaleConverter x:Key="PuzzleSizeToScaleConverter" />
         <converters:BlockStateToButtonStyleConverter x:Key="BlockToButtonStyleConverter" />
@@ -68,129 +82,8 @@
                                 BorderThickness="0.2"
                                 CornerRadius="0.4">
                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                <!--<Border.RenderTransformOrigin>
-                                <Point X="0.5" Y="0.5" />
-                            </Border.RenderTransformOrigin>
-                            <Border.RenderTransform>
-                                <ScaleTransform ScaleX="1" ScaleY="1" />
-                            </Border.RenderTransform>
-                            <Border.Style>
-                                <Style>
-                                    <Style.Triggers />
-                                </Style>
-                            </Border.Style>-->
                             </Border>
                         </Border>
-                        <!--<ControlTemplate.Triggers>
-                            <Trigger Property="IsPressed" Value="True">
-                                <Trigger.EnterActions>
-                                    <StopStoryboard BeginStoryboardName="MouseOverStoryBoardEnter" />
-                                    <StopStoryboard BeginStoryboardName="MouseOverStoryBoardExit" />
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <DoubleAnimation
-                                                Storyboard.TargetName="Border"
-                                                Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)"
-                                                To="0.9"
-                                                Duration="0:0:0.01">
-                                                <DoubleAnimation.EasingFunction>
-                                                    <SineEase EasingMode="EaseOut" />
-                                                </DoubleAnimation.EasingFunction>
-                                            </DoubleAnimation>
-                                            <DoubleAnimation
-                                                Storyboard.TargetName="Border"
-                                                Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)"
-                                                To="0.9"
-                                                Duration="0:0:0.01">
-                                                <DoubleAnimation.EasingFunction>
-                                                    <SineEase EasingMode="EaseOut" />
-                                                </DoubleAnimation.EasingFunction>
-                                            </DoubleAnimation>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </Trigger.EnterActions>
-                                <Trigger.ExitActions>
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <DoubleAnimation
-                                                Storyboard.TargetName="Border"
-                                                Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)"
-                                                To="1.00"
-                                                Duration="0:0:0.05">
-                                                <DoubleAnimation.EasingFunction>
-                                                    <PowerEase EasingMode="EaseOut" />
-                                                </DoubleAnimation.EasingFunction>
-                                            </DoubleAnimation>
-                                            <DoubleAnimation
-                                                Storyboard.TargetName="Border"
-                                                Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)"
-                                                To="1.00"
-                                                Duration="0:0:0.05">
-                                                <DoubleAnimation.EasingFunction>
-                                                    <PowerEase EasingMode="EaseOut" />
-                                                </DoubleAnimation.EasingFunction>
-                                            </DoubleAnimation>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </Trigger.ExitActions>
-                        -->
-                        <!--<Setter TargetName="Border" Property="RenderTransform">
-                                    <Setter.Value>
-                                        <ScaleTransform CenterY="0.5" ScaleX="0.85" ScaleY="0.85" />
-                                    </Setter.Value>
-                                </Setter>-->
-                        <!--
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Trigger.EnterActions>
-                                    <BeginStoryboard Name="MouseOverStoryBoardEnter">
-                                        <Storyboard>
-                                            <DoubleAnimation
-                                                Storyboard.TargetName="Border"
-                                                Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)"
-                                                To="1.08"
-                                                Duration="0:0:0.05">
-                                                <DoubleAnimation.EasingFunction>
-                                                    <PowerEase EasingMode="EaseOut" />
-                                                </DoubleAnimation.EasingFunction>
-                                            </DoubleAnimation>
-                                            <DoubleAnimation
-                                                Storyboard.TargetName="Border"
-                                                Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)"
-                                                To="1.08"
-                                                Duration="0:0:0.05">
-                                                <DoubleAnimation.EasingFunction>
-                                                    <PowerEase EasingMode="EaseOut" />
-                                                </DoubleAnimation.EasingFunction>
-                                            </DoubleAnimation>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </Trigger.EnterActions>
-                                <Trigger.ExitActions>
-                                    <BeginStoryboard Name="MouseOverStoryBoardExit">
-                                        <Storyboard>
-                                            <DoubleAnimation
-                                                Storyboard.TargetName="Border"
-                                                Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)"
-                                                To="1.00"
-                                                Duration="0:0:0.05" />
-                                            <DoubleAnimation
-                                                Storyboard.TargetName="Border"
-                                                Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)"
-                                                To="1.00"
-                                                Duration="0:0:0.05" />
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </Trigger.ExitActions>
-                        -->
-                        <!--<Setter Property="RenderTransform">
-                                    <Setter.Value>
-                                        <ScaleTransform ScaleX="1.05" ScaleY="1.05" />
-                                    </Setter.Value>
-                                </Setter>-->
-                        <!--
-                            </Trigger>
-                        </ControlTemplate.Triggers>-->
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
