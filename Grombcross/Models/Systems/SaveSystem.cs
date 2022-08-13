@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Grombcross.Models {
+namespace Grombcross.Models.Systems {
     public static class SaveSystem {
         const string SAVE_DIRECTORY = "SaveData/";
 

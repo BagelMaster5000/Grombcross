@@ -1,4 +1,4 @@
-﻿using Grombcross.Models;
+﻿using Grombcross.Models.Systems;
 using System;
 
 namespace Grombcross.ViewModels {

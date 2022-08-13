@@ -9,7 +9,7 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 
-namespace Grombcross.Models {
+namespace Grombcross.Models.Systems {
     public static class AudioSystem {
         public static void InitializeMediaPlayers() {
             string path = Path.GetFullPath(@"Audio\SFX\PlacedBlock.wav");
@@ -37,7 +37,10 @@ namespace Grombcross.Models {
             path = Path.GetFullPath(@"Audio\Music\Music.wav");
             _music.Open(new Uri(path));
             _music.Volume = 0.3;
-            _music.MediaEnded += StartMusic;
+            _music.MediaEnded += (object? sender, EventArgs e) => {
+                _music.Position = TimeSpan.Zero;
+                _music.Play();
+            };
         }
 
         private static MediaPlayer _blockPlace = new MediaPlayer();
@@ -83,7 +86,7 @@ namespace Grombcross.Models {
         }
 
         private static MediaPlayer _music = new MediaPlayer();
-        public static void StartMusic(object? sender = null, EventArgs e = null) {
+        public static void StartMusic(object? sender = null, EventArgs? e = null) {
             _music.Play();
         }
         public static void StopMusic() {

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Grombcross.Models {
+namespace Grombcross.Models.Systems {
     public static class PuzzleGenerationSystem {
         // Debug
         const bool PUZZLE_DEFAULT_COMPLETION = false;
