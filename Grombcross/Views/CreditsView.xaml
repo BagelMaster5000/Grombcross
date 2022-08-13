@@ -102,14 +102,14 @@
         </Grid>
 
 
-        <!--  Puzzle Select  -->
+        <!--  Credits  -->
         <Border
             Grid.Row="1"
             Width="650"
             Margin="0,80"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Background="White"
+            Background="{StaticResource GrombWhiteBrush}"
             CornerRadius="20">
             <StackPanel
                 Margin="15,10"
@@ -120,32 +120,37 @@
                     Margin="0,10"
                     HorizontalAlignment="Center"
                     FontSize="26"
+                    Foreground="{StaticResource GrombDarkBlueBrush}"
                     Text="Sammy Mahmoudi - Programming, Game Design" />
                 <TextBlock
                     Margin="0,10"
                     HorizontalAlignment="Center"
                     FontSize="26"
+                    Foreground="{StaticResource GrombDarkBlueBrush}"
                     Text="Miles Gentry - Music, SFX" />
                 <TextBlock
                     Margin="0,10"
                     HorizontalAlignment="Center"
                     FontSize="26"
+                    Foreground="{StaticResource GrombDarkBlueBrush}"
                     Text="Michael Bravo - UI" />
                 <TextBlock
                     Margin="0,10"
                     HorizontalAlignment="Center"
                     FontSize="26"
+                    Foreground="{StaticResource GrombDarkBlueBrush}"
                     Text="Kris Olivares - Puzzle Design, Memes" />
                 <TextBlock
                     Margin="0,10"
                     HorizontalAlignment="Center"
                     FontSize="26"
+                    Foreground="{StaticResource GrombDarkBlueBrush}"
                     Text="FIZZTAP - Icon, Title Graphic, Grombit Character" />
                 <TextBlock
                     Margin="0,30,0,15"
                     HorizontalAlignment="Center"
                     FontSize="26"
-                    Foreground="HotPink"
+                    Foreground="{StaticResource GrombPinkBrush}"
                     Text="Special thanks to the Dallas Society of Play for being such an amazing and supportive community!"
                     TextAlignment="Center"
                     TextWrapping="Wrap" />

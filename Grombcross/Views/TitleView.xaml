@@ -314,7 +314,6 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             FontSize="22"
-            Foreground="{StaticResource GrombPinkBrush}"
             Text="Click Anywhere to Start">
             <TextBlock.Triggers>
                 <EventTrigger RoutedEvent="TextBlock.Loaded">
