@@ -24,7 +24,7 @@ namespace Grombcross.Models {
         public void QuestionBlock() => State = BlockState.QUESTION;
         public void ClearBlock() => State = BlockState.EMPTY;
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
         public void OnPropertyChanged(string propertyName) {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(string.Empty));
         }

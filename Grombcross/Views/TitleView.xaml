@@ -74,15 +74,6 @@
                 </Image.Triggers>
             </Image>
 
-            <!--<Image Height="200" Source="/Graphics/GrombcrossTitle.png" />-->
-
-            <!--<TextBlock
-                Grid.Row="0"
-                Margin="0,0,0,10"
-                HorizontalAlignment="Center"
-                FontSize="72"
-                Text="Grombcross" />-->
-
             <TextBlock
                 Margin="0,25,0,0"
                 HorizontalAlignment="Center"
