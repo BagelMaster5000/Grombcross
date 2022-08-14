@@ -1,27 +1,16 @@
 ﻿using Grombcross.Models;
 using Grombcross.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Media;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Grombcross.Views {
-    /// <summary>
-    /// Interaction logic for PuzzleGameView.xaml
-    /// </summary>
     public partial class PuzzleGameView : UserControl {
-        private PuzzleGameViewModel _dataContext;
+        private PuzzleGameViewModel _puzzleGameViewModel;
 
         private DoubleAnimation _blockPlaceScaleXAnimation;
         private DoubleAnimation _blockPlaceScaleYAnimation;
@@ -36,9 +25,8 @@ namespace Grombcross.Views {
 
             InitializeComponent();
         }
-
         private void OnLoaded(object sender, RoutedEventArgs routedEventArgs) {
-            _dataContext = DataContext as PuzzleGameViewModel;
+            _puzzleGameViewModel = DataContext as PuzzleGameViewModel;
 
             GenerateDividingLines();
 
@@ -84,8 +72,8 @@ namespace Grombcross.Views {
 
         private void GenerateDividingLines() {
             int blockInterval = 5;
-            int numLines = _dataContext.PuzzleSize / blockInterval;
-            int lineLength = _dataContext.PuzzleSize * 11;
+            int numLines = _puzzleGameViewModel.PuzzleSize / blockInterval;
+            int lineLength = _puzzleGameViewModel.PuzzleSize * 11;
             SolidColorBrush lineBrush = new SolidColorBrush(Color.FromRgb(92, 183, 196));
             for (int l = 0; l < numLines - 1; l++) {
                 Line verticalLine = new Line() {
@@ -122,7 +110,7 @@ namespace Grombcross.Views {
             if (block == null) return;
 
             CurFillingState = block.State == Block.BlockState.EMPTY ? FillingState.FILLING : FillingState.CLEARING;
-            _dataContext.LeftClickBlock(block);
+            _puzzleGameViewModel.LeftClickBlock(block);
             CurSelectingBlock = block;
 
             if (block.State == Block.BlockState.EMPTY) {
@@ -149,11 +137,11 @@ namespace Grombcross.Views {
 
             if (e.ChangedButton == MouseButton.Right) {
                 CurFillingState = block.State == Block.BlockState.EMPTY ? FillingState.FILLING : FillingState.CLEARING;
-                _dataContext.RightClickBlock(block);
+                _puzzleGameViewModel.RightClickBlock(block);
                 CurSelectingBlock = block;
             }
             else {
-                _dataContext.MiddleClickBlock(block);
+                _puzzleGameViewModel.MiddleClickBlock(block);
             }
 
             if (block.State == Block.BlockState.EMPTY) {
@@ -172,11 +160,11 @@ namespace Grombcross.Views {
         }
 
         private void ShowPuzzleSelect(object sender, RoutedEventArgs e) {
-            _dataContext.ShowSelectView();
+            _puzzleGameViewModel.ShowSelectView();
         }
 
         private void ClickedResetPuzzle(object sender, RoutedEventArgs e) {
-            _dataContext.ResetPuzzle();
+            _puzzleGameViewModel.ResetPuzzle();
         }
 
         Block _curSelectingBlock = null;
@@ -200,7 +188,7 @@ namespace Grombcross.Views {
             if (block == null || block == CurSelectingBlock) return;
 
             if (e.LeftButton == MouseButtonState.Pressed) {
-                bool blockStateWasChanged = _dataContext.DragLeftClickBlock(block, CurFillingState);
+                bool blockStateWasChanged = _puzzleGameViewModel.DragLeftClickBlock(block, CurFillingState);
                 CurSelectingBlock = block;
 
                 if (blockStateWasChanged) {
@@ -213,7 +201,7 @@ namespace Grombcross.Views {
                 }
             }
             else if (e.RightButton == MouseButtonState.Pressed) {
-                bool blockStateWasChanged = _dataContext.DragRightClickBlock(block, CurFillingState);
+                bool blockStateWasChanged = _puzzleGameViewModel.DragRightClickBlock(block, CurFillingState);
                 CurSelectingBlock = block;
 
                 if (blockStateWasChanged) {

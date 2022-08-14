@@ -4,18 +4,16 @@ using System.Windows.Controls;
 
 namespace Grombcross.Views {
     public partial class TitleView : UserControl {
-        private TitleViewModel _dataContext;
+        private TitleViewModel _titleViewModel;
         public TitleView() {
             Loaded += OnLoaded;
 
             InitializeComponent();
         }
-        private void OnLoaded(object sender, RoutedEventArgs e) {
-            _dataContext = (TitleViewModel)DataContext;
-        }
+        private void OnLoaded(object sender, RoutedEventArgs e) { _titleViewModel = (TitleViewModel)DataContext; }
 
         private void ShowPuzzleSelect(object sender, RoutedEventArgs e) {
-            _dataContext.ShowSelectView();
+            _titleViewModel.ShowSelectView();
         }
     }
 }
