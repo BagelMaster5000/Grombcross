@@ -112,28 +112,6 @@
                     x:Name="PuzzleView"
                     HorizontalAlignment="Center"
                     ItemsSource="{Binding AllPuzzles}">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <Grid x:Name="PuzzleGrid">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="190" />
-                                    <RowDefinition Height="190" />
-                                    <RowDefinition Height="190" />
-                                    <RowDefinition Height="190" />
-                                    <RowDefinition Height="190" />
-                                    <RowDefinition Height="190" />
-                                    <RowDefinition Height="190" />
-                                </Grid.RowDefinitions>
-
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="190" />
-                                    <ColumnDefinition Width="190" />
-                                    <ColumnDefinition Width="190" />
-                                    <ColumnDefinition Width="190" />
-                                </Grid.ColumnDefinitions>
-                            </Grid>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
 
                     <ItemsControl.ItemContainerStyle>
                         <Style>

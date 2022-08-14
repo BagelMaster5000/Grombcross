@@ -23,10 +23,14 @@
     <None Remove="Graphics\ResetButton.png" />
     <None Remove="Puzzles\BonusPuzzles\0-Bold-F.bmp" />
     <None Remove="Puzzles\BonusPuzzles\0-Bold-G.bmp" />
+    <None Remove="Puzzles\BonusPuzzles\0-Cube Watermelon-F.bmp" />
+    <None Remove="Puzzles\BonusPuzzles\0-Cube Watermelon-G.bmp" />
     <None Remove="Puzzles\BonusPuzzles\1-GOOBER BORG-F.bmp" />
     <None Remove="Puzzles\BonusPuzzles\1-GOOBER BORG-G.bmp" />
     <None Remove="Puzzles\BonusPuzzles\2-Loofy-F.bmp" />
     <None Remove="Puzzles\BonusPuzzles\2-Loofy-G.bmp" />
+    <None Remove="Puzzles\BonusPuzzles\3-Bold-F.bmp" />
+    <None Remove="Puzzles\BonusPuzzles\3-Bold-G.bmp" />
     <None Remove="Puzzles\DebugPuzzles\0-Creature-F.bmp" />
     <None Remove="Puzzles\DebugPuzzles\0-Creature-G.bmp" />
     <None Remove="Puzzles\DebugPuzzles\1-Test Grombit-G.bmp" />
@@ -145,10 +149,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Icons\Icon.ico" />
-    <Content Include="Puzzles\BonusPuzzles\0-Bold-F.bmp">
+    <Content Include="Puzzles\BonusPuzzles\0-Cube Watermelon-F.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Puzzles\BonusPuzzles\0-Bold-G.bmp">
+    <Content Include="Puzzles\BonusPuzzles\0-Cube Watermelon-G.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Puzzles\BonusPuzzles\1-GOOBER BORG-F.bmp">
@@ -161,6 +165,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Puzzles\BonusPuzzles\2-Loofy-G.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\BonusPuzzles\3-Bold-F.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\BonusPuzzles\3-Bold-G.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Puzzles\DebugPuzzles\0-Creature-F.bmp">

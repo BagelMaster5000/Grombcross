@@ -23,6 +23,8 @@ namespace Grombcross.ViewModels {
         public Action OnTransitionFinished;
         private ViewModelBase queuedViewModel = null;
 
+        public static Action OnViewChanged;
+
         #region Setup
         public MainViewModel() {
             InitializeTransitionTimer();
@@ -84,8 +86,9 @@ namespace Grombcross.ViewModels {
             }
 
             CurrentViewModel = queuedViewModel;
-            queuedViewModel = null;
             OnPropertyChanged(nameof(CurrentViewModel));
+
+            OnViewChanged?.Invoke();
         }
         private void QueueViewModel(ViewModelBase setQueuedViewModel) {
             queuedViewModel = setQueuedViewModel;
