@@ -62,7 +62,7 @@
                     VerticalAlignment="Center"
                     FontSize="40"
                     Foreground="White"
-                    Text="Puzzle Select" />
+                    Text="{Binding HeaderText}" />
                 <Image
                     Name="Gromb2"
                     Height="45"
@@ -236,6 +236,7 @@
             <Button
                 Width="Auto"
                 Margin="10"
+                Click="ShowPuzzleSelect"
                 Style="{StaticResource ActionButton}">
                 <Grid>
                     <components:BlueGradientActionButton />
@@ -244,7 +245,7 @@
                         Margin="10,5"
                         VerticalAlignment="Center"
                         Foreground="LightCyan"
-                        Text="Bonus Puzzles" />
+                        Text="{Binding ShowPuzzleSelectButtonText}" />
                 </Grid>
             </Button>
             <Button

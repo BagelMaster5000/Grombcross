@@ -21,6 +21,7 @@ namespace Grombcross.Views {
 
         private void ShowTitle(object sender, RoutedEventArgs e) => _puzzleSelectViewModel.ShowTitleView();
         private void ShowCredits(object sender, RoutedEventArgs e) => _puzzleSelectViewModel.ShowCreditsView();
+        private void ShowPuzzleSelect(object sender, RoutedEventArgs e) => _puzzleSelectViewModel.ShowPuzzleSelectView();
         private void ShowSettings(object sender, RoutedEventArgs e) => _puzzleSelectViewModel.ShowSettingsView();
     }
 }

@@ -115,8 +115,17 @@ namespace Grombcross.ViewModels {
             return true;
         }
 
+        public bool SetStandardSourceAndShowPuzzleSelectView() {
+            GlobalVariables.PuzzleSource = GlobalVariables.PuzzleSourceType.STANDARD;
+            return ShowPuzzleSelectView();
+        }
+        public bool SetBonusSourceAndShowPuzzleSelectView() {
+            GlobalVariables.PuzzleSource = GlobalVariables.PuzzleSourceType.BONUS;
+            return ShowPuzzleSelectView();
+        }
         public bool ShowPuzzleSelectView() {
-            PuzzleSelectViewModel selectViewModel = new PuzzleSelectViewModel(ShowTitleView, ShowCreditsView, ShowPuzzleGameView, ShowSettingsView);
+            PuzzleSelectViewModel selectViewModel = new PuzzleSelectViewModel(ShowTitleView, ShowCreditsView, ShowPuzzleGameView,
+                SetStandardSourceAndShowPuzzleSelectView, SetBonusSourceAndShowPuzzleSelectView, ShowSettingsView);
             bool viewModelWasQueued = ShowOrQueueViewModel(selectViewModel);
 
             if (viewModelWasQueued) {

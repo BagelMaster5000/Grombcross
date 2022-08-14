@@ -23,13 +23,20 @@ namespace Grombcross.Models {
 
         public PuzzleGameModel(int setPuzzleIndex) {
             try {
-                CurrentPuzzle = GlobalVariables.StandardPuzzles[setPuzzleIndex];
+                switch (GlobalVariables.PuzzleSource) {
+                    case GlobalVariables.PuzzleSourceType.STANDARD:
+                        CurrentPuzzle = GlobalVariables.StandardPuzzles[setPuzzleIndex];
+                        break;
+                    case GlobalVariables.PuzzleSourceType.BONUS:
+                        CurrentPuzzle = GlobalVariables.BonusPuzzles[setPuzzleIndex];
+                        break;
+                }
                 if (CurrentPuzzle.Index != setPuzzleIndex) {
-                    throw new PuzzleNotFoundException("Index mismatch of " + setPuzzleIndex + " and " + CurrentPuzzle.Index);
+                    throw new PuzzleNotFoundException(GlobalVariables.PuzzleSource + " puzzles: Index mismatch of " + setPuzzleIndex + " and " + CurrentPuzzle.Index);
                 }
             }
             catch {
-                throw new PuzzleNotFoundException("Could not find puzzle at index " + CurrentPuzzleIndex);
+                throw new PuzzleNotFoundException(GlobalVariables.PuzzleSource + " puzzles: Could not find puzzle at index " + CurrentPuzzleIndex);
             }
 
             CurrentPuzzleIndex = setPuzzleIndex;
@@ -39,12 +46,12 @@ namespace Grombcross.Models {
         }
 
         public void GeneratePuzzle() {
-            if (GlobalVariables.StandardPuzzles[CurrentPuzzleIndex].GeneratorImage.Width !=
-                GlobalVariables.StandardPuzzles[CurrentPuzzleIndex].GeneratorImage.Height) {
+            if (CurrentPuzzle.GeneratorImage.Width !=
+                CurrentPuzzle.GeneratorImage.Height) {
                 throw new WidthHeightUnequalException();
             }
 
-            Bitmap gImage = GlobalVariables.StandardPuzzles[CurrentPuzzleIndex].GeneratorImage;
+            Bitmap gImage = CurrentPuzzle.GeneratorImage;
             GenerateBlankBlockGrid(gImage);
             GenerateSolutionGrid(gImage);
             GenerateLeftNumberLines();
