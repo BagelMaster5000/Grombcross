@@ -27,8 +27,11 @@ namespace Grombcross.Views {
 
         private void SetGridRowsAndColumns() {
             int numPuzzles = _puzzleSelectViewModel.AllPuzzles.Count;
-            int numColumns = GlobalVariables.numPuzzleSelectColumns;
-            int numRows = numPuzzles / numColumns + 1;
+            int numColumns = GlobalVariables.NumPuzzleSelectColumns;
+            int numRows = numPuzzles / numColumns;
+            if (numPuzzles % numColumns != 0) {
+                numRows++;
+            }
 
             string xaml =
                 @"<ItemsPanelTemplate xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation' xmlns:x='http://schemas.microsoft.com/winfx/2006/xaml'>" +

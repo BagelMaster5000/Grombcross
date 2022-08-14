@@ -10,6 +10,6 @@ namespace Grombcross {
         public enum PuzzleSourceType { STANDARD, BONUS };
         public static PuzzleSourceType PuzzleSource = PuzzleSourceType.STANDARD;
 
-        public static int numPuzzleSelectColumns = 5;
+        public static int NumPuzzleSelectColumns = 5;
     }
 }

@@ -20,7 +20,9 @@ namespace Grombcross.Models.Systems {
         private static void SaveStandardPuzzles() {
             Dictionary<string, bool> standardPuzzlesSaveData = new Dictionary<string, bool>();
             foreach (Puzzle p in GlobalVariables.StandardPuzzles) {
-                standardPuzzlesSaveData.Add(p.Name, p.Completed);
+                if (!standardPuzzlesSaveData.ContainsKey(p.Name)) {
+                    standardPuzzlesSaveData.Add(p.Name, p.Completed);
+                }
             }
 
             SavePuzzlesToJson(standardPuzzlesSaveData, "StandardPuzzlesSaveData");
@@ -28,7 +30,9 @@ namespace Grombcross.Models.Systems {
         private static void SaveBonusPuzzles() {
             Dictionary<string, bool> bonusPuzzlesSaveData = new Dictionary<string, bool>();
             foreach (Puzzle p in GlobalVariables.BonusPuzzles) {
-                bonusPuzzlesSaveData.Add(p.Name, p.Completed);
+                if (!bonusPuzzlesSaveData.ContainsKey(p.Name)) {
+                    bonusPuzzlesSaveData.Add(p.Name, p.Completed);
+                }
             }
 
             SavePuzzlesToJson(bonusPuzzlesSaveData, "BonusPuzzlesSaveData");

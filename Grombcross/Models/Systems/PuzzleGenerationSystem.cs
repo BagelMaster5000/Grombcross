@@ -45,7 +45,7 @@ namespace Grombcross.Models.Systems {
                 Puzzle curPuzzle = GlobalVariables.StandardPuzzles[p];
                 if (p != curPuzzle.Index) {
                     placeholderPuzzle.Index = p;
-                    int numColumns = GlobalVariables.numPuzzleSelectColumns;
+                    int numColumns = GlobalVariables.NumPuzzleSelectColumns;
                     placeholderPuzzle.Column = p % numColumns;
                     placeholderPuzzle.Row = p / numColumns;
                     GlobalVariables.StandardPuzzles.Insert(p, placeholderPuzzle);
@@ -69,7 +69,7 @@ namespace Grombcross.Models.Systems {
                 Puzzle curPuzzle = GlobalVariables.BonusPuzzles[p];
                 if (p != curPuzzle.Index) {
                     placeholderPuzzle.Index = p;
-                    int numColumns = GlobalVariables.numPuzzleSelectColumns;
+                    int numColumns = GlobalVariables.NumPuzzleSelectColumns;
                     placeholderPuzzle.Column = p % numColumns;
                     placeholderPuzzle.Row = p / numColumns;
                     GlobalVariables.BonusPuzzles.Insert(p, placeholderPuzzle);
@@ -128,7 +128,7 @@ namespace Grombcross.Models.Systems {
                 throw new InvalidPuzzlePathException("Third word error");
             }
 
-            int numColumns = GlobalVariables.numPuzzleSelectColumns;
+            int numColumns = GlobalVariables.NumPuzzleSelectColumns;
             int column = index % numColumns;
             int row = index / numColumns;
 
