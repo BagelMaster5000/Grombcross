@@ -236,6 +236,20 @@
             <Button
                 Width="Auto"
                 Margin="10"
+                Style="{StaticResource ActionButton}">
+                <Grid>
+                    <components:BlueGradientActionButton />
+
+                    <TextBlock
+                        Margin="10,5"
+                        VerticalAlignment="Center"
+                        Foreground="LightCyan"
+                        Text="Bonus Puzzles" />
+                </Grid>
+            </Button>
+            <Button
+                Width="Auto"
+                Margin="10"
                 Click="ShowCredits"
                 Style="{StaticResource ActionButton}">
                 <Grid>
@@ -246,6 +260,21 @@
                         VerticalAlignment="Center"
                         Foreground="LightCyan"
                         Text="Credits" />
+                </Grid>
+            </Button>
+            <Button
+                Width="Auto"
+                Margin="10"
+                Click="ShowSettings"
+                Style="{StaticResource ActionButton}">
+                <Grid>
+                    <components:GrayGradientActionButton />
+
+                    <TextBlock
+                        Margin="10,5"
+                        VerticalAlignment="Center"
+                        Foreground="White"
+                        Text="Settings" />
                 </Grid>
             </Button>
         </StackPanel>

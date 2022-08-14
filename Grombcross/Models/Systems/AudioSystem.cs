@@ -43,6 +43,8 @@ namespace Grombcross.Models.Systems {
             };
         }
 
+
+        // SFX
         private static MediaPlayer _blockPlace = new MediaPlayer();
         public static void PlayBlockPlace() {
             _blockPlace.Volume = 1;
@@ -85,12 +87,60 @@ namespace Grombcross.Models.Systems {
             _blockPlace.Play();
         }
 
+
+        // Music
         private static MediaPlayer _music = new MediaPlayer();
         public static void StartMusic(object? sender = null, EventArgs? e = null) {
             _music.Play();
         }
         public static void StopMusic() {
             _music.Stop();
+        }
+
+
+        // Mute Settings
+        private static bool _sfxMuted;
+        public static bool SfxMuted { get { return _sfxMuted; } }
+        public static void ToggleSfxMute() {
+            if (SfxMuted) {
+                UnmuteSfx();
+            }
+            else {
+                MuteSfx();
+            }
+        }
+        public static void MuteSfx() {
+            _sfxMuted = true;
+
+            RefreshAllSfxMute();
+        }
+        public static void UnmuteSfx() {
+            _sfxMuted = false;
+
+            RefreshAllSfxMute();
+        }
+        private static void RefreshAllSfxMute() {
+            _blockPlace.IsMuted = _sfxMuted;
+            _xPlace.IsMuted = _sfxMuted;
+            _puzzleComplete.IsMuted = _sfxMuted;
+            _puzzleStart.IsMuted = _sfxMuted;
+            _longReturn.IsMuted = _sfxMuted;
+        }
+
+        public static bool MusicMuted { get { return _music.IsMuted; } }
+        public static void ToggleMusicMute() {
+            if (MusicMuted) {
+                UnmuteMusic();
+            }
+            else {
+                MuteMusic();
+            }
+        }
+        public static void MuteMusic() {
+            _music.IsMuted = true;
+        }
+        public static void UnmuteMusic() {
+            _music.IsMuted = false;
         }
     }
 }

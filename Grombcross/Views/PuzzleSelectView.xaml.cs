@@ -38,12 +38,8 @@ namespace Grombcross.Views {
             _dataContext.ShowGameView(puzzle.Index);
         }
 
-        private void ShowTitle(object sender, RoutedEventArgs e) {
-            _dataContext.ShowTitleView();
-        }
-
-        private void ShowCredits(object sender, RoutedEventArgs e) {
-            _dataContext.ShowCreditsView();
-        }
+        private void ShowTitle(object sender, RoutedEventArgs e) => _dataContext.ShowTitleView();
+        private void ShowCredits(object sender, RoutedEventArgs e) => _dataContext.ShowCreditsView();
+        private void ShowSettings(object sender, RoutedEventArgs e) => _dataContext.ShowSettingsView();
     }
 }

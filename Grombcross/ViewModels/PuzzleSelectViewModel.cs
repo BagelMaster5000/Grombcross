@@ -14,8 +14,9 @@ namespace Grombcross.ViewModels {
         public Func<bool> ShowTitleView;
         public Func<bool> ShowCreditsView;
         public Func<int, bool> ShowGameView;
+        public Func<bool> ShowSettingsView;
 
-        public PuzzleSelectViewModel(Func<bool> showTitleView, Func<bool> showCreditsView, Func<int, bool> showGameView) {
+        public PuzzleSelectViewModel(Func<bool> showTitleView, Func<bool> showCreditsView, Func<int, bool> showGameView, Func<bool> showSettingsView) {
             AudioSystem.StartMusic();
 
             ShowTitleView = () => {
@@ -34,6 +35,11 @@ namespace Grombcross.ViewModels {
                 AudioSystem.StopMusic();
                 AudioSystem.PlayPuzzleStart();
                 return showGameView(puzzleIndex);
+            };
+
+            ShowSettingsView = () => {
+                AudioSystem.PlayQuickReturn();
+                return showSettingsView();
             };
         }
     }

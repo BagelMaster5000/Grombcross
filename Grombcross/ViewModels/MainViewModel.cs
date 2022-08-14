@@ -27,7 +27,7 @@ namespace Grombcross.ViewModels {
         public MainViewModel() {
             InitializeTransitionTimer();
 
-            ShowTitleView();
+            ShowSettingsView();
         }
 
         private void InitializeTransitionTimer() {
@@ -116,7 +116,7 @@ namespace Grombcross.ViewModels {
         }
 
         public bool ShowPuzzleSelectView() {
-            PuzzleSelectViewModel selectViewModel = new PuzzleSelectViewModel(ShowTitleView, ShowCreditsView, ShowPuzzleGameView);
+            PuzzleSelectViewModel selectViewModel = new PuzzleSelectViewModel(ShowTitleView, ShowCreditsView, ShowPuzzleGameView, ShowSettingsView);
             bool viewModelWasQueued = ShowOrQueueViewModel(selectViewModel);
 
             if (viewModelWasQueued) {
@@ -130,6 +130,17 @@ namespace Grombcross.ViewModels {
             PuzzleGameModel gameModel = new PuzzleGameModel(puzzleIndex);
             PuzzleGameViewModel gameViewModel = new PuzzleGameViewModel(gameModel, ShowPuzzleSelectView);
             bool viewModelWasQueued = ShowOrQueueViewModel(gameViewModel);
+
+            if (viewModelWasQueued) {
+                StartTransitioningIn();
+            }
+
+            return true;
+        }
+
+        public bool ShowSettingsView() {
+            SettingsViewModel settingsViewModel = new SettingsViewModel(ShowPuzzleSelectView);
+            bool viewModelWasQueued = ShowOrQueueViewModel(settingsViewModel);
 
             if (viewModelWasQueued) {
                 StartTransitioningIn();
