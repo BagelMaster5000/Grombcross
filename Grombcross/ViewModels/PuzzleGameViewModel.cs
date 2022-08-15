@@ -178,6 +178,13 @@ namespace Grombcross.ViewModels {
             _puzzleGameModel.ClearBlock(block);
         }
 
+        public bool QuickFillIntersectLines(Block block) {
+            return _puzzleGameModel.QuickFillIntersectLines(block);
+        }
+        public bool QuickXIntersectLines(Block block) {
+            return _puzzleGameModel.QuickXIntersectLines(block);
+        }
+
         private void RefreshLineFulfilledProperties(Block block) {
             _puzzleGameModel.CheckRowFulfilled(block.Row);
             HintLine rowHintLine = LeftHintLines[block.Row];
@@ -187,6 +194,8 @@ namespace Grombcross.ViewModels {
             HintLine columnHintLine = TopHintLines[block.Column];
             columnHintLine.OnPropertyChanged(nameof(columnHintLine.LineFulfilled));
         }
+
+
 
         private void RefreshPuzzleSolved() {
             bool puzzleSolvedNow = _puzzleGameModel.CheckForPuzzleSolved();

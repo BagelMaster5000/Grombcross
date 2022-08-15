@@ -21,6 +21,7 @@ namespace Grombcross.Models {
 
         public DateTime ElapsedTime;
 
+        #region Setup
         public PuzzleGameModel(int setPuzzleIndex) {
             try {
                 switch (GlobalVariables.PuzzleSource) {
@@ -45,6 +46,7 @@ namespace Grombcross.Models {
             AutoXBlankLines();
         }
 
+        #region Generate Puzzle
         public void GeneratePuzzle() {
             if (CurrentPuzzle.GeneratorImage.Width !=
                 CurrentPuzzle.GeneratorImage.Height) {
@@ -156,6 +158,15 @@ namespace Grombcross.Models {
                 TopHintLines.Add(new HintLine { HintNumbersString = curColString, LineFulfilled = false, HintNumbers = hintNumbers });
             }
         }
+        #endregion
+        #endregion
+
+        public void ResetPuzzle() {
+            ClearPuzzle();
+            AutoXBlankLines();
+
+            CheckForPuzzleSolved();
+        }
 
         private void ClearPuzzle() {
             for (int r = 0; r < BlockGridSize; r++) {
@@ -168,27 +179,17 @@ namespace Grombcross.Models {
         public void AutoXBlankLines() {
             for (int r = 0; r < BlockGridSize; r++) {
                 if (LeftHintLines[r].HintNumbers.Count == 1 && LeftHintLines[r].HintNumbers[0] == 0) {
-                    for (int c = 0; c < BlockGridSize; c++) {
-                        Blocks[r][c].XBlock();
-                    }
+                    XRow(r);
                 }
             }
 
             for (int c = 0; c < BlockGridSize; c++) {
                 if (TopHintLines[c].HintNumbers.Count == 1 && TopHintLines[c].HintNumbers[0] == 0) {
-                    for (int r = 0; r < BlockGridSize; r++) {
-                        Blocks[r][c].XBlock();
-                    }
+                    XColumn(c);
                 }
             }
         }
 
-        public void ResetPuzzle() {
-            ClearPuzzle();
-            AutoXBlankLines();
-
-            CheckForPuzzleSolved();
-        }
         public bool CheckForPuzzleSolved() {
             bool puzzleSolved = true;
 
@@ -212,12 +213,6 @@ namespace Grombcross.Models {
             }
             return PuzzleSolved;
         }
-        private void PuzzleComplete() {
-            CurrentPuzzle.Completed = true;
-
-            SaveSystem.SaveGame();
-        }
-
         public bool CheckRowFulfilled(int r) {
             bool rowFulfilled = true;
 
@@ -249,7 +244,6 @@ namespace Grombcross.Models {
             LeftHintLines[r].LineFulfilled = rowFulfilled;
             return rowFulfilled;
         }
-
         public bool CheckColumnFulfilled(int c) {
 
             bool columnFulfilled = true;
@@ -283,6 +277,12 @@ namespace Grombcross.Models {
             return columnFulfilled;
         }
 
+        private void PuzzleComplete() {
+            CurrentPuzzle.Completed = true;
+
+            SaveSystem.SaveGame();
+        }
+
         public void FillBlock(Block block) {
             block.FillBlock();
         }
@@ -294,6 +294,76 @@ namespace Grombcross.Models {
         }
         public void ClearBlock(Block block) {
             block.ClearBlock();
+        }
+
+        internal bool QuickFillIntersectLines(Block block) {
+            bool fillSuccessful = false;
+
+            HintLine rowLine = LeftHintLines[block.Row];
+            if (rowLine.HintNumbers[0] == BlockGridSize) {
+                FillRow(block.Row);
+                fillSuccessful = true;
+            }
+
+            HintLine columnLine = TopHintLines[block.Column];
+            if (columnLine.HintNumbers[0] == BlockGridSize) {
+                FillColumn(block.Column);
+                fillSuccessful = true;
+            }
+
+            return fillSuccessful;
+        }
+        internal bool QuickXIntersectLines(Block block) {
+            bool xSuccessful = false;
+
+            HintLine rowLine = LeftHintLines[block.Row];
+            if (rowLine.LineFulfilled) {
+                XRowIgnoringFilledBlocks(block.Row);
+                xSuccessful = true;
+            }
+
+            HintLine columnLine = TopHintLines[block.Column];
+            if (columnLine.LineFulfilled) {
+                XColumnIgnoringFilledBlocks(block.Column);
+                xSuccessful = true;
+            }
+
+            return xSuccessful;
+        }
+
+        private void FillRow(int r) {
+            for (int c = 0; c < BlockGridSize; c++) {
+                Blocks[r][c].FillBlock();
+            }
+        }
+        private void FillColumn(int c) {
+            for (int r = 0; r < BlockGridSize; r++) {
+                Blocks[r][c].FillBlock();
+            }
+        }
+        private void XRow(int r) {
+            for (int c = 0; c < BlockGridSize; c++) {
+                Blocks[r][c].XBlock();
+            }
+        }
+        private void XColumn(int c) {
+            for (int r = 0; r < BlockGridSize; r++) {
+                Blocks[r][c].XBlock();
+            }
+        }
+        private void XRowIgnoringFilledBlocks(int r) {
+            for (int c = 0; c < BlockGridSize; c++) {
+                if (Blocks[r][c].State == Block.BlockState.EMPTY) {
+                    Blocks[r][c].XBlock();
+                }
+            }
+        }
+        private void XColumnIgnoringFilledBlocks(int c) {
+            for (int r = 0; r < BlockGridSize; r++) {
+                if (Blocks[r][c].State == Block.BlockState.EMPTY) {
+                    Blocks[r][c].XBlock();
+                }
+            }
         }
     }
 }

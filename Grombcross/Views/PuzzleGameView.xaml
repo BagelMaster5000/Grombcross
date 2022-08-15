@@ -36,6 +36,21 @@
                         <ScaleTransform ScaleX="1" ScaleY="1" />
                     </Button.RenderTransform>
                     <Grid>
+                        <Grid.RenderTransformOrigin>
+                            <Point X="0.5" Y="0.5" />
+                        </Grid.RenderTransformOrigin>
+                        <Grid.RenderTransform>
+                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                        </Grid.RenderTransform>
+                        <!--<Border
+                            Width="11"
+                            Height="11"
+                            Background="Red"
+                            Opacity="0.5" />-->
+                        <Border
+                            Width="11"
+                            Height="11"
+                            Background="Transparent" />
                         <TextBlock
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
