@@ -20,12 +20,26 @@ namespace Grombcross.Views {
         private DoubleAnimation _blockClearScaleYAnimation;
         private Storyboard _blockClearStoryboard;
 
+        Block _curSelectingBlock = null;
+        Block CurSelectingBlock {
+            get { return _curSelectingBlock; }
+            set {
+                _curSelectingBlock = value;
+            }
+        }
+        public enum FillingState { NONE, FILLING, CLEARING }
+        FillingState _curFillingState = FillingState.NONE;
+        FillingState CurFillingState {
+            get { return _curFillingState; }
+            set { _curFillingState = value; }
+        }
+
+        #region Setup
         public PuzzleGameView() {
             Loaded += OnLoaded;
 
             InitializeComponent();
         }
-
         private void OnLoaded(object sender, RoutedEventArgs routedEventArgs) {
             _puzzleGameViewModel = DataContext as PuzzleGameViewModel;
 
@@ -102,18 +116,103 @@ namespace Grombcross.Views {
                 PuzzleGrid.Children.Add(horizontalLine);
             }
         }
+        #endregion
 
-        private void LeftClickBlock(object sender, EventArgs e) {
+        // Block single-clicking
+        private void ClickBlock(object sender, MouseButtonEventArgs e) {
             Button button = sender as Button;
             if (button == null) return;
 
             Block block = button.DataContext as Block;
             if (block == null) return;
 
+            switch (e.ChangedButton) {
+                case MouseButton.Left: LeftClickBlock(button, block); break;
+                case MouseButton.Right: RightClickBlock(button, block); break;
+                case MouseButton.Middle: MiddleClickBlock(button, block); break;
+            }
+        }
+        private void LeftClickBlock(Button button, Block block) {
             CurFillingState = block.State == Block.BlockState.EMPTY ? FillingState.FILLING : FillingState.CLEARING;
             _puzzleGameViewModel.LeftClickBlock(block);
             CurSelectingBlock = block;
 
+            DetermineBlockAnimationAndPlay(button, block);
+        }
+        private void RightClickBlock(Button button, Block block) {
+            CurFillingState = block.State == Block.BlockState.EMPTY ? FillingState.FILLING : FillingState.CLEARING;
+            _puzzleGameViewModel.RightClickBlock(block);
+            CurSelectingBlock = block;
+
+            DetermineBlockAnimationAndPlay(button, block);
+        }
+        private void MiddleClickBlock(Button button, Block block) {
+            CurFillingState = block.State == Block.BlockState.EMPTY ? FillingState.FILLING : FillingState.CLEARING;
+            _puzzleGameViewModel.MiddleClickBlock(block);
+            CurSelectingBlock = block;
+
+            DetermineBlockAnimationAndPlay(button, block);
+        }
+
+
+        // Block double-clicking
+        private void DoubleClickBlock(object sender, MouseButtonEventArgs e) {
+            Button button = sender as Button;
+            if (button == null) return;
+
+            Block block = button.DataContext as Block;
+            if (block == null || block == CurSelectingBlock) return;
+
+            if (e.ChangedButton == MouseButton.Left) {
+                // TODO Try auto-fill row/column
+            }
+            else if (e.ChangedButton == MouseButton.Right) {
+                // TODO Try auto-X row/column
+            }
+        }
+
+
+        // Block dragging
+        private void MouseMoveOverButton(object sender, MouseEventArgs e) {
+            Button button = sender as Button;
+            if (button == null) return;
+
+            Block block = button.DataContext as Block;
+            if (block == null || block == CurSelectingBlock) return;
+
+            if (e.LeftButton == MouseButtonState.Pressed) {
+                bool blockStateWasChanged = _puzzleGameViewModel.DragLeftClickBlock(block, CurFillingState);
+                CurSelectingBlock = block;
+
+                if (blockStateWasChanged) {
+                    DetermineBlockAnimationAndPlay(button, block);
+                }
+            }
+            else if (e.RightButton == MouseButtonState.Pressed) {
+                bool blockStateWasChanged = _puzzleGameViewModel.DragRightClickBlock(block, CurFillingState);
+                CurSelectingBlock = block;
+
+                if (blockStateWasChanged) {
+                    DetermineBlockAnimationAndPlay(button, block);
+                }
+            }
+            else if (e.MiddleButton == MouseButtonState.Pressed) {
+                bool blockStateWasChanged = _puzzleGameViewModel.DragMiddleClickBlock(block, CurFillingState);
+                CurSelectingBlock = block;
+
+                if (blockStateWasChanged) {
+                    DetermineBlockAnimationAndPlay(button, block);
+                }
+            }
+        }
+        private void MouseReleaseFromButton(object sender, MouseButtonEventArgs e) {
+            CurFillingState = FillingState.NONE;
+            CurSelectingBlock = null;
+        }
+
+
+        // Block animations
+        private void DetermineBlockAnimationAndPlay(Button button, Block block) {
             if (block.State == Block.BlockState.EMPTY) {
                 PlayBlockClearAnimation(button);
             }
@@ -128,30 +227,6 @@ namespace Grombcross.Views {
             Storyboard.SetTargetProperty(_blockPlaceScaleYAnimation, new PropertyPath("(RenderTransform).(ScaleTransform.ScaleY)"));
             _blockPlaceStoryboard.Begin();
         }
-
-        private void RightOrMiddleClickBlock(object sender, MouseButtonEventArgs e) {
-            Button button = sender as Button;
-            if (button == null) return;
-
-            Block block = button.DataContext as Block;
-            if (block == null) return;
-
-            if (e.ChangedButton == MouseButton.Right) {
-                CurFillingState = block.State == Block.BlockState.EMPTY ? FillingState.FILLING : FillingState.CLEARING;
-                _puzzleGameViewModel.RightClickBlock(block);
-                CurSelectingBlock = block;
-            }
-            else {
-                _puzzleGameViewModel.MiddleClickBlock(block);
-            }
-
-            if (block.State == Block.BlockState.EMPTY) {
-                PlayBlockClearAnimation(button);
-            }
-            else {
-                PlayBlockPlaceAnimation(button);
-            }
-        }
         private void PlayBlockClearAnimation(Button button) {
             Storyboard.SetTarget(_blockClearScaleXAnimation, button);
             Storyboard.SetTargetProperty(_blockClearScaleXAnimation, new PropertyPath("(RenderTransform).(ScaleTransform.ScaleX)"));
@@ -159,6 +234,9 @@ namespace Grombcross.Views {
             Storyboard.SetTargetProperty(_blockClearScaleYAnimation, new PropertyPath("(RenderTransform).(ScaleTransform.ScaleY)"));
             _blockClearStoryboard.Begin();
         }
+
+
+
 
         private void ShowPuzzleSelect(object sender, RoutedEventArgs e) {
             _puzzleGameViewModel.ShowSelectView();
@@ -168,58 +246,6 @@ namespace Grombcross.Views {
             _puzzleGameViewModel.ResetPuzzle();
         }
 
-        Block _curSelectingBlock = null;
-        Block CurSelectingBlock {
-            get { return _curSelectingBlock; }
-            set {
-                _curSelectingBlock = value;
-            }
-        }
-        public enum FillingState { NONE, FILLING, CLEARING }
-        FillingState _curFillingState = FillingState.NONE;
-        FillingState CurFillingState {
-            get { return _curFillingState; }
-            set { _curFillingState = value; }
-        }
-        private void MouseMoveOverButton(object sender, MouseEventArgs e) {
-            Button button = sender as Button;
-            if (button == null) return;
-
-            Block block = button.DataContext as Block;
-            if (block == null || block == CurSelectingBlock) return;
-
-            if (e.LeftButton == MouseButtonState.Pressed) {
-                bool blockStateWasChanged = _puzzleGameViewModel.DragLeftClickBlock(block, CurFillingState);
-                CurSelectingBlock = block;
-
-                if (blockStateWasChanged) {
-                    if (block.State == Block.BlockState.EMPTY) {
-                        PlayBlockClearAnimation(button);
-                    }
-                    else {
-                        PlayBlockPlaceAnimation(button);
-                    }
-                }
-            }
-            else if (e.RightButton == MouseButtonState.Pressed) {
-                bool blockStateWasChanged = _puzzleGameViewModel.DragRightClickBlock(block, CurFillingState);
-                CurSelectingBlock = block;
-
-                if (blockStateWasChanged) {
-                    if (block.State == Block.BlockState.EMPTY) {
-                        PlayBlockClearAnimation(button);
-                    }
-                    else {
-                        PlayBlockPlaceAnimation(button);
-                    }
-                }
-            }
-        }
-
-        private void MouseReleaseFromButton(object sender, MouseButtonEventArgs e) {
-            CurFillingState = FillingState.NONE;
-            CurSelectingBlock = null;
-        }
 
         private void WindowResized(object sender, SizeChangedEventArgs e) {
             _puzzleGameViewModel?.RefreshPuzzleScale();

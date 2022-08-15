@@ -18,9 +18,9 @@
                 Height="11"
                 Margin="0"
                 ClickMode="Hover"
-                PreviewMouseLeftButtonDown="LeftClickBlock"
+                PreviewMouseDoubleClick="DoubleClickBlock"
+                PreviewMouseDown="ClickBlock"
                 PreviewMouseMove="MouseMoveOverButton"
-                PreviewMouseRightButtonDown="RightOrMiddleClickBlock"
                 PreviewMouseUp="MouseReleaseFromButton"
                 Style="{Binding State, Converter={StaticResource BlockToButtonStyleConverter}}">
                 <Button.RenderTransformOrigin>

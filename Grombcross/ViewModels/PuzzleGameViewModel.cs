@@ -137,6 +137,31 @@ namespace Grombcross.ViewModels {
             RefreshLineFulfilledProperties(block);
             RefreshPuzzleSolved();
         }
+        public bool DragMiddleClickBlock(Block block, PuzzleGameView.FillingState curFillingState) {
+            bool blockStateWasChanged = false;
+
+            switch (curFillingState) {
+                case PuzzleGameView.FillingState.FILLING:
+                    if (block.State == Block.BlockState.EMPTY) {
+                        QuestionBlock(block);
+                        blockStateWasChanged = true;
+                    }
+                    break;
+                case PuzzleGameView.FillingState.CLEARING:
+                    if (block.State == Block.BlockState.QUESTION) {
+                        ClearBlock(block);
+                        blockStateWasChanged = true;
+                    }
+                    break;
+            }
+
+            block.OnPropertyChanged(nameof(block.State));
+
+            RefreshLineFulfilledProperties(block);
+            RefreshPuzzleSolved();
+
+            return blockStateWasChanged;
+        }
 
         private void FillBlock(Block block) {
             _puzzleGameModel.FillBlock(block);
