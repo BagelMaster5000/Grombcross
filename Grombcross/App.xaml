@@ -72,20 +72,24 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border Background="Transparent">
+                        <Grid>
                             <Border
                                 x:Name="Border"
-                                Margin="0.2"
+                                Margin="0.4"
                                 Background="{TemplateBinding Background}"
-                                BorderBrush="Black"
-                                BorderThickness="0.2"
                                 CornerRadius="0.4">
                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                                 <Border.RenderTransformOrigin>
                                     <Point X="0.5" Y="0.5" />
                                 </Border.RenderTransformOrigin>
                             </Border>
-                        </Border>
+                            <Border
+                                x:Name="OverlayBorder"
+                                Margin="0.2"
+                                Background="Yellow"
+                                CornerRadius="0.4"
+                                Opacity="0" />
+                        </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="Border" Property="RenderTransform">
@@ -93,6 +97,7 @@
                                         <ScaleTransform ScaleX="1.05" ScaleY="1.05" />
                                     </Setter.Value>
                                 </Setter>
+                                <Setter TargetName="OverlayBorder" Property="Opacity" Value="0.15" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>

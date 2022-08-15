@@ -29,7 +29,7 @@ namespace Grombcross.ViewModels {
         public MainViewModel() {
             InitializeTransitionTimer();
 
-            ShowPuzzleGameView(0);
+            ShowPuzzleGameView(29);
         }
 
         private void InitializeTransitionTimer() {

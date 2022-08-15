@@ -43,24 +43,24 @@ namespace Grombcross.Views {
         private void OnLoaded(object sender, RoutedEventArgs routedEventArgs) {
             _puzzleGameViewModel = DataContext as PuzzleGameViewModel;
 
-            GenerateDividingLines();
-
             InitializeAnimations();
+
+            GenerateDividingLines();
         }
 
         private void InitializeAnimations() {
             _blockPlaceScaleXAnimation = new DoubleAnimation {
-                From = 0.9,
+                From = 0.2,
                 To = 1,
                 Duration = TimeSpan.FromSeconds(0.1)
             };
-            _blockPlaceScaleXAnimation.EasingFunction = new BackEase() { EasingMode = EasingMode.EaseOut };
+            _blockPlaceScaleXAnimation.EasingFunction = new CubicEase() { EasingMode = EasingMode.EaseOut };
             _blockPlaceScaleYAnimation = new DoubleAnimation {
-                From = 0.9,
+                From = 0.2,
                 To = 1,
                 Duration = TimeSpan.FromSeconds(0.1)
             };
-            _blockPlaceScaleYAnimation.EasingFunction = new BackEase() { EasingMode = EasingMode.EaseOut };
+            _blockPlaceScaleYAnimation.EasingFunction = new CubicEase() { EasingMode = EasingMode.EaseOut };
 
             _blockPlaceStoryboard = new Storyboard();
             _blockPlaceStoryboard.Children.Add(_blockPlaceScaleXAnimation);
@@ -88,14 +88,14 @@ namespace Grombcross.Views {
         private void GenerateDividingLines() {
             int blockInterval = 5;
             int numLines = _puzzleGameViewModel.PuzzleSize / blockInterval;
-            int lineLength = _puzzleGameViewModel.PuzzleSize * 11;
+            double lineLength = _puzzleGameViewModel.PuzzleSize * 11 + 0.6;
             SolidColorBrush lineBrush = new SolidColorBrush(Color.FromRgb(92, 183, 196));
             for (int l = 0; l < numLines - 1; l++) {
                 Line verticalLine = new Line() {
                     Stroke = lineBrush,
-                    StrokeThickness = 0.5,
-                    X1 = (l + 1) * blockInterval * 11,
-                    X2 = (l + 1) * blockInterval * 11,
+                    StrokeThickness = 1,
+                    X1 = (l + 1) * blockInterval * 11 + 0.3,
+                    X2 = (l + 1) * blockInterval * 11 + 0.3,
                     Y1 = 0,
                     Y2 = lineLength,
                 };
@@ -105,11 +105,11 @@ namespace Grombcross.Views {
 
                 Line horizontalLine = new Line() {
                     Stroke = lineBrush,
-                    StrokeThickness = 0.5,
+                    StrokeThickness = 1,
                     X1 = 0,
                     X2 = lineLength,
-                    Y1 = (l + 1) * blockInterval * 11,
-                    Y2 = (l + 1) * blockInterval * 11,
+                    Y1 = (l + 1) * blockInterval * 11 + 0.3,
+                    Y2 = (l + 1) * blockInterval * 11 + 0.3,
                 };
                 Grid.SetRow(horizontalLine, 1);
                 Grid.SetColumn(horizontalLine, 1);
