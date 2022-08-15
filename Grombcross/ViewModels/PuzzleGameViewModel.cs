@@ -22,6 +22,16 @@ namespace Grombcross.ViewModels {
         public List<HintLine> LeftHintLines => _puzzleGameModel.LeftHintLines;
         public List<HintLine> TopHintLines => _puzzleGameModel.TopHintLines;
         public int PuzzleSize => _puzzleGameModel.CurrentPuzzle.Size;
+        public double PuzzleScale {
+            get {
+                double scale = 26.0384995 * Math.Pow(PuzzleSize, -0.814332125);
+
+                double windowHeight = Application.Current.MainWindow.ActualHeight;
+                scale *= windowHeight / 800;
+
+                return scale;
+            }
+        }
 
         public string PuzzleName => _puzzleGameModel.CurrentPuzzle.Name;
         public Bitmap CompletedImage => _puzzleGameModel.CurrentPuzzle.FinalImage;
@@ -163,6 +173,10 @@ namespace Grombcross.ViewModels {
 
         public void ResetPuzzle() {
             _puzzleGameModel.ResetPuzzle();
+        }
+
+        public void RefreshPuzzleScale() {
+            OnPropertyChanged(nameof(PuzzleScale));
         }
 
         // Debugging

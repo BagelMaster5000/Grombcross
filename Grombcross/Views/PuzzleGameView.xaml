@@ -9,6 +9,7 @@
     xmlns:viewmodels="clr-namespace:Grombcross.ViewModels"
     d:DesignHeight="800"
     d:DesignWidth="800"
+    SizeChanged="WindowResized"
     mc:Ignorable="d">
     <UserControl.Resources>
         <DataTemplate x:Key="ButtonTemplate">
@@ -100,7 +101,7 @@
                 <Point X="0.5" Y="0.5" />
             </Grid.RenderTransformOrigin>
             <Grid.RenderTransform>
-                <ScaleTransform ScaleX="{Binding PuzzleSize, Converter={StaticResource PuzzleSizeToScaleConverter}}" ScaleY="{Binding PuzzleSize, Converter={StaticResource PuzzleSizeToScaleConverter}}" />
+                <ScaleTransform ScaleX="{Binding PuzzleScale}" ScaleY="{Binding PuzzleScale}" />
             </Grid.RenderTransform>
 
             <Grid.RowDefinitions>

@@ -25,6 +25,7 @@ namespace Grombcross.Views {
 
             InitializeComponent();
         }
+
         private void OnLoaded(object sender, RoutedEventArgs routedEventArgs) {
             _puzzleGameViewModel = DataContext as PuzzleGameViewModel;
 
@@ -218,6 +219,10 @@ namespace Grombcross.Views {
         private void MouseReleaseFromButton(object sender, MouseButtonEventArgs e) {
             CurFillingState = FillingState.NONE;
             CurSelectingBlock = null;
+        }
+
+        private void WindowResized(object sender, SizeChangedEventArgs e) {
+            _puzzleGameViewModel?.RefreshPuzzleScale();
         }
     }
 }

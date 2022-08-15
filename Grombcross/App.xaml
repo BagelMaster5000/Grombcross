@@ -23,7 +23,6 @@
         <SolidColorBrush x:Key="GrombYellowBrush" Color="{DynamicResource GrombYellow}" />
         <SolidColorBrush x:Key="GrombWhiteBrush" Color="{DynamicResource GrombWhite}" />
 
-        <converters:PuzzleSizeToScaleConverter x:Key="PuzzleSizeToScaleConverter" />
         <converters:BlockStateToButtonStyleConverter x:Key="BlockToButtonStyleConverter" />
         <converters:BlockStateToQuestionVisibilityConverter x:Key="BlockToQuestionVisibilityConverter" />
         <converters:BlockStateToXVisibilityConverter x:Key="BlockToXVisibilityConverter" />
