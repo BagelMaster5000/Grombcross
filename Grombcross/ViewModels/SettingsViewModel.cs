@@ -13,12 +13,28 @@ namespace Grombcross.ViewModels {
         }
 
         public bool MusicMuted { get { return AudioSystem.MusicMuted; } }
-        public void ToggleMusicMute() => AudioSystem.ToggleMusicMute();
+        public void ToggleMusicMute() {
+            AudioSystem.ToggleMusicMute();
+
+            AudioSystem.PlayQuickReturn();
+        }
 
         public bool SfxMuted { get { return AudioSystem.SfxMuted; } }
-        public void ToggleSfxMute() => AudioSystem.ToggleSfxMute();
+        public void ToggleSfxMute() {
+            AudioSystem.ToggleSfxMute();
 
-        public void ResetStandardPuzzlesSaveData() => SaveSystem.ResetStandardPuzzlesSaveData();
-        public void ResetBonusPuzzlesSaveData() => SaveSystem.ResetBonusPuzzlesSaveData();
+            AudioSystem.PlayQuickReturn();
+        }
+
+        public void ResetStandardPuzzlesSaveData() {
+            SaveSystem.ResetStandardPuzzlesSaveData();
+
+            AudioSystem.PlayLongReturn();
+        }
+        public void ResetBonusPuzzlesSaveData() {
+            SaveSystem.ResetBonusPuzzlesSaveData();
+
+            AudioSystem.PlayLongReturn();
+        }
     }
 }
