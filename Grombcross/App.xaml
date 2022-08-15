@@ -81,8 +81,20 @@
                                 BorderThickness="0.2"
                                 CornerRadius="0.4">
                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <Border.RenderTransformOrigin>
+                                    <Point X="0.5" Y="0.5" />
+                                </Border.RenderTransformOrigin>
                             </Border>
                         </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Border" Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="1.05" ScaleY="1.05" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
