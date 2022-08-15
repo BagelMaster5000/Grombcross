@@ -64,13 +64,13 @@ namespace Grombcross.ViewModels {
 
             switch (curFillingState) {
                 case PuzzleGameView.FillingState.FILLING:
-                    if (block.State == Block.BlockState.EMPTY) {
+                    if (block.State == Block.BlockState.EMPTY || block.State == Block.BlockState.QUESTION) {
                         FillBlock(block);
                         blockStateWasChanged = true;
                     }
                     break;
                 case PuzzleGameView.FillingState.CLEARING:
-                    if (block.State == Block.BlockState.FILLED) {
+                    if (block.State != Block.BlockState.EMPTY) {
                         ClearBlock(block);
                         blockStateWasChanged = true;
                     }
@@ -109,7 +109,7 @@ namespace Grombcross.ViewModels {
                     }
                     break;
                 case PuzzleGameView.FillingState.CLEARING:
-                    if (block.State == Block.BlockState.X) {
+                    if (block.State != Block.BlockState.EMPTY) {
                         ClearBlock(block);
                         blockStateWasChanged = true;
                     }
