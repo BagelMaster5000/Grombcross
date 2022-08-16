@@ -33,6 +33,12 @@
     <None Remove="Puzzles\BonusPuzzles\1-Low Poly Slime-G.bmp" />
     <None Remove="Puzzles\BonusPuzzles\10-Bold-F.bmp" />
     <None Remove="Puzzles\BonusPuzzles\10-Bold-G.bmp" />
+    <None Remove="Puzzles\BonusPuzzles\11-Mob-F.bmp" />
+    <None Remove="Puzzles\BonusPuzzles\11-Mob-G.bmp" />
+    <None Remove="Puzzles\BonusPuzzles\12-Lego Head-F.bmp" />
+    <None Remove="Puzzles\BonusPuzzles\12-Lego Head-G.bmp" />
+    <None Remove="Puzzles\BonusPuzzles\13-Grombcross-F.bmp" />
+    <None Remove="Puzzles\BonusPuzzles\13-Grombcross-G.bmp" />
     <None Remove="Puzzles\BonusPuzzles\2-Loofy-F.bmp" />
     <None Remove="Puzzles\BonusPuzzles\2-Loofy-G.bmp" />
     <None Remove="Puzzles\BonusPuzzles\2-Sponge-F.bmp" />
@@ -43,10 +49,16 @@
     <None Remove="Puzzles\BonusPuzzles\3-Star-G.bmp" />
     <None Remove="Puzzles\BonusPuzzles\4-House-F.bmp" />
     <None Remove="Puzzles\BonusPuzzles\4-House-G.bmp" />
+    <None Remove="Puzzles\BonusPuzzles\5-Pikachu-F.bmp" />
+    <None Remove="Puzzles\BonusPuzzles\5-Pikachu-G.bmp" />
     <None Remove="Puzzles\BonusPuzzles\6-Creature-F.bmp" />
     <None Remove="Puzzles\BonusPuzzles\6-Creature-G.bmp" />
+    <None Remove="Puzzles\BonusPuzzles\6-Susmongus-F.bmp" />
+    <None Remove="Puzzles\BonusPuzzles\6-Susmongus-G.bmp" />
     <None Remove="Puzzles\BonusPuzzles\7-Grombit Small-F.bmp" />
     <None Remove="Puzzles\BonusPuzzles\7-Grombit Small-G.bmp" />
+    <None Remove="Puzzles\BonusPuzzles\8-Burglar-F.bmp" />
+    <None Remove="Puzzles\BonusPuzzles\8-Burglar-G.bmp" />
     <None Remove="Puzzles\BonusPuzzles\8-GOOBER BORG-F.bmp" />
     <None Remove="Puzzles\BonusPuzzles\8-GOOBER BORG-G.bmp" />
     <None Remove="Puzzles\BonusPuzzles\9-Loofy-F.bmp" />
@@ -213,6 +225,24 @@
     <Content Include="Puzzles\BonusPuzzles\10-Bold-G.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Puzzles\BonusPuzzles\11-Mob-F.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\BonusPuzzles\11-Mob-G.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\BonusPuzzles\12-Lego Head-F.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\BonusPuzzles\12-Lego Head-G.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\BonusPuzzles\13-Grombcross-F.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\BonusPuzzles\13-Grombcross-G.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Puzzles\BonusPuzzles\2-Sponge-F.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -231,10 +261,16 @@
     <Content Include="Puzzles\BonusPuzzles\4-House-G.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Puzzles\BonusPuzzles\6-Creature-F.bmp">
+    <Content Include="Puzzles\BonusPuzzles\5-Pikachu-F.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Puzzles\BonusPuzzles\6-Creature-G.bmp">
+    <Content Include="Puzzles\BonusPuzzles\5-Pikachu-G.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\BonusPuzzles\6-Susmongus-F.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\BonusPuzzles\6-Susmongus-G.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Puzzles\BonusPuzzles\7-Grombit Small-F.bmp">
@@ -243,10 +279,10 @@
     <Content Include="Puzzles\BonusPuzzles\7-Grombit Small-G.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Puzzles\BonusPuzzles\8-GOOBER BORG-F.bmp">
+    <Content Include="Puzzles\BonusPuzzles\8-Burglar-F.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Puzzles\BonusPuzzles\8-GOOBER BORG-G.bmp">
+    <Content Include="Puzzles\BonusPuzzles\8-Burglar-G.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Puzzles\BonusPuzzles\9-Loofy-F.bmp">
