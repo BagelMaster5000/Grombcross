@@ -15,6 +15,7 @@ namespace Grombcross.ViewModels {
         public bool MusicMuted { get { return AudioSystem.MusicMuted; } }
         public void ToggleMusicMute() {
             AudioSystem.ToggleMusicMute();
+            SaveSystem.SaveGame();
 
             AudioSystem.PlayQuickReturn();
         }
@@ -22,17 +23,20 @@ namespace Grombcross.ViewModels {
         public bool SfxMuted { get { return AudioSystem.SfxMuted; } }
         public void ToggleSfxMute() {
             AudioSystem.ToggleSfxMute();
+            SaveSystem.SaveGame();
 
             AudioSystem.PlayQuickReturn();
         }
 
         public void ResetStandardPuzzlesSaveData() {
             SaveSystem.ResetStandardPuzzlesSaveData();
+            SaveSystem.SaveGame();
 
             AudioSystem.PlayLongReturn();
         }
         public void ResetBonusPuzzlesSaveData() {
             SaveSystem.ResetBonusPuzzlesSaveData();
+            SaveSystem.SaveGame();
 
             AudioSystem.PlayLongReturn();
         }

@@ -44,7 +44,7 @@ namespace Grombcross.Models.Systems {
         }
 
 
-        // SFX
+        #region SFX
         private static MediaPlayer _blockPlace = new MediaPlayer();
         public static void PlayBlockPlace() {
             _blockPlace.Volume = 1;
@@ -86,9 +86,10 @@ namespace Grombcross.Models.Systems {
             _blockPlace.Position = TimeSpan.Zero;
             _blockPlace.Play();
         }
+        #endregion
 
 
-        // Music
+        #region Music
         private static MediaPlayer _music = new MediaPlayer();
         public static void StartMusic(object? sender = null, EventArgs? e = null) {
             _music.Play();
@@ -96,28 +97,14 @@ namespace Grombcross.Models.Systems {
         public static void StopMusic() {
             _music.Stop();
         }
+        #endregion
 
 
-        // Mute Settings
+        #region Muting
         private static bool _sfxMuted;
-        public static bool SfxMuted { get { return _sfxMuted; } }
+        public static bool SfxMuted { get { return _sfxMuted; } set { _sfxMuted = value; RefreshAllSfxMute(); } }
         public static void ToggleSfxMute() {
-            if (SfxMuted) {
-                UnmuteSfx();
-            }
-            else {
-                MuteSfx();
-            }
-        }
-        public static void MuteSfx() {
-            _sfxMuted = true;
-
-            RefreshAllSfxMute();
-        }
-        public static void UnmuteSfx() {
-            _sfxMuted = false;
-
-            RefreshAllSfxMute();
+            SfxMuted = !SfxMuted;
         }
         private static void RefreshAllSfxMute() {
             _blockPlace.IsMuted = _sfxMuted;
@@ -127,20 +114,10 @@ namespace Grombcross.Models.Systems {
             _longReturn.IsMuted = _sfxMuted;
         }
 
-        public static bool MusicMuted { get { return _music.IsMuted; } }
+        public static bool MusicMuted { get { return _music.IsMuted; } set { _music.IsMuted = value; } }
         public static void ToggleMusicMute() {
-            if (MusicMuted) {
-                UnmuteMusic();
-            }
-            else {
-                MuteMusic();
-            }
+            MusicMuted = !MusicMuted;
         }
-        public static void MuteMusic() {
-            _music.IsMuted = true;
-        }
-        public static void UnmuteMusic() {
-            _music.IsMuted = false;
-        }
+        #endregion
     }
 }

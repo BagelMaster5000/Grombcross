@@ -4,18 +4,17 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace Grombcross.Models.Systems {
     public static class SaveSystem {
         const string SAVE_DIRECTORY = "SaveData/";
 
-
-
-        // Saving game
+        #region Saving Game
         public static void SaveGame() {
             SaveStandardPuzzles();
             SaveBonusPuzzles();
+
+            SaveSettings();
         }
         private static void SaveStandardPuzzles() {
             Dictionary<string, bool> standardPuzzlesSaveData = new Dictionary<string, bool>();
@@ -25,7 +24,7 @@ namespace Grombcross.Models.Systems {
                 }
             }
 
-            SavePuzzlesToJson(standardPuzzlesSaveData, "StandardPuzzlesSaveData");
+            SaveDictionaryToJson(standardPuzzlesSaveData, "StandardPuzzlesSaveData");
         }
         private static void SaveBonusPuzzles() {
             Dictionary<string, bool> bonusPuzzlesSaveData = new Dictionary<string, bool>();
@@ -35,23 +34,32 @@ namespace Grombcross.Models.Systems {
                 }
             }
 
-            SavePuzzlesToJson(bonusPuzzlesSaveData, "BonusPuzzlesSaveData");
+            SaveDictionaryToJson(bonusPuzzlesSaveData, "BonusPuzzlesSaveData");
+        }
+        private static void SaveSettings() {
+            Dictionary<string, bool> settingsSaveData = new Dictionary<string, bool>();
+            settingsSaveData.Add("MusicMuted", AudioSystem.MusicMuted);
+            settingsSaveData.Add("SfxMuted", AudioSystem.SfxMuted);
+
+            SaveDictionaryToJson(settingsSaveData, "SettingsSaveData");
         }
 
-        private static void SavePuzzlesToJson(Dictionary<string, bool> puzzlesSaveData, string saveFileName) {
+        private static void SaveDictionaryToJson(Dictionary<string, bool> puzzlesSaveData, string saveFileName) {
             JsonSerializerOptions jsonOptions = new JsonSerializerOptions() { WriteIndented = true };
             string json = JsonSerializer.Serialize(puzzlesSaveData, jsonOptions); ;
 
             Directory.CreateDirectory(SAVE_DIRECTORY);
             File.WriteAllText(SAVE_DIRECTORY + saveFileName + ".json", json);
         }
+        #endregion
 
 
-
-        // Loading game
+        #region Loading Game
         public static void LoadGame() {
             LoadStandardPuzzles();
             LoadBonusPuzzles();
+
+            LoadSettings();
         }
         private static void LoadStandardPuzzles() {
             Dictionary<string, bool>? standardPuzzlesSaveData = LoadPuzzlesFromJson("StandardPuzzlesSaveData");
@@ -63,11 +71,22 @@ namespace Grombcross.Models.Systems {
         }
         private static void LoadBonusPuzzles() {
             Dictionary<string, bool>? bonusPuzzlesSaveData = LoadPuzzlesFromJson("BonusPuzzlesSaveData");
-            if (bonusPuzzlesSaveData != null) {
-                foreach (Puzzle p in GlobalVariables.BonusPuzzles) {
-                    p.Completed = bonusPuzzlesSaveData.GetValueOrDefault(p.Name);
-                }
+            if (bonusPuzzlesSaveData == null) {
+                return;
             }
+
+            foreach (Puzzle p in GlobalVariables.BonusPuzzles) {
+                p.Completed = bonusPuzzlesSaveData.GetValueOrDefault(p.Name);
+            }
+        }
+        private static void LoadSettings() {
+            Dictionary<string, bool>? settingsSaveData = LoadPuzzlesFromJson("SettingsSaveData");
+            if (settingsSaveData == null) {
+                return;
+            }
+
+            AudioSystem.SfxMuted = settingsSaveData.GetValueOrDefault("SfxMuted");
+            AudioSystem.MusicMuted = settingsSaveData.GetValueOrDefault("MusicMuted");
         }
 
         private static Dictionary<string, bool>? LoadPuzzlesFromJson(string loadFileName) {
@@ -80,22 +99,23 @@ namespace Grombcross.Models.Systems {
             Dictionary<string, bool>? puzzlesSaveData = JsonSerializer.Deserialize<Dictionary<string, bool>>(allJsonText);
             return puzzlesSaveData;
         }
+        #endregion
 
 
-
-        // Reseting Save Data
+        #region Resetting Save Data
         public static void ResetStandardPuzzlesSaveData() {
             Dictionary<string, bool> standardPuzzlesSaveData = new Dictionary<string, bool>();
-            SavePuzzlesToJson(standardPuzzlesSaveData, "StandardPuzzlesSaveData");
+            SaveDictionaryToJson(standardPuzzlesSaveData, "StandardPuzzlesSaveData");
 
             LoadStandardPuzzles();
         }
 
         public static void ResetBonusPuzzlesSaveData() {
             Dictionary<string, bool> bonusPuzzlesSaveData = new Dictionary<string, bool>();
-            SavePuzzlesToJson(bonusPuzzlesSaveData, "BonusPuzzlesSaveData");
+            SaveDictionaryToJson(bonusPuzzlesSaveData, "BonusPuzzlesSaveData");
 
             LoadBonusPuzzles();
         }
+        #endregion
     }
 }
