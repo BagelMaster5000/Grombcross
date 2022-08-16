@@ -185,15 +185,18 @@
                 Grid.Column="1"
                 Background="#232323"
                 CornerRadius="0.7">
-                <ItemsControl
-                    x:Name="PicrossGrid"
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    Margin="0.3"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    ItemTemplate="{DynamicResource GridRowsTemplate}"
-                    ItemsSource="{Binding Blocks}" />
+                <Grid>
+                    <Grid Name="PuzzleGridLines" />
+                    <ItemsControl
+                        x:Name="PicrossGrid"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Margin="0.3"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        ItemTemplate="{DynamicResource GridRowsTemplate}"
+                        ItemsSource="{Binding Blocks}" />
+                </Grid>
             </Border>
 
         </Grid>

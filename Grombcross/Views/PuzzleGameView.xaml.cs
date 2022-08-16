@@ -113,11 +113,12 @@ namespace Grombcross.Views {
             int blockInterval = 5;
             int numLines = _puzzleGameViewModel.PuzzleSize / blockInterval;
             double lineLength = _puzzleGameViewModel.PuzzleSize * 11 + 0.6;
+            double lineThickness = 0.78;
             SolidColorBrush lineBrush = new SolidColorBrush(Color.FromRgb(92, 183, 196));
             for (int l = 0; l < numLines - 1; l++) {
                 Line verticalLine = new Line() {
                     Stroke = lineBrush,
-                    StrokeThickness = 1,
+                    StrokeThickness = lineThickness,
                     X1 = (l + 1) * blockInterval * 11 + 0.3,
                     X2 = (l + 1) * blockInterval * 11 + 0.3,
                     Y1 = 0,
@@ -125,11 +126,11 @@ namespace Grombcross.Views {
                 };
                 Grid.SetRow(verticalLine, 1);
                 Grid.SetColumn(verticalLine, 1);
-                PuzzleGrid.Children.Add(verticalLine);
+                PuzzleGridLines.Children.Add(verticalLine);
 
                 Line horizontalLine = new Line() {
                     Stroke = lineBrush,
-                    StrokeThickness = 1,
+                    StrokeThickness = lineThickness,
                     X1 = 0,
                     X2 = lineLength,
                     Y1 = (l + 1) * blockInterval * 11 + 0.3,
@@ -137,7 +138,7 @@ namespace Grombcross.Views {
                 };
                 Grid.SetRow(horizontalLine, 1);
                 Grid.SetColumn(horizontalLine, 1);
-                PuzzleGrid.Children.Add(horizontalLine);
+                PuzzleGridLines.Children.Add(horizontalLine);
             }
         }
         #endregion
