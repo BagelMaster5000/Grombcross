@@ -39,6 +39,8 @@
     <None Remove="Puzzles\BonusPuzzles\12-Lego Head-G.bmp" />
     <None Remove="Puzzles\BonusPuzzles\13-Grombcross-F.bmp" />
     <None Remove="Puzzles\BonusPuzzles\13-Grombcross-G.bmp" />
+    <None Remove="Puzzles\BonusPuzzles\14-Sesame Seed in the Snow-F.bmp" />
+    <None Remove="Puzzles\BonusPuzzles\14-Sesame Seed in the Snow-G.bmp" />
     <None Remove="Puzzles\BonusPuzzles\2-Loofy-F.bmp" />
     <None Remove="Puzzles\BonusPuzzles\2-Loofy-G.bmp" />
     <None Remove="Puzzles\BonusPuzzles\2-Sponge-F.bmp" />
@@ -241,6 +243,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Puzzles\BonusPuzzles\13-Grombcross-G.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\BonusPuzzles\14-Sesame Seed in the Snow-F.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\BonusPuzzles\14-Sesame Seed in the Snow-G.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Puzzles\BonusPuzzles\2-Sponge-F.bmp">
