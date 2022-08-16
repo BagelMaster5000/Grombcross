@@ -41,6 +41,8 @@
     <None Remove="Puzzles\BonusPuzzles\3-Bold-G.bmp" />
     <None Remove="Puzzles\BonusPuzzles\3-Star-F.bmp" />
     <None Remove="Puzzles\BonusPuzzles\3-Star-G.bmp" />
+    <None Remove="Puzzles\BonusPuzzles\4-House-F.bmp" />
+    <None Remove="Puzzles\BonusPuzzles\4-House-G.bmp" />
     <None Remove="Puzzles\BonusPuzzles\6-Creature-F.bmp" />
     <None Remove="Puzzles\BonusPuzzles\6-Creature-G.bmp" />
     <None Remove="Puzzles\BonusPuzzles\7-Grombit Small-F.bmp" />
@@ -221,6 +223,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Puzzles\BonusPuzzles\3-Star-G.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\BonusPuzzles\4-House-F.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\BonusPuzzles\4-House-G.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Puzzles\BonusPuzzles\6-Creature-F.bmp">
