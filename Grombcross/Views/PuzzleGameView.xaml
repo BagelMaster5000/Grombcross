@@ -214,7 +214,7 @@
             VerticalAlignment="Center"
             FontSize="40"
             Foreground="White"
-            Text="???" />
+            Text="{Binding PuzzleName, Converter={StaticResource StringToQuestionMarkStringConverter}}" />
 
 
         <!--  Footer  -->

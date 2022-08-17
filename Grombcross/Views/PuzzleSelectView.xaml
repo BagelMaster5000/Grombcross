@@ -166,13 +166,13 @@
                                                 VerticalAlignment="Center"
                                                 FontSize="48"
                                                 Text="{Binding Size, Converter={StaticResource SizeIntToDimensionsStringConverter}}" />
-                                            <TextBlock
+                                            <Viewbox
                                                 Grid.Row="1"
+                                                Margin="10,4,10,2"
                                                 HorizontalAlignment="Center"
-                                                VerticalAlignment="Center"
-                                                FontSize="18"
-                                                Foreground="White"
-                                                Text="???" />
+                                                VerticalAlignment="Center">
+                                                <TextBlock Foreground="White" Text="{Binding Name, Converter={StaticResource StringToQuestionMarkStringConverter}}" />
+                                            </Viewbox>
                                         </Grid>
                                     </Grid>
                                 </Button>

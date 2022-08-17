@@ -32,6 +32,7 @@
         <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
         <converters:InverseBoolToVisibilityConverter x:Key="InverseBoolToVisibilityConverter" />
         <converters:BrushToDarkerBrushConverter x:Key="BrushToDarkerBrushConverter" />
+        <converters:StringToQuestionMarkStringConverter x:Key="StringToQuestionMarkStringConverter" />
 
         <Style x:Key="BouncyButtonBehavior" TargetType="Button">
             <Setter Property="Background" Value="LightBlue" />
