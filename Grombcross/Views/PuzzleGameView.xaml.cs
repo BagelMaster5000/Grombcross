@@ -111,11 +111,14 @@ namespace Grombcross.Views {
 
         private void GenerateDividingLines() {
             int blockInterval = 5;
-            int numLines = _puzzleGameViewModel.PuzzleSize / blockInterval;
+            int numLines = _puzzleGameViewModel.PuzzleSize / blockInterval - 1;
+            if (_puzzleGameViewModel.PuzzleSize % blockInterval != 0) {
+                numLines++;
+            }
             double lineLength = _puzzleGameViewModel.PuzzleSize * 11 + 0.6;
             double lineThickness = 0.78;
             SolidColorBrush lineBrush = new SolidColorBrush(Color.FromRgb(92, 183, 196));
-            for (int l = 0; l < numLines - 1; l++) {
+            for (int l = 0; l < numLines; l++) {
                 Line verticalLine = new Line() {
                     Stroke = lineBrush,
                     StrokeThickness = lineThickness,
