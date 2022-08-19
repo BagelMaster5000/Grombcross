@@ -36,7 +36,7 @@ namespace Grombcross.Models.Systems {
 
             path = Path.GetFullPath(@"Audio\Music\Music.wav");
             _music.Open(new Uri(path));
-            _music.Volume = 0.15;
+            _music.Volume = 0.5;
             _music.MediaEnded += (object? sender, EventArgs e) => {
                 _music.Position = TimeSpan.Zero;
                 _music.Play();
@@ -47,14 +47,12 @@ namespace Grombcross.Models.Systems {
         #region SFX
         private static MediaPlayer _blockPlace = new MediaPlayer();
         public static void PlayBlockPlace() {
-            _blockPlace.Volume = 1;
             _blockPlace.Position = TimeSpan.Zero;
             _blockPlace.Play();
         }
 
         private static MediaPlayer _xPlace = new MediaPlayer();
         public static void PlayXPlace() {
-            _xPlace.Volume = 1;
             _xPlace.Position = TimeSpan.Zero;
             _xPlace.Play();
         }
